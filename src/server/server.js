@@ -8,7 +8,7 @@ keystone.init({
   'static': '../client',
   // 'favicon': 'public/favicon.ico',
   'views': '../client',
-  'auto update': true,
+  'auto update': false,
   // 'mongo': 'mongodb://localhost/firstglory',
   'mongo': process.env.mongoURI || mongoURI,
   // 'cloudinary config': CLOUDINARY_URL,
