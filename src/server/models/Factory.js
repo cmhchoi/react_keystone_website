@@ -17,33 +17,32 @@ Factory.add({
     type: String, 
   },
   description: {
-    english: { type: String },
-    'chinese_traditional': { type: String },
-    'chinese_simplified': { type: String },
+    english: { type: String, height: 200 },
+    'chinese_traditional': { type: String, height: 200 },
+    'chinese_simplified': { type: String, height: 200 },
   },
   year: {
     type: Number,
   },
   products: {
-    english: { type: String },
-    'chinese_traditional': { type: String },
-    'chinese_simplified': { type: String },
+    english: { type: Types.Textarea, height: 200 },
+    'chinese_traditional': { type: Types.Textarea, height: 200 },
+    'chinese_simplified': { type: Types.Textarea, height: 200 },
   },
   services: {
-    english: { type: String },
-    'chinese_traditional': { type: String },
-    'chinese_simplified': { type: String },
+    english: { type: Types.Textarea, height: 200 },
+    'chinese_traditional': { type: Types.Textarea, height: 200 },
+    'chinese_simplified': { type: Types.Textarea, height: 200 },
   },
   address: {
-    english: { type: String },
-    'chinese_traditional': { type: String },
-    'chinese_simplified': { type: String },
-  }
-
+    english: { type: Types.Textarea, height: 200 },
+    'chinese_traditional': { type: Types.Textarea, height: 200 },
+    'chinese_simplified': { type: Types.Textarea, height: 200 },
+  },
 });
 
 Factory.track = true;
-Factory.defaultColumns = 'name.english';
+Factory.defaultColumns = 'name, name.english';
 Factory.register();
 
 Factory.get = (something, cb) => {

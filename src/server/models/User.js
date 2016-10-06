@@ -26,15 +26,4 @@ User.add({
 
 User.register();
 
-User.get = (something, cb) => {
-  User.model.find({}).exec((err, user) => {
-    if(err) {
-      console.log('server getting failed', err);
-    } else {
-      console.log('server getting succssful', user);
-      cb(null, user);
-    }
-  });
-};
-
 module.exports = User;

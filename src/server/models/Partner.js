@@ -8,6 +8,7 @@ const Partner = new keystone.List('Partner', {
 });
  
 Partner.add({
+  name: { type: String },
   text: { 
     english: { type: String, index: true },
     'chinese_traditional': { type: String },
@@ -19,7 +20,7 @@ Partner.add({
 });
 
 Partner.track = true;
-Partner.defaultColumns = 'text.english';
+Partner.defaultColumns = 'name, text.english';
 Partner.register();
 
 Partner.get = (something, cb) => {

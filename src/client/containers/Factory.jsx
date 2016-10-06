@@ -1,8 +1,41 @@
 import React from 'react';
 import { Link } from 'react-router';
 import $ from "jquery";
+import Lightbox from 'react-image-lightbox';
 
 export default class Factories extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      index: 0,
+      isOpen: false,
+    }
+
+    this.images = [
+      'http://borisivanov.com/wp-content/uploads/2016/02/factory-1.jpg',
+      'http://borisivanov.com/wp-content/uploads/2016/02/factory-1.jpg',
+      'http://www.torontocitylife.com/wp-content/uploads/2013/08/London-factory-large.jpg'
+    ]
+  }
+
+  openLightbox() {
+    this.setState({ 
+      isOpen: true,
+    });
+  }
+
+  closeLightbox() {
+    this.setState({ isOpen: false });
+  }
+  
+  moveNext() {
+    this.setState({ index: (this.state.index + 1) % this.images.length });
+  }
+  
+  movePrev() {
+    this.setState({ index: (this.state.index + this.images.length - 1) % this.images.length });
+  }
 
   render() {
     const factories = this.props.state.factories;
@@ -11,6 +44,22 @@ export default class Factories extends React.Component {
     let lang, langLink = '';
     lang = language === 'zh-t' ? 'chinese_traditional' : language === 'zh-s' ? 'chinese_simplified' : 'english';
     langLink = (language === 'zh-t' || language === 'zh-s') ? `/${language}` : '';
+    let lightbox = '';
+    if(this.state.isOpen) {
+      lightbox = (
+        <div>
+          <Lightbox
+          mainSrc={this.images[this.state.index]}
+          nextSrc={this.images[(this.state.index + 1) % this.images.length]}
+          prevSrc={this.images[(this.state.index + this.images.length - 1) % this.images.length]}
+
+          onCloseRequest={this.closeLightbox.bind(this)}
+          onMovePrevRequest={this.movePrev.bind(this)}
+          onMoveNextRequest={this.moveNext.bind(this)}
+          />
+        </div>
+      );
+    }
     if(factories){
       return(
         <div>
@@ -34,14 +83,15 @@ export default class Factories extends React.Component {
                 const link = '/people/factories/' + factory.description.english;
                 return( 
                   <li className="picture-link factory col-xs-12 col-sm-6">
-                    <Link to={{ pathname: link }}>
+                    <a href="#" onClick={() => this.openLightbox()}>
                       <div className="text">
                         <p className="picture-des">{factory.description[lang]}</p>
                       </div>
                       <div className="picture-container rectangle mid-no-rectangle">
                         <img className="picture" src={factory.thumbnail}/>
                       </div>
-                    </Link>
+                      {lightbox}
+                    </a>
                     <h4>{factory.name[lang]}</h4>
                     <h5 className="factory-title">{labels.year_founded[lang]}</h5>
                     <p className="factory-detail">{factory.year}</p>

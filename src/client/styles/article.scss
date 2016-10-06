@@ -1,0 +1,19 @@
+div.article {
+  div {
+    padding-right: 0;
+  }
+  .article-image-wrapper-main {
+    margin-top: 15px;
+    padding: 0 5px;
+    img {
+      width: 100%;
+    }
+  }
+  .article-image-wrapper {
+    margin-top: 10px;
+    padding: 0 5px;
+    img {
+      width: 100%;
+    }
+  }
+}

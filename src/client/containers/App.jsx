@@ -47,6 +47,10 @@ export default class App extends React.Component {
       this.setState({ fabricContent, fabricType });
       console.log('fabrics')
     })
+    $.get('/api/posts', posts => {
+      this.setState({ posts });
+      console.log('posts')
+    })
     this.setState({ labels })
   }
 
@@ -60,7 +64,7 @@ export default class App extends React.Component {
     }
     let lang, currentPage, langLink = '';
     lang = language === 'zh-t' ? 'chinese_traditional' : language === 'zh-s' ? 'chinese_simplified' : 'english';
-    if(path.split('/')[1] === "") {
+    if(path.split('/')[1] === "" || path.split('/')[1] === "contact-us" || path.split('/')[1] === "sitemap" || path.split('/')[1] === "terms-of-use" || path.split('/')[1] === "privacy") {
       currentPage = labels.home[lang] + " ";
     }
     if(path.split('/')[1] === "who-we-are") {

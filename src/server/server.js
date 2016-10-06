@@ -1,23 +1,26 @@
 const keystone = require('keystone');
 const apiRoutes = require('./routes/apiRoutes');
-// const mongoURI = require('./secret');
+// const { mongoURI, CLOUDINARY_URL } = require('./secret');
 
 keystone.init({
   'name': 'First Glory',
   'brand': 'First Glory',
   'static': '../client',
   // 'favicon': 'public/favicon.ico',
-  'auto update': false,
-  'user model': 'User',
-  'cookie secret': 'shhhh',
   'views': '../client',
-  'mongo': process.env.mongoURI || mongoURI,
+  'auto update': true,
   // 'mongo': 'mongodb://localhost/firstglory',
-  'session': true,
+  'mongo': process.env.mongoURI || mongoURI,
+  // 'cloudinary config': CLOUDINARY_URL,
+  'cookie secret': 'shhhh',
   'auth': true,
+  'session': true,
+  'user model': 'User',
 });
 
 keystone.import('models');
+
+// keystone.set('cloudinary config', CLOUDINARY_URL);
   
 keystone
   .set('nav', {

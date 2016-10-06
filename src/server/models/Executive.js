@@ -22,9 +22,9 @@ Executive.add({
     'chinese_simplified': { type: String },
   },
   description: {
-    english: { type: String },
-    'chinese_traditional': { type: String },
-    'chinese_simplified': { type: String },
+    english: { type: Types.Textarea, height: 250 },
+    'chinese_traditional': { type: Types.Textarea, height: 250 },
+    'chinese_simplified': { type: Types.Textarea, height: 250 },
   }
 });
 

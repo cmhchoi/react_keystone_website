@@ -8,6 +8,7 @@ const Fabric = new keystone.List('Fabric', {
 });
  
 Fabric.add({
+  name: { type: String },
   text: { 
     english: { type: String, index: true },
     'chinese_traditional': { type: String },
@@ -19,7 +20,7 @@ Fabric.add({
 });
 
 Fabric.track = true;
-Fabric.defaultColumns = 'text.english';
+Fabric.defaultColumns = 'name, text.english';
 Fabric.register();
 
 Fabric.get = (something, cb) => {

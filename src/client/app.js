@@ -36,8 +36,7 @@ require('./styles/bulletin.scss');
 require('./styles/executives.scss');
 require('./styles/factory.scss');
 require('./styles/news.scss');
-     // <Route path="people/factories/zhongshan" component={Zhongshan} />
-     // <Route path="people/factories/cebu" component={Cebu} />
+require('./styles/article.scss');
 
 const innerRoutes = (
   <Route>

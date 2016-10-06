@@ -8,6 +8,7 @@ const Culture = new keystone.List('Culture', {
 });
  
 Culture.add({
+  name: { type: String },
   title: { 
     english: { type: String, index: true },
     'chinese_traditional': { type: String },
@@ -17,14 +18,14 @@ Culture.add({
     type: String, 
   },
   description: {
-    english: { type: String },
-    'chinese_traditional': { type: String },
-    'chinese_simplified': { type: String },
+    english: { type: Types.Textarea, height: 200 },
+    'chinese_traditional': { type: Types.Textarea, height: 200 },
+    'chinese_simplified': { type: Types.Textarea, height: 200 },
   },
 });
 
 Culture.track = true;
-Culture.defaultColumns = 'title.english';
+Culture.defaultColumns = 'name, title.english';
 Culture.register();
 
 Culture.get = (something, cb) => {
