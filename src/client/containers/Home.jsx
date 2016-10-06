@@ -14,7 +14,7 @@ export default class Home extends React.Component {
           size: 'rectangle'
         },
         {
-          img: "http://s12.favim.com/610/160527/adidas-beautiful-fashion-girl-Favim.com-4351007.jpeg",
+          img: "/assets/images/product.jpg",
           des: "PRODUCTS",
           link: '/products',
           size: 'square'

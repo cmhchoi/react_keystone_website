@@ -9,7 +9,7 @@ keystone.init({
   // 'favicon': 'public/favicon.ico',
   'views': '../client',
   'auto update': false,
-  // 'mongo': 'mongodb://localhost/firstglory',
+  'mongo': 'mongodb://localhost/firstglory',
   'mongo': process.env.mongoURI || mongoURI,
   // 'cloudinary config': CLOUDINARY_URL,
   'cookie secret': 'shhhh',

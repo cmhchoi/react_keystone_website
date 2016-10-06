@@ -38443,7 +38443,7 @@
 	        link: '/who-we-are',
 	        size: 'rectangle'
 	      }, {
-	        img: "http://s12.favim.com/610/160527/adidas-beautiful-fashion-girl-Favim.com-4351007.jpeg",
+	        img: "/assets/images/product.jpg",
 	        des: "PRODUCTS",
 	        link: '/products',
 	        size: 'square'
@@ -41045,7 +41045,7 @@
 
 	    _this.state = {
 	      pictures: [{
-	        img: "https://aos.iacpublishinglabs.com/question/aq/700px-394px/people-need-clothes_d330435c696a4f74.jpg?domain=cx.aos.ask.com",
+	        img: "assets/images/category.jpg",
 	        des: "CATEGORY",
 	        link: '/products/category',
 	        size: 'rectangle'
@@ -45183,7 +45183,7 @@
 
 
 	// module
-	exports.push([module.id, ".picture-container {\n  height: 0;\n  overflow: hidden;\n  position: relative;\n  background-color: rgba(0, 0, 0, 0.025);\n  padding-bottom: 100%; }\n\n.picture {\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  display: block; }\n\nul {\n  list-style: none;\n  padding-left: 20px; }\n  ul li.picture-link {\n    padding-bottom: 15px;\n    padding-right: 5px;\n    padding-left: 5px;\n    font-family: 'Permanent Marker', cursive;\n    font-family: 'Patrick Hand SC', cursive;\n    font-weight: bold; }\n    ul li.picture-link .rectangle {\n      padding-bottom: 49.193548387096776%;\n      margin-bottom: -1px; }\n\n@media (max-width: 767px) {\n  li.picture-link {\n    padding-right: 30px !important; }\n  ul li.picture-link div.rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle img.picture {\n      width: inherit;\n      left: -50%; } }\n\n@media (min-width: 767px) and (max-width: 1200px) {\n  ul li.picture-link div.rectangle.mid-no-rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle.mid-no-rectangle img.picture {\n      width: inherit;\n      left: -50%; } }\n\n@media (min-width: 1200px) {\n  ul li.picture-link div.rectangle.large-no-rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle.large-no-rectangle img.picture {\n      width: inherit;\n      left: -50%; } }\n\n.text {\n  z-index: 1;\n  width: 100%;\n  position: absolute;\n  color: white;\n  display: table; }\n\n@media (min-width: 1200px) {\n  .text {\n    height: 285.83px; } }\n\n@media (min-width: 992px) {\n  .text {\n    height: 307.5px; } }\n\n@media (min-width: 768px) {\n  .text {\n    height: 307.5px; } }\n\np.picture-des {\n  font-size: -webkit-xxx-large;\n  text-align: center;\n  vertical-align: middle;\n  display: table-cell;\n  margin: auto 0;\n  text-shadow: 0px 0px 1px #F8F8FF  , -1px -1px #F8F8FF , 1px 1px #F8F8FF; }\n\n.picture-link:hover .text {\n  color: darkred; }\n  .picture-link:hover .text p.picture-des {\n    text-shadow: 0px 0px 1px darkred  , -1px -1px darkred , 1px 1px darkred; }\n\n.picture-link:hover .picture {\n  opacity: 0.5; }\n\nbutton.close {\n  background-image: url(\"http://publicdomainvectors.org/photos/close-button.png\");\n  backgroun-repeat: no-repeat; }\n", ""]);
+	exports.push([module.id, ".picture-container {\n  height: 0;\n  overflow: hidden;\n  position: relative;\n  background-color: rgba(0, 0, 0, 0.025);\n  padding-bottom: 100%; }\n\n.picture {\n  top: 0;\n  left: 0;\n  height: 100%;\n  position: absolute;\n  display: block; }\n\nul {\n  list-style: none;\n  padding-left: 20px; }\n  ul li.picture-link {\n    padding-bottom: 15px;\n    padding-right: 5px;\n    padding-left: 5px;\n    font-family: 'Permanent Marker', cursive;\n    font-family: 'Patrick Hand SC', cursive;\n    font-weight: bold; }\n    ul li.picture-link .rectangle {\n      padding-bottom: 49.193548387096776%;\n      margin-bottom: -1px; }\n\n@media (max-width: 767px) {\n  li.picture-link {\n    padding-right: 30px !important; }\n  ul li.picture-link div.rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle img.picture {\n      width: inherit;\n      left: -50%; } }\n\n@media (min-width: 767px) and (max-width: 1200px) {\n  ul li.picture-link div.rectangle.mid-no-rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle.mid-no-rectangle img.picture {\n      width: inherit;\n      left: -50%; } }\n\n@media (min-width: 1200px) {\n  ul li.picture-link div.rectangle.large-no-rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle.large-no-rectangle img.picture {\n      width: inherit;\n      left: -50%; } }\n\n.text {\n  z-index: 1;\n  width: 100%;\n  position: absolute;\n  color: white;\n  display: table; }\n\n@media (min-width: 1200px) {\n  .text {\n    height: 285.83px; } }\n\n@media (min-width: 992px) {\n  .text {\n    height: 307.5px; } }\n\n@media (min-width: 768px) {\n  .text {\n    height: 307.5px; } }\n\np.picture-des {\n  font-size: -webkit-xxx-large;\n  text-align: center;\n  vertical-align: middle;\n  display: table-cell;\n  margin: auto 0;\n  text-shadow: 0px 0px 1px #333  , -1px -1px #333 , 1px 1px #333; }\n\n.picture-link:hover .text {\n  color: darkred; }\n  .picture-link:hover .text p.picture-des {\n    text-shadow: 0px 0px 1px darkred  , -1px -1px darkred , 1px 1px darkred; }\n\n.picture-link:hover .picture {\n  opacity: 0.5; }\n\nbutton.close {\n  background-image: url(\"http://publicdomainvectors.org/photos/close-button.png\");\n  backgroun-repeat: no-repeat; }\n", ""]);
 
 	// exports
 

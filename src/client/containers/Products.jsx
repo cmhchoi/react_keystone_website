@@ -9,7 +9,7 @@ export default class Home extends React.Component {
     this.state = {
       pictures: [
         {
-          img: "https://aos.iacpublishinglabs.com/question/aq/700px-394px/people-need-clothes_d330435c696a4f74.jpg?domain=cx.aos.ask.com",
+          img: "assets/images/category.jpg",
           des: "CATEGORY",
           link: '/products/category',
           size: 'rectangle'
