@@ -7,7 +7,7 @@ keystone.init({
   'brand': 'First Glory',
   'static': '../client',
   // 'favicon': 'public/favicon.ico',
-  'auto update': true,
+  'auto update': false,
   'user model': 'User',
   'cookie secret': 'shhhh',
   'views': '../client',
