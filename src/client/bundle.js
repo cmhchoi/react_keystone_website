@@ -27433,7 +27433,7 @@
 	        _react2.default.createElement(
 	          _reactRouter.IndexLink,
 	          { className: 'navbar-brand large-logo', to: { pathname: langLink + '/' } },
-	          _react2.default.createElement('img', { className: 'nav-logo-img', src: '/assets/images/logo2.jpg', alt: 'First Glory' })
+	          _react2.default.createElement('img', { className: 'nav-logo-img', src: 'http://res.cloudinary.com/fglorywebsite2016/image/upload/v1475778631/logo2_xzbcsv.jpg', alt: 'First Glory' })
 	        )
 	      );
 	    }
@@ -41340,7 +41340,7 @@
 	                date = articleDate.getDate() + ' ' + labels.months[lang][monthNumber] + ', ' + (articleDate.getYear() + 1900);
 
 	                var articleLink = '/whats-new/' + article.key;
-	                var image = article.image || "/assets/images/logo2.jpg";
+	                var image = article.image || "http://res.cloudinary.com/fglorywebsite2016/image/upload/v1475778631/logo2_xzbcsv.jpg";
 
 	                $(document).ready(function () {
 	                  console.log($('#' + article.key));

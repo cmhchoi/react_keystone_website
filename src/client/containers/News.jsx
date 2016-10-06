@@ -28,7 +28,7 @@ export default class News extends React.Component {
                 date = `${articleDate.getDate()} ${labels.months[lang][monthNumber]}, ${articleDate.getYear()+1900}`
                 
                 const articleLink = `/whats-new/${article.key}`;
-                const image = article.image || "/assets/images/logo2.jpg";
+                const image = article.image || "http://res.cloudinary.com/fglorywebsite2016/image/upload/v1475778631/logo2_xzbcsv.jpg";
     
                 $(document).ready(() => {
                   console.log($(`#${article.key}`))

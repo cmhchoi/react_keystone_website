@@ -100,7 +100,7 @@ export default class App extends React.Component {
           </ul>
         </div>
         <IndexLink className="navbar-brand large-logo" to={{ pathname: `${langLink}/` }}>
-          <img className="nav-logo-img" src="/assets/images/logo2.jpg" alt="First Glory" />
+          <img className="nav-logo-img" src="http://res.cloudinary.com/fglorywebsite2016/image/upload/v1475778631/logo2_xzbcsv.jpg" alt="First Glory" />
         </IndexLink>
       </div>
     )
