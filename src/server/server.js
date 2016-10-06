@@ -1,6 +1,6 @@
 const keystone = require('keystone');
 const apiRoutes = require('./routes/apiRoutes');
-const mongoURI = require('./secret');
+// const mongoURI = require('./secret');
 
 keystone.init({
   'name': 'First Glory',
