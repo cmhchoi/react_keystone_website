@@ -10,7 +10,7 @@
     "start": "node src/server/server.js"
   },
   "engines": {
-    "node": "0.10.x",
+    "node": "6.4.x",
     "npm": "3.10.8"
   },
   "repository": {
