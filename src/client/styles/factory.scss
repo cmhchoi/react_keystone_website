@@ -1,0 +1,26 @@
+.factory {
+  padding-left: 5px;
+  .factory-detail {
+    font-family: 'Raleway', sans-serif;
+    margin-left: 5px;
+    a {
+      color: grey;
+      text-decoration: underline;
+    }
+  }
+  .factory-title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  h4 {
+    margin-top: 15px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+  }
+  .text {
+    @media (min-width: 992px) {
+      height: 237.5px;
+    }
+  }
+}

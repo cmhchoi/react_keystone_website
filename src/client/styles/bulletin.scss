@@ -1,0 +1,44 @@
+.banner {
+  height: 300px;
+  img {
+    width: 100%;
+    height: inherit;
+    display: block;
+  }
+  margin-bottom: 20px;
+  padding-left: 25px;
+  padding-right: 5px;
+}
+
+@media (max-width: 768px) {
+  .banner {
+  	padding-right: 30px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: larger;
+  }
+}
+
+.bulletin-title {
+  padding-left: 25px;
+}
+
+.bulletin-list {
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+  display: inline-block;
+  @media (min-width: 768px) {
+    height: 75px;
+  }
+	p {
+		color: grey;
+		font-family: 'Raleway', sans-serif;
+		background-color: oldlace;
+    padding: 10px 20px;
+    margin: 0 0;
+    a {
+    	color: grey;
+    }
+	}
+}

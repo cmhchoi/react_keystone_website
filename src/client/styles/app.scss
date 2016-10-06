@@ -1,0 +1,206 @@
+.container {
+  padding: 0 0;
+}
+
+.fixed {
+  position: fixed;
+  @media (min-width: 1200px) {
+    min-width: 975px;
+  }
+  @media (min-width: 992px) and (max-width: 1200px) {
+    min-width: 970px;
+  }
+  @media (min-width: 767px) and (max-width: 992px) {
+    min-width: 750px;
+  }
+  @media (max-width: 767px){
+    min-width: 96vw;
+  }
+}
+
+.navbar-header {
+  .dropdown {
+    float: right;
+    margin-top: 10px;
+    ul {
+      background-color: ghostwhite;
+    }
+  }
+}
+
+.large-logo {
+  height: 100px !important;
+}
+
+.large-nav {
+  margin-top: 50px !important;
+}
+
+.large-nav-dropdown {
+  margin-top: 60px !important;
+}
+
+.navbar-brand {
+	color: #777;
+  padding: 0px;
+  float: left;
+  height: 50px;
+  font-size: 18px;
+  line-height: 20px;
+	img {
+    padding: 0 0;
+    height: 100%;
+    width: auto;
+    display: block;
+	}
+}
+
+.bumper {
+  height: 105px;
+}
+
+.navbar-default {
+  background-color: transparent;
+}
+
+.top-nav {
+	background-color: white;
+  z-index: 200;
+  border-bottom-width: 0 !important;
+}
+
+.navbar {
+  border-bottom: 1px solid lightgrey;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  margin: 0 20px;
+  margin-bottom: 15px;
+  margin-right: -10px;
+  margin-left: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
+
+#navbar2 {
+  float: right;
+}
+
+.logo-img {
+  max-width: 125px;
+}
+
+.container {
+  .logo {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .content {
+    padding-right: 0;
+    padding-left: 0;
+    .content {
+      min-height: 78vh;
+    }
+  }
+}
+
+footer {
+  font-size: small;
+  nav {
+    margin-bottom: 0 !important;
+    div {
+      ul {
+        padding: 0 0;
+        float: right;
+        .foot-list {
+          float: left;
+          a {
+            padding-top: 29px;
+            padding-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+  p {
+    float: right;
+    margin-right: -10px;
+    font-family: "Raleway", "sans-serif";
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar {
+    margin-right: 15px;
+  }
+  footer {
+    p {
+      margin-right: 15px;
+    }
+  }
+  .content {
+    .content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+  #footer-body {
+    ul {
+      padding: 0 20px;
+    }
+  }
+}
+
+h4, h3 {
+  font-weight: bold;
+}
+
+.grey {
+  color: grey;
+}
+
+.breadcrumb {
+  font-family: 'Raleway', sans-serif;
+  background-color: transparent;
+  margin-bottom: 0;
+  padding-left: 10px;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.text-body {
+  padding-left: 25px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+ }
+
+.dropdown-menu {
+  border: 0;
+  li {
+    margin: 0 0;
+  }
+}
+
+.clear {
+  clear: both;
+}
+
+.sitemap {
+  a {
+    color: grey;
+  }
+  h5 {
+    font-weight: bold;
+  }
+  div {
+    clear: both;
+    height: 5px;
+  }
+}

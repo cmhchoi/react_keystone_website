@@ -1,0 +1,22 @@
+.news {
+  div {
+    padding-left: 0;
+    .news-img-container {
+      overflow: hidden;
+      padding: 0 0;
+      .thumbnail {
+        padding: 0 0;
+      }
+    }
+    .news-text-container {
+      padding-left: 15px;
+      @media (max-width: 767px) {
+        padding-left: 0;
+        margin-bottom: 15px;
+      }
+      h4 {
+        margin-top: 0;
+      }
+    }
+  }
+}

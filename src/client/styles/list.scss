@@ -1,0 +1,32 @@
+@media (min-width: 767px) {
+  .list-list {
+	  display: -webkit-inline-box;
+  }
+  .mobile-padding-right-20 {
+    padding-right: 0 !important;
+  }
+}
+
+.mobile-padding-right-20 {
+  padding-right: 20px;
+  .list-list {
+    margin-bottom: 10px;
+    .list-image {
+      margin-bottom: 10px;
+      padding-left: 5px;
+      .list-picture {
+        width: 100%;
+      }
+    }
+    .list-text {
+      font-family: "Raleway", "sans-serif"; 
+      .list-title {
+        margin: 0 0 5px 0;
+        font-weight: bold;
+      }
+      .list-des {
+        margin: 0 0 10px 0;
+      }
+    }
+  }
+}

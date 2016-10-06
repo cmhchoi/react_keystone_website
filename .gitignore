@@ -1,0 +1,5 @@
+node_modules
+.DS_Store
+
+src/server/secret.js
+src/server/updates

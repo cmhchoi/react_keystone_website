@@ -1,0 +1,30 @@
+.executives {
+  padding-left: 5px;
+  font-family: 'Raleway', sans-serif;
+  ul {
+    li {
+      padding-bottom: 15px;
+      .exec {
+        clear: both;
+        .exec-img-container {
+          padding: 0 0;
+          .exec-img {
+            width: 100%;
+            margin-bottom: 10px;
+            @media (min-width: 767px) {
+              max-width: 275px;
+            }
+          }
+        }
+        .exec-bio {
+          @media (max-width: 767px) {
+            padding: 0 0;
+          }
+          h4 {
+            margin-top: 0;
+          }
+        }
+      } 
+    }
+  }
+}
