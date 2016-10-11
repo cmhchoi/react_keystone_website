@@ -9,28 +9,44 @@ export default class Men extends React.Component {
     this.state = {
       pictures: [
         {
-          img: "http://www.ganzomag.com/wp-content/uploads/2013/07/perfect-persuasion-tshirts.jpg",
-          des: "T-SHIRTS",
+          image: "http://www.ganzomag.com/wp-content/uploads/2013/07/perfect-persuasion-tshirts.jpg",
+          text: {
+            english: "T-SHIRTS",
+            'chinese_traditional': 'T恤',
+            'chinese_simplified': 'T恤',
+          },
           link: '/products/men',
-          size: 'square'
+          shape: 'square'
         },
         {
-          img: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
-          des: "TROUSERS",
+          image: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
+          text: {
+            english: "TROUSERS",
+            'chinese_traditional': '褲子',
+            'chinese_simplified': '裤子',
+          },
           link: '/products/men',
-          size: 'square'
+          shape: 'square'
         },
         {
-          img: "https://cdnc.lystit.com/1200/630/tr/photos/9b5f-2016/02/12/perry-ellis-america-white-landscape-photo-print-long-sleeve-sweatshirt-product-1-717959060-normal.jpeg",
-          des: "KNITS",
+          image: "https://cdnc.lystit.com/1200/630/tr/photos/9b5f-2016/02/12/perry-ellis-america-white-landscape-photo-print-long-sleeve-sweatshirt-product-1-717959060-normal.jpeg",
+          text: {
+            english: "KNITS",
+            'chinese_traditional': '針織',
+            'chinese_simplified': '针织',
+          },
           link: '/products/men',
-          size: 'rectangle'
+          shape: 'rectangle'
         },
         {
-          img: "http://digitalspyuk.cdnds.net/13/02/640x320/landscape_ustv-suits-patrick-j-adams-1.jpg",
-          des: "SUITS",
+          image: "http://digitalspyuk.cdnds.net/13/02/640x320/landscape_ustv-suits-patrick-j-adams-1.jpg",
+          text: {
+            english: "SUITS",
+            'chinese_traditional': 'SUITS',
+            'chinese_simplified': 'SUITS',
+          },
           link: '/products/men',
-          size: 'rectangle'
+          shape: 'rectangle'
         },
       ],
       images: [
@@ -65,19 +81,25 @@ export default class Men extends React.Component {
   }
   
   render() {
+    const language = this.props.params.language;
+    const labels = this.props.state.labels;
+    let lang, langLink = '';
+    lang = language === 'zh-t' ? 'chinese_traditional' : language === 'zh-s' ? 'chinese_simplified' : 'english';
+    langLink = (language === 'zh-t' || language === 'zh-s') ? `/${language}` : '';
+    
     return(
       <div>
         <div className="row">
           <div className="col-xs-12">
             <ol className="breadcrumb">
-              <li><Link className="grey underline" to={{pathname: "/"}}>Home</Link></li>
-              <li><Link className="grey underline" to={{pathname: "/products"}}>Products</Link></li>
-              <li><Link className="grey underline" to={{pathname: "/products/category"}}>Category</Link></li>
-              <li className="active">Men</li>
+              <li><Link className="grey underline" to={{pathname: `${langLink}/`}}>{labels.home[lang]}</Link></li>
+              <li><Link className="grey underline" to={{pathname: `${langLink}/products`}}>{labels.products[lang]}</Link></li>
+              <li><Link className="grey underline" to={{pathname: `${langLink}/products/category`}}>{labels.category[lang]}</Link></li>
+              <li className="active">{labels.men[lang]}</li>
             </ol>
           </div>
         </div>
-        <Frame pictures={this.state.pictures} images={this.state.images}/>
+        <Frame pictures={this.state.pictures} images={this.state.images} language={ lang }/>
       </div>
     )
   }

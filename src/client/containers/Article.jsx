@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 import $ from 'jquery';
-//import ReactHtmlParser from 'react-html-parser';
 
 export default class Article extends React.Component {
   constructor(props) {
@@ -67,7 +66,8 @@ export default class Article extends React.Component {
     $(document).ready(() => {
       const $articleContent = $("#article-content");
       if(article) { 
-        const html = $.parseHTML( article.content.extended );
+        const html = $.parseHTML( article.content.extended[lang] );
+        $articleContent.empty();
         $articleContent.append( html ) 
       }
     })
@@ -76,21 +76,25 @@ export default class Article extends React.Component {
       const articleDate = new Date(article.publishedDate);
       let date = "";
       const monthNumber = articleDate.getMonth();
-      date = `${articleDate.getDate()} ${labels.months[lang][monthNumber]}, ${articleDate.getYear()+1900}`
-      
+      if(language === 'zh-t' || language === 'zh-s') {
+        date = `${articleDate.getYear()+1900}${labels.year[lang]}${labels.months[lang][monthNumber]}${articleDate.getDate()}${labels.date[lang]}`;
+      } else {
+        date = `${articleDate.getDate()} ${labels.months[lang][monthNumber]}, ${articleDate.getYear()+1900}`;
+      }      
       return(
         <div>
           <div className="row">
             <div className="col-xs-12">
               <ol className="breadcrumb">
-                <li><Link className="grey underline" to={{pathname: "/"}}>Home</Link></li>
-                <li className="active">What's New</li>
+                <li><Link className="grey underline" to={{pathname: `${langLink}/`}}>{labels.home[lang]}</Link></li>
+                <li><Link className="grey underline" to={{pathname: `${langLink}/whats-new`}}>{labels.whats_new[lang]}</Link></li>
+                <li className="active">{article.title[lang]}</li>
               </ol>
             </div>
             <div className="col-xs-12 text-body news article">
               <div className="col-xs-12">
                 <div className="col-xs-12">
-                  <h4>{article.name}</h4>
+                  <h4>{article.title[lang]}</h4>
                   <p>{date}</p>
                   <div id="article-content"></div>
                   {this.imageDiv([article.image])}
@@ -105,8 +109,8 @@ export default class Article extends React.Component {
         <div className="row">
           <div className="col-xs-12">
             <ol className="breadcrumb">
-              <li><Link className="grey underline" to={{pathname: "/"}}>Home</Link></li>
-              <li className="active">What's New</li>
+              <li><Link className="grey underline" to={{pathname: `${langLink}/`}}>{labels.home[lang]}</Link></li>
+              <li className="active">{labels.whats_new[lang]}</li>
             </ol>
           </div>
         </div>

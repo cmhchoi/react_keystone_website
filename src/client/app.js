@@ -7,7 +7,7 @@ import Home from './containers/Home.jsx';
 import About from './containers/About.jsx';
 import Products from './containers/Products.jsx';
 import People from './containers/People.jsx';
-import Community from './containers/Community.jsx';
+import CSR from './containers/CSR.jsx';
 import News from './containers/News.jsx';
 import History from './containers/History.jsx';
 import Culture from './containers/Culture.jsx';
@@ -58,12 +58,12 @@ const innerRoutes = (
     <Route path="people/factories/:location" component={Location} />
     <Route path="people/story" component={People} />
     <Route path="people/jobs" component={People} />
-    <Route path="global-community-initiatives" component={Community} />
-    <Route path="global-community-initiatives/sustainability" component={Community} />
-    <Route path="global-community-initiatives/charitable-programmes" component={Community} />
-    <Route path="global-community-initiatives/practices" component={Community} />
-    <Route path="global-community-initiatives/responsibility" component={Community} />
-    <Route path="global-community-initiatives/collaboration" component={Community} />
+    <Route path="csr" component={CSR} />
+    <Route path="csr/sustainability" component={CSR} />
+    <Route path="csr/charitable-programmes" component={CSR} />
+    <Route path="csr/practices" component={CSR} />
+    <Route path="csr/responsibility" component={CSR} />
+    <Route path="csr/collaboration" component={CSR} />
     <Route path="whats-new" component={News} />
     <Route path="whats-new/:article" component={Article} />
     <Route path="terms-of-use" component={Terms} />

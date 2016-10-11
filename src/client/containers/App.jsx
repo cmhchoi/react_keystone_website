@@ -22,6 +22,24 @@ export default class App extends React.Component {
         $('#navdropdown').addClass('large-nav-dropdown');
       }
     });
+    $.get('/api/catelogs', catelogs => {
+      const home = [];
+      const who_we_are = []; 
+      const product_category = [];
+      const products = [];
+      const people = [];
+      const csr = [];
+      catelogs.map((catelog) => {
+        if(catelog.type === 'home') { home.push(catelog) }
+        if(catelog.type === 'who-we-are') { who_we_are.push(catelog) }
+        if(catelog.type === 'product_category') { product_category.push(catelog) }
+        if(catelog.type === 'products') { products.push(catelog) }
+        if(catelog.type === 'people') { people.push(catelog) }
+        if(catelog.type === 'csr') { csr.push(catelog) }
+      })
+      this.setState({ home, who_we_are, product_category, products, people, csr });
+      console.log('catelogs');
+    })
     $.get('/api/factories', factories => {
       this.setState({ factories });
       console.log('factories');
@@ -76,8 +94,8 @@ export default class App extends React.Component {
     if(path.split('/')[1] === "people") {
       currentPage = labels.people[lang] + " ";
     }
-    if(path.split('/')[1] === "global-community-initiatives") {
-      currentPage = labels.global_community_initiatives[lang] + " ";
+    if(path.split('/')[1] === "csr") {
+      currentPage = labels.csr[lang] + " ";
     }
     if(path.split('/')[1] === "whats-new") {
       currentPage = labels.whats_new[lang] + " ";
@@ -95,7 +113,7 @@ export default class App extends React.Component {
             <li><Link to={{ pathname: `${langLink}/who-we-are` }}>{labels.who_we_are[lang]}</Link></li>
             <li><Link to={{ pathname: `${langLink}/products` }}>{labels.products[lang]}</Link></li>
             <li><Link to={{ pathname: `${langLink}/people` }}>{labels.people[lang]}</Link></li>
-            <li><Link to={{ pathname: `${langLink}/global-community-initiatives` }}>{labels.global_community_initiatives[lang]}</Link></li>
+            <li><Link to={{ pathname: `${langLink}/csr` }}>{labels.csr[lang]}</Link></li>
             <li><Link to={{ pathname: `${langLink}/whats-new` }}>{labels.whats_new[lang]}</Link></li>
           </ul>
         </div>
@@ -139,13 +157,13 @@ export default class App extends React.Component {
           </ul>
         </li>
         <li className="dropdown">
-          <Link to={{ pathname: `${langLink}/global-community-initiatives` }}>{labels.global_community_initiatives[lang]}</Link>
+          <Link to={{ pathname: `${langLink}/csr` }}>{labels.csr[lang]}</Link>
           <ul className="dropdown-menu">
-            <li><Link to={{ pathname: `${langLink}/global-community-initiatives/sustainability` }}>{labels.sustainability[lang]}</Link></li>
-            <li><Link to={{ pathname: `${langLink}/global-community-initiatives/charitable-programmes` }}>{labels.charitable_programmes[lang]}</Link></li>
-            <li><Link to={{ pathname: `${langLink}/global-community-initiatives/practices` }}>{labels.practices[lang]}</Link></li>
-            <li><Link to={{ pathname: `${langLink}/global-community-initiatives/responsibility` }}>{labels.responsibility[lang]}</Link></li>
-            <li><Link to={{ pathname: `${langLink}/global-community-initiatives/collaboration` }}>{labels.collaboration[lang]}</Link></li>
+            <li><Link to={{ pathname: `${langLink}/csr/sustainability` }}>{labels.sustainability[lang]}</Link></li>
+            <li><Link to={{ pathname: `${langLink}/csr/charitable-programmes` }}>{labels.charitable_programmes[lang]}</Link></li>
+            <li><Link to={{ pathname: `${langLink}/csr/practices` }}>{labels.practices[lang]}</Link></li>
+            <li><Link to={{ pathname: `${langLink}/csr/responsibility` }}>{labels.responsibility[lang]}</Link></li>
+            <li><Link to={{ pathname: `${langLink}/csr/collaboration` }}>{labels.collaboration[lang]}</Link></li>
           </ul>
         </li>
         <li><Link to={{ pathname: `${langLink}/whats-new` }}>{labels.whats_new[lang]}</Link></li>

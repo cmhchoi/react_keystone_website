@@ -114,8 +114,8 @@ const labels = {
     chinese_traditional: '加入我們',
     chinese_simplified: '加入我们',
   },
-  global_community_initiatives: {
-    english: 'Global Community Initiatives',
+  csr: {
+    english: 'Corporate Social Responsibility',
     chinese_traditional: '社會責任',
     chinese_simplified: '社会责任',
   },
@@ -243,7 +243,43 @@ const labels = {
       9: 'October',
       10: 'November',
       11: 'December',
-    }
+    },
+    chinese_traditional: {
+      0: '1月',
+      1: '2月',
+      2: '3月',
+      3: '4月',
+      4: '5月',
+      5: '6月',
+      6: '7月',
+      7: '8月',
+      8: '9月',
+      9: '10月',
+      10: '11月',
+      11: '12月',
+    },
+    chinese_simplified: {
+      0: '1月',
+      1: '2月',
+      2: '3月',
+      3: '4月',
+      4: '5月',
+      5: '6月',
+      6: '7月',
+      7: '8月',
+      8: '9月',
+      9: '10月',
+      10: '11月',
+      11: '12月',
+    },
+  },
+  year: {
+    chinese_traditional: '年',
+    chinese_simplified: '年',
+  },
+  date: {
+    chinese_traditional: '號',
+    chinese_simplified: '号',
   }
 }
 

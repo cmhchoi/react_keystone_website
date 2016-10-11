@@ -7,12 +7,25 @@ var Post = new keystone.List('Post', {
 
 Post.add({
 	name: { type: String, required: true },
+  title: {
+    english: { type: String },
+    chinese_traditional: { type: String },
+    chinese_simplified: { type: String },
+  },
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
 	publishedDate: { type: Types.Date, index: true },
 	image: { type: String },
 	content: {
-		brief: { type: Types.Html, wysiwyg: true, height: 150 },
-		extended: { type: Types.Html, wysiwyg: true, height: 400 },
+		brief: {
+      english: { type: Types.Html, wysiwyg: true, height: 150 },
+      chinese_traditional: { type: Types.Html, wysiwyg: true, height: 150 },
+      chinese_simplified: { type: Types.Html, wysiwyg: true, height: 150 },
+    },
+		extended: {
+      english: { type: Types.Html, wysiwyg: true, height: 400 },
+      chinese_traditional: { type: Types.Html, wysiwyg: true, height: 400 },
+      chinese_simplified: { type: Types.Html, wysiwyg: true, height: 400 },
+    },
 	},
 });
 
