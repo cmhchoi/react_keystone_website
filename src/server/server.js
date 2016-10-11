@@ -1,7 +1,6 @@
 const keystone = require('keystone');
 const apiRoutes = require('./routes/apiRoutes');
-const { mongoURI, CLOUDINARY_URL } = require('./secret');
-keystone.set('cloudinary config', { cloud_name: 'fglorywebsite2016', api_key: '653359717143524', api_secret: 'BYJ0U-tyU-6ALe82g3m_2UTDUFI' })
+// const { mongoURI, CLOUDINARY_URL } = require('./secret');
 
 keystone.init({
   'name': 'First Glory',
@@ -13,7 +12,7 @@ keystone.init({
   'auto update': true,
   // 'mongo': 'mongodb://localhost/firstglory',
   'mongo': process.env.mongoURI || mongoURI,
-  'cloudinary config': CLOUDINARY_URL,
+  // 'cloudinary config': CLOUDINARY_URL,
   'cookie secret': 'shhhh',
   'auth': true,
   'session': true,
@@ -22,8 +21,6 @@ keystone.init({
 
 
 keystone.import('models');
-
-// keystone.set('cloudinary config', CLOUDINARY_URL);
   
 keystone
   .set('nav', {
