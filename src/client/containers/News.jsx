@@ -32,7 +32,7 @@ export default class News extends React.Component {
                   date = `${articleDate.getDate()} ${labels.months[lang][monthNumber]}, ${articleDate.getYear()+1900}`;
                 }
                 articleLink = (language === 'zh-t' || language === 'zh-s') ? `${langLink}/whats-new/${article.key}` : `/whats-new/${article.key}`;
-                const image = article.image || "http://res.cloudinary.com/fglorywebsite2016/image/upload/v1475778631/logo2_xzbcsv.jpg";
+                const image = article.image || "http://res.cloudinary.com/fglorywebsite2016/image/upload/v1475778631/firstglory_logo.jpg";
     
                 $(document).ready(() => {
                   const $articleKey = $(`#${article.key}`);

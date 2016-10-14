@@ -1,47 +1,48 @@
 import React from 'react';
 import { Link } from 'react-router';
-import List from '../components/List.jsx'
+import List from '../components/List.jsx';
+import $ from "jquery";
 
 export default class History extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      items: [
-        {
-          img: "https://journalcinelyon1.files.wordpress.com/2015/06/mermet.jpg",
-          title: "The First Store & Mission",
-          des: 'The year was 1970. Dick Hayne was just 23 years old when he and college roommate Scott Belair came up with the idea to open a retail store. Belair was in search of a topic for an entrepreneurial class he was taking at the time. The first store, originally called Free People, was located in a small space across the street from the University of Pennsylvania. Its mission was to provide second-hand clothing, furniture, jewelry and home décor for college-aged customers in a casual fun environment.'
-        },
-        {
-          img: "https://journalcinelyon1.files.wordpress.com/2015/06/mermet.jpg",
-          title: "The First Store & Mission",
-          des: 'The year was 1970. Dick Hayne was just 23 years old when he and college roommate Scott Belair came up with the idea to open a retail store. Belair was in search of a topic for an entrepreneurial class he was taking at the time. The first store, originally called Free People, was located in a small space across the street from the University of Pennsylvania. Its mission was to provide second-hand clothing, furniture, jewelry and home décor for college-aged customers in a casual fun environment.'
-        },
-        {
-          img: "https://journalcinelyon1.files.wordpress.com/2015/06/mermet.jpg",
-          title: "The First Store & Mission",
-          des: 'The year was 1970. Dick Hayne was just 23 years old when he and college roommate Scott Belair came up with the idea to open a retail store. Belair was in search of a topic for an entrepreneurial class he was taking at the time. The first store, originally called Free People, was located in a small space across the street from the University of Pennsylvania. Its mission was to provide second-hand clothing, furniture, jewelry and home décor for college-aged customers in a casual fun environment.'
-        }
-      ]
-    }
-  }
 
   render() {
-    return(
-      <div>
+    const histories = this.props.state.histories;
+    const language = this.props.params.language;
+    const labels = this.props.state.labels;
+    let lang, langLink = '';
+    lang = language === 'zh-t' ? 'chinese_traditional' : language === 'zh-s' ? 'chinese_simplified' : 'english';
+    langLink = (language === 'zh-t' || language === 'zh-s') ? `/${language}` : '';
+    if(histories){
+      return(
+        <div>
+          <div className="row">
+            <div className="col-xs-12">
+              <ol className="breadcrumb">
+                <li><Link className="grey underline" to={{pathname: `${langLink}/`}}>{labels.home[lang]}</Link></li>
+                <li><Link className="grey underline" to={{pathname: `${langLink}/who-we-are`}}>{labels.who_we_are[lang]}</Link></li>
+                <li className="active">{labels.history[lang]}</li>
+              </ol>
+            </div>
+          </div>
+          <List items={histories} language={lang}/>
+        </div>
+      )
+    } else {
+      $.get('/api/cultures', cultures => {
+        this.props.updateAppState({ histories });
+      })
+      return(
         <div className="row">
           <div className="col-xs-12">
             <ol className="breadcrumb">
-              <li><Link className="grey underline" to={{pathname: "/"}}>Home</Link></li>
-              <li><Link className="grey underline" to={{pathname: "/who-we-are"}}>Who We Are</Link></li>
-              <li className="active">History</li>
+              <li><Link className="grey underline" to={{pathname: `${langLink}/`}}>{labels.home[lang]}</Link></li>
+              <li><Link className="grey underline" to={{pathname: `${langLink}/who-we-are`}}>{labels.who_we_are[lang]}</Link></li>
+              <li className="active">{labels.history[lang]}</li>
             </ol>
           </div>
         </div>
-        <List items={this.state.items}/>
-      </div>
-    )
+      )
+    }
   }
   
 }

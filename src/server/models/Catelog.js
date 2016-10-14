@@ -3,7 +3,7 @@ const Types = keystone.Field.Types;
  
 const Catelog = new keystone.List('Catelog', {
   autokey: { from: 'name', path: 'key', unique: true },
-  plural: 'Galleries',
+  plural: 'Catelogs',
   singular: 'Catelog',
 });
  

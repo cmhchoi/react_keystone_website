@@ -28,7 +28,6 @@ export default class Bulletin extends React.Component {
     const lang = this.props.language;
     const bannerDecision = this.props.banner;
     const titleText = this.props.title;
-    console.log('bull', this.props.title);
     return(
       <div className="frame row">
         {this.banner(bannerDecision)}

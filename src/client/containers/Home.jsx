@@ -16,7 +16,7 @@ export default class Home extends React.Component {
           <Frame pictures={ home } language={ lang }/>
         </div>
       )
-    } else {
+    } else { 
       return(
         <div></div>
       )

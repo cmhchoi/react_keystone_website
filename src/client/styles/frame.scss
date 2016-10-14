@@ -90,13 +90,13 @@ ul {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 992px) and (max-width: 1200px) {
   .text {
-    height: 307.5px;
+    height: 450px;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 992px) {
   .text {
     height: 307.5px;
   }
@@ -104,6 +104,9 @@ ul {
 
 p.picture-des {
   font-size: -webkit-xxx-large;
+  @media (min-width: 992px) and (max-width: 1200px) {
+    font-size: 75px;
+  }
   text-align: center; 
   vertical-align: middle;
   display: table-cell;  

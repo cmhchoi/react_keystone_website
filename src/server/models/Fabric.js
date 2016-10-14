@@ -14,9 +14,7 @@ Fabric.add({
     'chinese_traditional': { type: String },
     'chinese_simplified': { type: String },
   },
-  fabric_: { 
-    type: String, 
-  },
+  type: { type: Types.Select, options: 'Content, Type', default: 'Content' },
 });
 
 Fabric.track = true;

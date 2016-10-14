@@ -30,12 +30,12 @@ export default class App extends React.Component {
       const people = [];
       const csr = [];
       catelogs.map((catelog) => {
-        if(catelog.type === 'home') { home.push(catelog) }
-        if(catelog.type === 'who-we-are') { who_we_are.push(catelog) }
-        if(catelog.type === 'product_category') { product_category.push(catelog) }
-        if(catelog.type === 'products') { products.push(catelog) }
-        if(catelog.type === 'people') { people.push(catelog) }
-        if(catelog.type === 'csr') { csr.push(catelog) }
+        if(catelog.type === 'home') home.push(catelog)
+        if(catelog.type === 'who-we-are') who_we_are.push(catelog)
+        if(catelog.type === 'product_category') product_category.push(catelog)
+        if(catelog.type === 'products') products.push(catelog)
+        if(catelog.type === 'people') people.push(catelog)
+        if(catelog.type === 'csr') csr.push(catelog)
       })
       this.setState({ home, who_we_are, product_category, products, people, csr });
       console.log('catelogs');
@@ -60,7 +60,8 @@ export default class App extends React.Component {
       const fabricContent = [];
       const fabricType = [];
       fabrics.map(fabric => {
-        fabric.fabric_ === 'content' ? fabricContent.push(fabric) : fabricType.push(fabric);
+        if(fabric.type === 'Content') fabricContent.push(fabric);
+        if(fabric.type === 'Type') fabricType.push(fabric)
       })
       this.setState({ fabricContent, fabricType });
       console.log('fabrics')
@@ -68,6 +69,22 @@ export default class App extends React.Component {
     $.get('/api/posts', posts => {
       this.setState({ posts });
       console.log('posts')
+    })
+    $.get('/api/techniques', techniques => {
+      const techniqueDyeing = [];
+      const techniqueWashing = [];
+      const techniquePrinting = [];
+      techniques.map(technique => {
+        if(technique.type === 'Dyeing') techniqueDyeing.push(technique);
+        if(technique.type === 'Washing') techniqueWashing.push(technique);
+        if(technique.type === 'Printing') techniquePrinting.push(technique);
+      })
+      this.setState({ techniqueDyeing, techniqueWashing, techniquePrinting });
+      console.log('techniques')
+    })
+    $.get('/api/histories', histories => {
+      this.setState({ histories });
+      console.log('histories')
     })
     this.setState({ labels })
   }
@@ -118,7 +135,7 @@ export default class App extends React.Component {
           </ul>
         </div>
         <IndexLink className="navbar-brand large-logo" to={{ pathname: `${langLink}/` }}>
-          <img className="nav-logo-img" src="http://res.cloudinary.com/fglorywebsite2016/image/upload/v1475778631/logo2_xzbcsv.jpg" alt="First Glory" />
+          <img className="nav-logo-img" src="http://res.cloudinary.com/fglorywebsite2016/image/upload/v1475778631/firstglory_logo.jpg" alt="First Glory" />
         </IndexLink>
       </div>
     )

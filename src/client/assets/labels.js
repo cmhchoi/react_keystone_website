@@ -280,7 +280,22 @@ const labels = {
   date: {
     chinese_traditional: '號',
     chinese_simplified: '号',
-  }
+  },
+  dyeing: {
+    english: 'Dyeing',
+    chinese_traditional: '染色',
+    chinese_simplified: '染色',
+  },
+  printing: {
+    english: 'Printing',
+    chinese_traditional: '印花',
+    chinese_simplified: '印花',
+  },
+  washing: {
+    english: 'Washing',
+    chinese_traditional: '洗水',
+    chinese_simplified: '水洗',
+  },
 }
 
 module.exports = labels;

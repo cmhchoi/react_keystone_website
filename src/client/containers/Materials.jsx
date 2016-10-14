@@ -32,7 +32,7 @@ export default class Materials extends React.Component {
         </div>
       )
     } else {
-      $.get('/api/fabrics', cultures => {
+      $.get('/api/fabrics', fabrics => {
         fabricContent = [];
         fabricType = [];
         fabrics.map(fabric => {

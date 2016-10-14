@@ -7,6 +7,8 @@ const partnerController = require('../controllers/partnerController');
 const fabricController = require('../controllers/fabricController');
 const postController = require('../controllers/postController');
 const catelogController = require('../controllers/catelogController');
+const techniqueController = require('../controllers/techniqueController');
+const historyController = require('../controllers/historyController');
 
 router.get('/users', userController.get);
 router.get('/factories', factoryController.get);
@@ -17,5 +19,7 @@ router.get('/fabrics', fabricController.get);
 router.get('/posts', postController.get);
 router.get('/posts/:article', postController.getOne);
 router.get('/catelogs', catelogController.get);
+router.get('/techniques', techniqueController.get);
+router.get('/histories', historyController.get);
 
 module.exports = router;

@@ -74,7 +74,7 @@
 
 	var _People2 = _interopRequireDefault(_People);
 
-	var _CSR = __webpack_require__(305);
+	var _CSR = __webpack_require__(264);
 
 	var _CSR2 = _interopRequireDefault(_CSR);
 
@@ -27310,24 +27310,12 @@
 	        var people = [];
 	        var csr = [];
 	        catelogs.map(function (catelog) {
-	          if (catelog.type === 'home') {
-	            home.push(catelog);
-	          }
-	          if (catelog.type === 'who-we-are') {
-	            who_we_are.push(catelog);
-	          }
-	          if (catelog.type === 'product_category') {
-	            product_category.push(catelog);
-	          }
-	          if (catelog.type === 'products') {
-	            products.push(catelog);
-	          }
-	          if (catelog.type === 'people') {
-	            people.push(catelog);
-	          }
-	          if (catelog.type === 'csr') {
-	            csr.push(catelog);
-	          }
+	          if (catelog.type === 'home') home.push(catelog);
+	          if (catelog.type === 'who-we-are') who_we_are.push(catelog);
+	          if (catelog.type === 'product_category') product_category.push(catelog);
+	          if (catelog.type === 'products') products.push(catelog);
+	          if (catelog.type === 'people') people.push(catelog);
+	          if (catelog.type === 'csr') csr.push(catelog);
 	        });
 	        _this2.setState({ home: home, who_we_are: who_we_are, product_category: product_category, products: products, people: people, csr: csr });
 	        console.log('catelogs');
@@ -27352,7 +27340,8 @@
 	        var fabricContent = [];
 	        var fabricType = [];
 	        fabrics.map(function (fabric) {
-	          fabric.fabric_ === 'content' ? fabricContent.push(fabric) : fabricType.push(fabric);
+	          if (fabric.type === 'Content') fabricContent.push(fabric);
+	          if (fabric.type === 'Type') fabricType.push(fabric);
 	        });
 	        _this2.setState({ fabricContent: fabricContent, fabricType: fabricType });
 	        console.log('fabrics');
@@ -27360,6 +27349,22 @@
 	      _jquery2.default.get('/api/posts', function (posts) {
 	        _this2.setState({ posts: posts });
 	        console.log('posts');
+	      });
+	      _jquery2.default.get('/api/techniques', function (techniques) {
+	        var techniqueDyeing = [];
+	        var techniqueWashing = [];
+	        var techniquePrinting = [];
+	        techniques.map(function (technique) {
+	          if (technique.type === 'Dyeing') techniqueDyeing.push(technique);
+	          if (technique.type === 'Washing') techniqueWashing.push(technique);
+	          if (technique.type === 'Printing') techniquePrinting.push(technique);
+	        });
+	        _this2.setState({ techniqueDyeing: techniqueDyeing, techniqueWashing: techniqueWashing, techniquePrinting: techniquePrinting });
+	        console.log('techniques');
+	      });
+	      _jquery2.default.get('/api/histories', function (histories) {
+	        _this2.setState({ histories: histories });
+	        console.log('histories');
 	      });
 	      this.setState({ labels: _labels2.default });
 	    }
@@ -27463,7 +27468,7 @@
 	        _react2.default.createElement(
 	          _reactRouter.IndexLink,
 	          { className: 'navbar-brand large-logo', to: { pathname: langLink + '/' } },
-	          _react2.default.createElement('img', { className: 'nav-logo-img', src: 'http://res.cloudinary.com/fglorywebsite2016/image/upload/v1475778631/logo2_xzbcsv.jpg', alt: 'First Glory' })
+	          _react2.default.createElement('img', { className: 'nav-logo-img', src: 'http://res.cloudinary.com/fglorywebsite2016/image/upload/v1475778631/firstglory_logo.jpg', alt: 'First Glory' })
 	        )
 	      );
 	    }
@@ -38460,6 +38465,18 @@
 	}), _defineProperty(_labels, 'date', {
 	  chinese_traditional: '號',
 	  chinese_simplified: '号'
+	}), _defineProperty(_labels, 'dyeing', {
+	  english: 'Dyeing',
+	  chinese_traditional: '染色',
+	  chinese_simplified: '染色'
+	}), _defineProperty(_labels, 'printing', {
+	  english: 'Printing',
+	  chinese_traditional: '印花',
+	  chinese_simplified: '印花'
+	}), _defineProperty(_labels, 'washing', {
+	  english: 'Washing',
+	  chinese_traditional: '洗水',
+	  chinese_simplified: '水洗'
 	}), _labels);
 
 	module.exports = labels;
@@ -41305,7 +41322,123 @@
 	exports.default = People;
 
 /***/ },
-/* 264 */,
+/* 264 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(172);
+
+	var _Frame = __webpack_require__(239);
+
+	var _Frame2 = _interopRequireDefault(_Frame);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var CSR = function (_React$Component) {
+	  _inherits(CSR, _React$Component);
+
+	  function CSR() {
+	    _classCallCheck(this, CSR);
+
+	    return _possibleConstructorReturn(this, (CSR.__proto__ || Object.getPrototypeOf(CSR)).apply(this, arguments));
+	  }
+
+	  _createClass(CSR, [{
+	    key: 'render',
+	    value: function render() {
+	      var language = this.props.params.language;
+	      var labels = this.props.state.labels;
+	      var csr = this.props.state.csr;
+	      var lang = void 0,
+	          langLink = '';
+	      lang = language === 'zh-t' ? 'chinese_traditional' : language === 'zh-s' ? 'chinese_simplified' : 'english';
+	      langLink = language === 'zh-t' || language === 'zh-s' ? '/' + language : '';
+	      if (csr) {
+	        return _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-12' },
+	              _react2.default.createElement(
+	                'ol',
+	                { className: 'breadcrumb' },
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { className: 'grey underline', to: { pathname: langLink + '/' } },
+	                    labels.home[lang]
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  { className: 'active' },
+	                  labels.csr[lang]
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(_Frame2.default, { pictures: csr, language: lang })
+	        );
+	      } else {
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-xs-12' },
+	            _react2.default.createElement(
+	              'ol',
+	              { className: 'breadcrumb' },
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { className: 'grey underline', to: { pathname: langLink + '/' } },
+	                  labels.home[lang]
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { className: 'active' },
+	                labels.csr[lang]
+	              )
+	            )
+	          )
+	        );
+	      }
+	    }
+	  }]);
+
+	  return CSR;
+	}(_react2.default.Component);
+
+	exports.default = CSR;
+
+/***/ },
 /* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -41397,7 +41530,7 @@
 	                  date = articleDate.getDate() + ' ' + labels.months[lang][monthNumber] + ', ' + (articleDate.getYear() + 1900);
 	                }
 	                articleLink = language === 'zh-t' || language === 'zh-s' ? langLink + '/whats-new/' + article.key : '/whats-new/' + article.key;
-	                var image = article.image || "http://res.cloudinary.com/fglorywebsite2016/image/upload/v1475778631/logo2_xzbcsv.jpg";
+	                var image = article.image || "http://res.cloudinary.com/fglorywebsite2016/image/upload/v1475778631/firstglory_logo.jpg";
 
 	                (0, _jquery2.default)(document).ready(function () {
 	                  var $articleKey = (0, _jquery2.default)('#' + article.key);
@@ -41502,6 +41635,10 @@
 
 	var _List2 = _interopRequireDefault(_List);
 
+	var _jquery = __webpack_require__(236);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -41513,36 +41650,70 @@
 	var History = function (_React$Component) {
 	  _inherits(History, _React$Component);
 
-	  function History(props) {
+	  function History() {
 	    _classCallCheck(this, History);
 
-	    var _this = _possibleConstructorReturn(this, (History.__proto__ || Object.getPrototypeOf(History)).call(this, props));
-
-	    _this.state = {
-	      items: [{
-	        img: "https://journalcinelyon1.files.wordpress.com/2015/06/mermet.jpg",
-	        title: "The First Store & Mission",
-	        des: 'The year was 1970. Dick Hayne was just 23 years old when he and college roommate Scott Belair came up with the idea to open a retail store. Belair was in search of a topic for an entrepreneurial class he was taking at the time. The first store, originally called Free People, was located in a small space across the street from the University of Pennsylvania. Its mission was to provide second-hand clothing, furniture, jewelry and home décor for college-aged customers in a casual fun environment.'
-	      }, {
-	        img: "https://journalcinelyon1.files.wordpress.com/2015/06/mermet.jpg",
-	        title: "The First Store & Mission",
-	        des: 'The year was 1970. Dick Hayne was just 23 years old when he and college roommate Scott Belair came up with the idea to open a retail store. Belair was in search of a topic for an entrepreneurial class he was taking at the time. The first store, originally called Free People, was located in a small space across the street from the University of Pennsylvania. Its mission was to provide second-hand clothing, furniture, jewelry and home décor for college-aged customers in a casual fun environment.'
-	      }, {
-	        img: "https://journalcinelyon1.files.wordpress.com/2015/06/mermet.jpg",
-	        title: "The First Store & Mission",
-	        des: 'The year was 1970. Dick Hayne was just 23 years old when he and college roommate Scott Belair came up with the idea to open a retail store. Belair was in search of a topic for an entrepreneurial class he was taking at the time. The first store, originally called Free People, was located in a small space across the street from the University of Pennsylvania. Its mission was to provide second-hand clothing, furniture, jewelry and home décor for college-aged customers in a casual fun environment.'
-	      }]
-	    };
-	    return _this;
+	    return _possibleConstructorReturn(this, (History.__proto__ || Object.getPrototypeOf(History)).apply(this, arguments));
 	  }
 
 	  _createClass(History, [{
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
+	      var _this2 = this;
+
+	      var histories = this.props.state.histories;
+	      var language = this.props.params.language;
+	      var labels = this.props.state.labels;
+	      var lang = void 0,
+	          langLink = '';
+	      lang = language === 'zh-t' ? 'chinese_traditional' : language === 'zh-s' ? 'chinese_simplified' : 'english';
+	      langLink = language === 'zh-t' || language === 'zh-s' ? '/' + language : '';
+	      if (histories) {
+	        return _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-12' },
+	              _react2.default.createElement(
+	                'ol',
+	                { className: 'breadcrumb' },
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { className: 'grey underline', to: { pathname: langLink + '/' } },
+	                    labels.home[lang]
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { className: 'grey underline', to: { pathname: langLink + '/who-we-are' } },
+	                    labels.who_we_are[lang]
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  { className: 'active' },
+	                  labels.history[lang]
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(_List2.default, { items: histories, language: lang })
+	        );
+	      } else {
+	        _jquery2.default.get('/api/cultures', function (cultures) {
+	          _this2.props.updateAppState({ histories: histories });
+	        });
+	        return _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
 	          _react2.default.createElement(
@@ -41556,8 +41727,8 @@
 	                null,
 	                _react2.default.createElement(
 	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: "/" } },
-	                  'Home'
+	                  { className: 'grey underline', to: { pathname: langLink + '/' } },
+	                  labels.home[lang]
 	                )
 	              ),
 	              _react2.default.createElement(
@@ -41565,20 +41736,19 @@
 	                null,
 	                _react2.default.createElement(
 	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: "/who-we-are" } },
-	                  'Who We Are'
+	                  { className: 'grey underline', to: { pathname: langLink + '/who-we-are' } },
+	                  labels.who_we_are[lang]
 	                )
 	              ),
 	              _react2.default.createElement(
 	                'li',
 	                { className: 'active' },
-	                'History'
+	                labels.history[lang]
 	              )
 	            )
 	          )
-	        ),
-	        _react2.default.createElement(_List2.default, { items: this.state.items })
-	      );
+	        );
+	      }
 	    }
 	  }]);
 
@@ -42476,7 +42646,6 @@
 	      var lang = this.props.language;
 	      var bannerDecision = this.props.banner;
 	      var titleText = this.props.title;
-	      console.log('bull', this.props.title);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'frame row' },
@@ -43382,7 +43551,7 @@
 	          _react2.default.createElement(_Bulletin2.default, { items: fabricType, language: lang, banner: false, title: labels.type_of_fabric[lang] })
 	        );
 	      } else {
-	        _jquery2.default.get('/api/fabrics', function (cultures) {
+	        _jquery2.default.get('/api/fabrics', function (fabrics) {
 	          fabricContent = [];
 	          fabricType = [];
 	          fabrics.map(function (fabric) {
@@ -43456,6 +43625,10 @@
 
 	var _Bulletin2 = _interopRequireDefault(_Bulletin);
 
+	var _jquery = __webpack_require__(236);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43464,24 +43637,30 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Techniques = function (_React$Component) {
-	  _inherits(Techniques, _React$Component);
+	var Materials = function (_React$Component) {
+	  _inherits(Materials, _React$Component);
 
-	  function Techniques() {
-	    _classCallCheck(this, Techniques);
+	  function Materials() {
+	    _classCallCheck(this, Materials);
 
-	    return _possibleConstructorReturn(this, (Techniques.__proto__ || Object.getPrototypeOf(Techniques)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Materials.__proto__ || Object.getPrototypeOf(Materials)).apply(this, arguments));
 	  }
 
-	  _createClass(Techniques, [{
+	  _createClass(Materials, [{
 	    key: 'render',
 	    value: function render() {
-	      var techniques = this.props.state.techniques;
+	      var _this2 = this;
+
 	      var language = this.props.params.language;
+	      var techniqueDyeing = this.props.state.techniqueDyeing;
+	      var techniquePrinting = this.props.state.techniquePrinting;
+	      var techniqueWashing = this.props.state.techniqueWashing;
 	      var labels = this.props.state.labels;
-	      var lang = '';
+	      var lang = void 0,
+	          langLink = '';
 	      lang = language === 'zh-t' ? 'chinese_traditional' : language === 'zh-s' ? 'chinese_simplified' : 'english';
-	      if (techniques) {
+	      langLink = language === 'zh-t' || language === 'zh-s' ? '/' + language : '';
+	      if (techniqueDyeing && techniquePrinting && techniqueWashing) {
 	        return _react2.default.createElement(
 	          'div',
 	          null,
@@ -43499,7 +43678,7 @@
 	                  null,
 	                  _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { className: 'grey underline', to: { pathname: "/" } },
+	                    { className: 'grey underline', to: { pathname: langLink + '/' } },
 	                    labels.home[lang]
 	                  )
 	                ),
@@ -43508,7 +43687,7 @@
 	                  null,
 	                  _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { className: 'grey underline', to: { pathname: "/products" } },
+	                    { className: 'grey underline', to: { pathname: langLink + '/products' } },
 	                    labels.products[lang]
 	                  )
 	                ),
@@ -43520,9 +43699,22 @@
 	              )
 	            )
 	          ),
-	          _react2.default.createElement(_Bulletin2.default, { items: techniques, language: lang })
+	          _react2.default.createElement(_Bulletin2.default, { items: techniqueDyeing, language: lang, banner: true, title: labels.dyeing[lang] }),
+	          _react2.default.createElement(_Bulletin2.default, { items: techniquePrinting, language: lang, banner: false, title: labels.printing[lang] }),
+	          _react2.default.createElement(_Bulletin2.default, { items: techniqueWashing, language: lang, banner: false, title: labels.washing[lang] })
 	        );
 	      } else {
+	        _jquery2.default.get('/api/techniques', function (technique) {
+	          var techniqueDyeing = [];
+	          var techniqueWashing = [];
+	          var techniquePrinting = [];
+	          techniques.map(function (technique) {
+	            if (technique.type = 'Dyeing') techniqueDyeing.push(technique);
+	            if (technique.type = 'Washing') techniqueWashing.push(technique);
+	            if (technique.type = 'Printing') techniquePrinting.push(technique);
+	          });
+	          _this2.props.updateAppState({ techniqueDyeing: techniqueDyeing, techniqueWashing: techniqueWashing, techniquePrinting: techniquePrinting });
+	        });
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
@@ -43537,7 +43729,7 @@
 	                null,
 	                _react2.default.createElement(
 	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: "/" } },
+	                  { className: 'grey underline', to: { pathname: langLink + '/' } },
 	                  labels.home[lang]
 	                )
 	              ),
@@ -43546,7 +43738,7 @@
 	                null,
 	                _react2.default.createElement(
 	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: "/products" } },
+	                  { className: 'grey underline', to: { pathname: langLink + '/products' } },
 	                  labels.products[lang]
 	                )
 	              ),
@@ -43562,10 +43754,10 @@
 	    }
 	  }]);
 
-	  return Techniques;
+	  return Materials;
 	}(_react2.default.Component);
 
-	exports.default = Techniques;
+	exports.default = Materials;
 
 /***/ },
 /* 280 */
@@ -45207,7 +45399,7 @@
 
 
 	// module
-	exports.push([module.id, ".picture-container {\n  height: 0;\n  overflow: hidden;\n  position: relative;\n  background-color: rgba(0, 0, 0, 0.025);\n  padding-bottom: 100%; }\n\n.picture {\n  top: 0;\n  left: 0;\n  height: 100%;\n  position: absolute;\n  display: block; }\n\nul {\n  list-style: none;\n  padding-left: 20px; }\n  ul li.picture-link {\n    padding-bottom: 15px;\n    padding-right: 5px;\n    padding-left: 5px;\n    font-family: 'Permanent Marker', cursive;\n    font-family: 'Patrick Hand SC', cursive;\n    font-weight: bold; }\n    ul li.picture-link .rectangle {\n      padding-bottom: 49.193548387096776%;\n      margin-bottom: -1px; }\n\n@media (max-width: 767px) {\n  li.picture-link {\n    padding-right: 30px !important; }\n  ul li.picture-link div.rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle img.picture {\n      width: inherit;\n      left: -50%; } }\n\n@media (min-width: 767px) and (max-width: 1200px) {\n  ul li.picture-link div.rectangle.mid-no-rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle.mid-no-rectangle img.picture {\n      width: inherit;\n      left: -50%; } }\n\n@media (min-width: 1200px) {\n  ul li.picture-link div.rectangle.large-no-rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle.large-no-rectangle img.picture {\n      width: inherit;\n      left: -50%; } }\n\n.text {\n  z-index: 1;\n  width: 100%;\n  position: absolute;\n  color: white;\n  display: table; }\n\n@media (min-width: 1200px) {\n  .text {\n    height: 285.83px; } }\n\n@media (min-width: 992px) {\n  .text {\n    height: 307.5px; } }\n\n@media (min-width: 768px) {\n  .text {\n    height: 307.5px; } }\n\np.picture-des {\n  font-size: -webkit-xxx-large;\n  text-align: center;\n  vertical-align: middle;\n  display: table-cell;\n  margin: auto 0;\n  text-shadow: 0px 0px 10px #333 , 0px 0px #333 , 1px 1px #333; }\n\n.picture-link:hover .text {\n  color: darkred; }\n  .picture-link:hover .text p.picture-des {\n    text-shadow: 0px 0px 1px darkred  , -1px -1px darkred , 1px 1px darkred; }\n\n.picture-link:hover .picture {\n  opacity: 0.5; }\n\nbutton.close {\n  background-image: url(\"http://publicdomainvectors.org/photos/close-button.png\");\n  backgroun-repeat: no-repeat; }\n", ""]);
+	exports.push([module.id, ".picture-container {\n  height: 0;\n  overflow: hidden;\n  position: relative;\n  background-color: rgba(0, 0, 0, 0.025);\n  padding-bottom: 100%; }\n\n.picture {\n  top: 0;\n  left: 0;\n  height: 100%;\n  position: absolute;\n  display: block; }\n\nul {\n  list-style: none;\n  padding-left: 20px; }\n  ul li.picture-link {\n    padding-bottom: 15px;\n    padding-right: 5px;\n    padding-left: 5px;\n    font-family: 'Permanent Marker', cursive;\n    font-family: 'Patrick Hand SC', cursive;\n    font-weight: bold; }\n    ul li.picture-link .rectangle {\n      padding-bottom: 49.193548387096776%;\n      margin-bottom: -1px; }\n\n@media (max-width: 767px) {\n  li.picture-link {\n    padding-right: 30px !important; }\n  ul li.picture-link div.rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle img.picture {\n      width: inherit;\n      left: -50%; } }\n\n@media (min-width: 767px) and (max-width: 1200px) {\n  ul li.picture-link div.rectangle.mid-no-rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle.mid-no-rectangle img.picture {\n      width: inherit;\n      left: -50%; } }\n\n@media (min-width: 1200px) {\n  ul li.picture-link div.rectangle.large-no-rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle.large-no-rectangle img.picture {\n      width: inherit;\n      left: -50%; } }\n\n.text {\n  z-index: 1;\n  width: 100%;\n  position: absolute;\n  color: white;\n  display: table; }\n\n@media (min-width: 1200px) {\n  .text {\n    height: 285.83px; } }\n\n@media (min-width: 992px) and (max-width: 1200px) {\n  .text {\n    height: 450px; } }\n\n@media (min-width: 768px) and (max-width: 992px) {\n  .text {\n    height: 307.5px; } }\n\np.picture-des {\n  font-size: -webkit-xxx-large;\n  text-align: center;\n  vertical-align: middle;\n  display: table-cell;\n  margin: auto 0;\n  text-shadow: 0px 0px 10px #333 , 0px 0px #333 , 1px 1px #333; }\n  @media (min-width: 992px) and (max-width: 1200px) {\n    p.picture-des {\n      font-size: 75px; } }\n\n.picture-link:hover .text {\n  color: darkred; }\n  .picture-link:hover .text p.picture-des {\n    text-shadow: 0px 0px 1px darkred  , -1px -1px darkred , 1px 1px darkred; }\n\n.picture-link:hover .picture {\n  opacity: 0.5; }\n\nbutton.close {\n  background-image: url(\"http://publicdomainvectors.org/photos/close-button.png\");\n  backgroun-repeat: no-repeat; }\n", ""]);
 
 	// exports
 
@@ -45451,123 +45643,6 @@
 
 	// exports
 
-
-/***/ },
-/* 305 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(172);
-
-	var _Frame = __webpack_require__(239);
-
-	var _Frame2 = _interopRequireDefault(_Frame);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var CSR = function (_React$Component) {
-	  _inherits(CSR, _React$Component);
-
-	  function CSR() {
-	    _classCallCheck(this, CSR);
-
-	    return _possibleConstructorReturn(this, (CSR.__proto__ || Object.getPrototypeOf(CSR)).apply(this, arguments));
-	  }
-
-	  _createClass(CSR, [{
-	    key: 'render',
-	    value: function render() {
-	      var language = this.props.params.language;
-	      var labels = this.props.state.labels;
-	      var csr = this.props.state.csr;
-	      var lang = void 0,
-	          langLink = '';
-	      lang = language === 'zh-t' ? 'chinese_traditional' : language === 'zh-s' ? 'chinese_simplified' : 'english';
-	      langLink = language === 'zh-t' || language === 'zh-s' ? '/' + language : '';
-	      if (csr) {
-	        return _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-xs-12' },
-	              _react2.default.createElement(
-	                'ol',
-	                { className: 'breadcrumb' },
-	                _react2.default.createElement(
-	                  'li',
-	                  null,
-	                  _react2.default.createElement(
-	                    _reactRouter.Link,
-	                    { className: 'grey underline', to: { pathname: langLink + '/' } },
-	                    labels.home[lang]
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'li',
-	                  { className: 'active' },
-	                  labels.csr[lang]
-	                )
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(_Frame2.default, { pictures: csr, language: lang })
-	        );
-	      } else {
-	        return _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-12' },
-	            _react2.default.createElement(
-	              'ol',
-	              { className: 'breadcrumb' },
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: langLink + '/' } },
-	                  labels.home[lang]
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                { className: 'active' },
-	                labels.csr[lang]
-	              )
-	            )
-	          )
-	        );
-	      }
-	    }
-	  }]);
-
-	  return CSR;
-	}(_react2.default.Component);
-
-	exports.default = CSR;
 
 /***/ }
 /******/ ]);
