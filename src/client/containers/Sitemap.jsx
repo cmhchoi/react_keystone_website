@@ -53,13 +53,13 @@ export default class Sitemap extends React.Component {
                 </ul>
               </li>
               <li className="col-xs-12 col-sm-3">
-                <Link to={{pathname: `${langLink}/global-community-initiatives`}}><h5>{labels.global_community_initiatives[lang]}</h5></Link>
+                <Link to={{pathname: `${langLink}/csr`}}><h5>{labels.csr[lang]}</h5></Link>
                 <ul>
-                  <li><Link to={{pathname: `${langLink}/global-community-initiatives/sustainability`}}>{labels.sustainability[lang]}</Link></li>
-                  <li><Link to={{pathname: `${langLink}/global-community-initiatives/charitable-programmes`}}>{labels.charitable_programmes[lang]}</Link></li>
-                  <li><Link to={{pathname: `${langLink}/global-community-initiatives/practices`}}>{labels.practices[lang]}</Link></li>
-                  <li><Link to={{pathname: `${langLink}/global-community-initiatives/responsibility`}}>{labels.responsibility[lang]}</Link></li>
-                  <li><Link to={{pathname: `${langLink}/global-community-initiatives/collaboration`}}>{labels.collaboration[lang]}</Link></li>
+                  <li><Link to={{pathname: `${langLink}/csr/sustainability`}}>{labels.sustainability[lang]}</Link></li>
+                  <li><Link to={{pathname: `${langLink}/csr/charitable-programmes`}}>{labels.charitable_programmes[lang]}</Link></li>
+                  <li><Link to={{pathname: `${langLink}/csr/practices`}}>{labels.practices[lang]}</Link></li>
+                  <li><Link to={{pathname: `${langLink}/csr/responsibility`}}>{labels.responsibility[lang]}</Link></li>
+                  <li><Link to={{pathname: `${langLink}/csr/collaboration`}}>{labels.collaboration[lang]}</Link></li>
                 </ul>
               </li>
               <div className="hidden-xs"></div>

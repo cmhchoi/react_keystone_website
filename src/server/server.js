@@ -29,7 +29,7 @@ keystone
     'posts': 'posts',
     'factories': 'factories',
   })
-  .set('routes', (app) => {
+  .set('routes', app => {
     app
       .use('/api', apiRoutes)
       .engine('html', require('ejs').renderFile)

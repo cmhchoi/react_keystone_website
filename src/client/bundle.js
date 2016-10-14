@@ -42440,45 +42440,6 @@
 
 	  _createClass(Partners, [{
 	    key: 'render',
-
-	    // constructor(props) {
-	    // 	super(props);
-
-	    // 	this.state = {
-	    //     items: [
-	    //       {
-	    //         text: "Anthropologie",
-	    //         link: "https://www.anthropologie.com"
-	    //       },
-	    //       {
-	    //         text: "Anthropologie",
-	    //         link: "https://www.anthropologie.com"
-	    //       },
-	    //       {
-	    //         text: "Anthropologie",
-	    //         link: "https://www.anthropologie.com"
-	    //       },
-	    //       {
-	    //         text: "Anthropologie",
-	    //         link: "https://www.anthropologie.com"
-	    //       },
-	    //       {
-	    //         text: "Anthropologie",
-	    //         link: "https://www.anthropologie.com"
-	    //       },
-	    //       {
-	    //         text: "Anthropologie",
-	    //         link: "https://www.anthropologie.com"
-	    //       },
-	    //       {
-	    //         text: "Anthropologie",
-	    //         link: "https://www.anthropologie.com"
-	    //       },
-	    //     ]
-	    // 	}
-	    // }
-
-
 	    value: function render() {
 	      var _this2 = this;
 
@@ -43637,16 +43598,16 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Materials = function (_React$Component) {
-	  _inherits(Materials, _React$Component);
+	var Techniques = function (_React$Component) {
+	  _inherits(Techniques, _React$Component);
 
-	  function Materials() {
-	    _classCallCheck(this, Materials);
+	  function Techniques() {
+	    _classCallCheck(this, Techniques);
 
-	    return _possibleConstructorReturn(this, (Materials.__proto__ || Object.getPrototypeOf(Materials)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Techniques.__proto__ || Object.getPrototypeOf(Techniques)).apply(this, arguments));
 	  }
 
-	  _createClass(Materials, [{
+	  _createClass(Techniques, [{
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
@@ -43754,10 +43715,10 @@
 	    }
 	  }]);
 
-	  return Materials;
+	  return Techniques;
 	}(_react2.default.Component);
 
-	exports.default = Materials;
+	exports.default = Techniques;
 
 /***/ },
 /* 280 */
@@ -44383,11 +44344,11 @@
 	                { className: 'col-xs-12 col-sm-3' },
 	                _react2.default.createElement(
 	                  _reactRouter.Link,
-	                  { to: { pathname: langLink + '/global-community-initiatives' } },
+	                  { to: { pathname: langLink + '/csr' } },
 	                  _react2.default.createElement(
 	                    'h5',
 	                    null,
-	                    labels.global_community_initiatives[lang]
+	                    labels.csr[lang]
 	                  )
 	                ),
 	                _react2.default.createElement(
@@ -44398,7 +44359,7 @@
 	                    null,
 	                    _react2.default.createElement(
 	                      _reactRouter.Link,
-	                      { to: { pathname: langLink + '/global-community-initiatives/sustainability' } },
+	                      { to: { pathname: langLink + '/csr/sustainability' } },
 	                      labels.sustainability[lang]
 	                    )
 	                  ),
@@ -44407,7 +44368,7 @@
 	                    null,
 	                    _react2.default.createElement(
 	                      _reactRouter.Link,
-	                      { to: { pathname: langLink + '/global-community-initiatives/charitable-programmes' } },
+	                      { to: { pathname: langLink + '/csr/charitable-programmes' } },
 	                      labels.charitable_programmes[lang]
 	                    )
 	                  ),
@@ -44416,7 +44377,7 @@
 	                    null,
 	                    _react2.default.createElement(
 	                      _reactRouter.Link,
-	                      { to: { pathname: langLink + '/global-community-initiatives/practices' } },
+	                      { to: { pathname: langLink + '/csr/practices' } },
 	                      labels.practices[lang]
 	                    )
 	                  ),
@@ -44425,7 +44386,7 @@
 	                    null,
 	                    _react2.default.createElement(
 	                      _reactRouter.Link,
-	                      { to: { pathname: langLink + '/global-community-initiatives/responsibility' } },
+	                      { to: { pathname: langLink + '/csr/responsibility' } },
 	                      labels.responsibility[lang]
 	                    )
 	                  ),
@@ -44434,7 +44395,7 @@
 	                    null,
 	                    _react2.default.createElement(
 	                      _reactRouter.Link,
-	                      { to: { pathname: langLink + '/global-community-initiatives/collaboration' } },
+	                      { to: { pathname: langLink + '/csr/collaboration' } },
 	                      labels.collaboration[lang]
 	                    )
 	                  )

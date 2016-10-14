@@ -15,7 +15,7 @@ export default class Article extends React.Component {
   componentWillMount() {
     if(!this.state.article) {
       if(this.props.state.posts) {
-        this.props.state.posts.map((article) => {
+        this.props.state.posts.map(article => {
           if(this.props.params.article === article.key) {
             this.setState({ article });
           }
@@ -41,7 +41,7 @@ export default class Article extends React.Component {
           <div className='article-image-wrapper-main'>
             <img src={images[0]}/>
           </div>
-          {images.slice(1).map((image) => {
+          {images.slice(1).map(image => {
             return(
               <div className='col-xs-6 article-image-wrapper'>
                 <img src={image}/>

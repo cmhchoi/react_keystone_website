@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import Bulletin from '../components/Bulletin.jsx';
 import $ from "jquery";
 
-export default class Materials extends React.Component {
+export default class Techniques extends React.Component {
 
   render() {
     const language = this.props.params.language;
@@ -36,7 +36,7 @@ export default class Materials extends React.Component {
         const techniqueDyeing = [];
         const techniqueWashing = [];
         const techniquePrinting = [];
-        techniques.map((technique) => {
+        techniques.map(technique => {
           if(technique.type = 'Dyeing') techniqueDyeing.push(technique);
           if(technique.type = 'Washing') techniqueWashing.push(technique);
           if(technique.type = 'Printing') techniquePrinting.push(technique);

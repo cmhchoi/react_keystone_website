@@ -4,43 +4,6 @@ import Bulletin from '../components/Bulletin.jsx';
 import $ from "jquery";
 
 export default class Partners extends React.Component {
-  // constructor(props) {
-  // 	super(props);
-
-  // 	this.state = {
-  //     items: [
-  //       {
-  //         text: "Anthropologie",
-  //         link: "https://www.anthropologie.com"
-  //       },
-  //       {
-  //         text: "Anthropologie",
-  //         link: "https://www.anthropologie.com"
-  //       },
-  //       {
-  //         text: "Anthropologie",
-  //         link: "https://www.anthropologie.com"
-  //       },
-  //       {
-  //         text: "Anthropologie",
-  //         link: "https://www.anthropologie.com"
-  //       },
-  //       {
-  //         text: "Anthropologie",
-  //         link: "https://www.anthropologie.com"
-  //       },
-  //       {
-  //         text: "Anthropologie",
-  //         link: "https://www.anthropologie.com"
-  //       },
-  //       {
-  //         text: "Anthropologie",
-  //         link: "https://www.anthropologie.com"
-  //       },
-  //     ]
-  // 	}
-  // }
-
 
   render() {
     const partners = this.props.state.partners;

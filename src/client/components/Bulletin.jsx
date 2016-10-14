@@ -33,7 +33,7 @@ export default class Bulletin extends React.Component {
         {this.banner(bannerDecision)}
         {this.title(titleText)}
         <ul>
-          {items.map((item) => {
+          {items.map(item => {
             if(!item.text[lang]) { item.text[lang] = item.text.english };
             if(item.link) {
               return(

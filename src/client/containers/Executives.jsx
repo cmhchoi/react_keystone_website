@@ -26,7 +26,7 @@ export default class Executives extends React.Component {
           <div className="row">
     		    <div className="col-xs-12 executives">
               <ul>
-                {(executives.map((executive) => {
+                {(executives.map(executive => {
                   return(
                     <li>
                       <div className="exec">

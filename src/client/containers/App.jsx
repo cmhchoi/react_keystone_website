@@ -29,7 +29,7 @@ export default class App extends React.Component {
       const products = [];
       const people = [];
       const csr = [];
-      catelogs.map((catelog) => {
+      catelogs.map(catelog => {
         if(catelog.type === 'home') home.push(catelog)
         if(catelog.type === 'who-we-are') who_we_are.push(catelog)
         if(catelog.type === 'product_category') product_category.push(catelog)
