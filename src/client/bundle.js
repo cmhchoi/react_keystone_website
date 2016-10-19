@@ -41212,30 +41212,10 @@
 	var People = function (_React$Component) {
 	  _inherits(People, _React$Component);
 
-	  function People(props) {
+	  function People() {
 	    _classCallCheck(this, People);
 
-	    var _this = _possibleConstructorReturn(this, (People.__proto__ || Object.getPrototypeOf(People)).call(this, props));
-
-	    _this.state = {
-	      people: [{
-	        thumbnail: "http://kaki.sini.com.my/en/wp-content/uploads/2016/08/happy1.jpg",
-	        description: "OUR FACTORIES",
-	        name: 'Mason Chan',
-	        department: 'Sales'
-	      }, {
-	        thumbnail: "http://cdn.elezea.com/images/1_group-work.jpg",
-	        description: "OUR PEOPLE",
-	        name: 'Mason Chan',
-	        department: 'Sales'
-	      }, {
-	        thumbnail: "http://cdn.elezea.com/images/1_group-work.jpg",
-	        description: "WORK WITH US",
-	        name: 'Mason Chan',
-	        department: 'Sales'
-	      }]
-	    };
-	    return _this;
+	    return _possibleConstructorReturn(this, (People.__proto__ || Object.getPrototypeOf(People)).apply(this, arguments));
 	  }
 
 	  _createClass(People, [{
@@ -41244,7 +41224,6 @@
 	      var language = this.props.params.language;
 	      var labels = this.props.state.labels;
 	      var people = this.props.state.people;
-	      console.log(people);
 	      var lang = void 0,
 	          langLink = '';
 	      lang = language === 'zh-t' ? 'chinese_traditional' : language === 'zh-s' ? 'chinese_simplified' : 'english';
@@ -41279,54 +41258,7 @@
 	              )
 	            )
 	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'frame row' },
-	            _react2.default.createElement(
-	              'ul',
-	              null,
-	              people.map(function (person) {
-	                console.log('HIHIHI');
-	                if (!person.name[lang]) {
-	                  person.name[lang] = person.name.english;
-	                };
-	                if (!person.description[lang]) {
-	                  person.description[lang] = person.description.english;
-	                };
-	                if (!person.department[lang]) {
-	                  person.department[lang] = person.department.english;
-	                };
-	                return _react2.default.createElement(
-	                  'li',
-	                  { className: 'picture-link person col-xs-12 col-sm-6' },
-	                  _react2.default.createElement(
-	                    'div',
-	                    { className: 'text' },
-	                    _react2.default.createElement(
-	                      'p',
-	                      { className: 'picture-des' },
-	                      person.description[lang]
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    'div',
-	                    { className: 'picture-container rectangle mid-no-rectangle' },
-	                    _react2.default.createElement('img', { className: 'picture', src: person.thumbnail })
-	                  ),
-	                  _react2.default.createElement(
-	                    'h4',
-	                    null,
-	                    person.name[lang]
-	                  ),
-	                  _react2.default.createElement(
-	                    'h5',
-	                    { className: 'person-detail' },
-	                    person.department[lang]
-	                  )
-	                );
-	              })
-	            )
-	          )
+	          _react2.default.createElement(_Frame2.default, { pictures: people, language: lang })
 	        );
 	      } else {
 	        return _react2.default.createElement(
