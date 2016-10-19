@@ -114,14 +114,6 @@
 
 	var _Factory2 = _interopRequireDefault(_Factory);
 
-	var _Zhongshan = __webpack_require__(276);
-
-	var _Zhongshan2 = _interopRequireDefault(_Zhongshan);
-
-	var _Cebu = __webpack_require__(277);
-
-	var _Cebu2 = _interopRequireDefault(_Cebu);
-
 	var _Materials = __webpack_require__(278);
 
 	var _Materials2 = _interopRequireDefault(_Materials);
@@ -161,6 +153,9 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	__webpack_require__(287);
+	// import Zhongshan from './containers/Zhongshan.jsx';
+	// import Cebu from './containers/Cebu.jsx';
+
 	__webpack_require__(291);
 	__webpack_require__(293);
 	__webpack_require__(295);
@@ -41223,21 +41218,21 @@
 	    var _this = _possibleConstructorReturn(this, (People.__proto__ || Object.getPrototypeOf(People)).call(this, props));
 
 	    _this.state = {
-	      pictures: [{
-	        img: "http://kaki.sini.com.my/en/wp-content/uploads/2016/08/happy1.jpg",
-	        des: "OUR FACTORIES",
-	        link: '/people/factories',
-	        size: 'rectangle'
+	      people: [{
+	        thumbnail: "http://kaki.sini.com.my/en/wp-content/uploads/2016/08/happy1.jpg",
+	        description: "OUR FACTORIES",
+	        name: 'Mason Chan',
+	        department: 'Sales'
 	      }, {
-	        img: "http://cdn.elezea.com/images/1_group-work.jpg",
-	        des: "OUR PEOPLE",
-	        link: '/people/story',
-	        size: 'square'
+	        thumbnail: "http://cdn.elezea.com/images/1_group-work.jpg",
+	        description: "OUR PEOPLE",
+	        name: 'Mason Chan',
+	        department: 'Sales'
 	      }, {
-	        img: "http://cdn.elezea.com/images/1_group-work.jpg",
-	        des: "WORK WITH US",
-	        link: '/people/jobs',
-	        size: 'square'
+	        thumbnail: "http://cdn.elezea.com/images/1_group-work.jpg",
+	        description: "WORK WITH US",
+	        name: 'Mason Chan',
+	        department: 'Sales'
 	      }]
 	    };
 	    return _this;
@@ -41249,6 +41244,7 @@
 	      var language = this.props.params.language;
 	      var labels = this.props.state.labels;
 	      var people = this.props.state.people;
+	      console.log(people);
 	      var lang = void 0,
 	          langLink = '';
 	      lang = language === 'zh-t' ? 'chinese_traditional' : language === 'zh-s' ? 'chinese_simplified' : 'english';
@@ -41283,7 +41279,54 @@
 	              )
 	            )
 	          ),
-	          _react2.default.createElement(_Frame2.default, { pictures: people, language: lang })
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'frame row' },
+	            _react2.default.createElement(
+	              'ul',
+	              null,
+	              people.map(function (person) {
+	                console.log('HIHIHI');
+	                if (!person.name[lang]) {
+	                  person.name[lang] = person.name.english;
+	                };
+	                if (!person.description[lang]) {
+	                  person.description[lang] = person.description.english;
+	                };
+	                if (!person.department[lang]) {
+	                  person.department[lang] = person.department.english;
+	                };
+	                return _react2.default.createElement(
+	                  'li',
+	                  { className: 'picture-link person col-xs-12 col-sm-6' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'text' },
+	                    _react2.default.createElement(
+	                      'p',
+	                      { className: 'picture-des' },
+	                      person.description[lang]
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'picture-container rectangle mid-no-rectangle' },
+	                    _react2.default.createElement('img', { className: 'picture', src: person.thumbnail })
+	                  ),
+	                  _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    person.name[lang]
+	                  ),
+	                  _react2.default.createElement(
+	                    'h5',
+	                    { className: 'person-detail' },
+	                    person.department[lang]
+	                  )
+	                );
+	              })
+	            )
+	          )
 	        );
 	      } else {
 	        return _react2.default.createElement(
@@ -41659,8 +41702,6 @@
 	  _createClass(History, [{
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
-
 	      var histories = this.props.state.histories;
 	      var language = this.props.params.language;
 	      var labels = this.props.state.labels;
@@ -41710,9 +41751,9 @@
 	          _react2.default.createElement(_List2.default, { items: histories, language: lang })
 	        );
 	      } else {
-	        _jquery2.default.get('/api/cultures', function (cultures) {
-	          _this2.props.updateAppState({ histories: histories });
-	        });
+	        // $.get('/api/cultures', cultures => {
+	        //   this.props.updateAppState({ histories });
+	        // })
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
@@ -41884,8 +41925,6 @@
 	  _createClass(Culture, [{
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
-
 	      var cultures = this.props.state.cultures;
 	      var language = this.props.params.language;
 	      var labels = this.props.state.labels;
@@ -41935,9 +41974,9 @@
 	          _react2.default.createElement(_List2.default, { items: cultures, language: lang })
 	        );
 	      } else {
-	        _jquery2.default.get('/api/cultures', function (cultures) {
-	          _this2.props.updateAppState({ cultures: cultures });
-	        });
+	        // $.get('/api/cultures', cultures => {
+	        //   this.props.updateAppState({ cultures });
+	        // })
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
@@ -42441,8 +42480,6 @@
 	  _createClass(Partners, [{
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
-
 	      var partners = this.props.state.partners;
 	      var language = this.props.params.language;
 	      var labels = this.props.state.labels;
@@ -42492,9 +42529,9 @@
 	          _react2.default.createElement(_Bulletin2.default, { items: this.props.state.partners, language: lang, banner: true })
 	        );
 	      } else {
-	        _jquery2.default.get('/api/partners', function (partners) {
-	          _this2.props.updateAppState({ partners: partners });
-	        });
+	        // $.get('/api/partners', partners => {
+	        //   this.props.updateAppState({ partners });
+	        // })
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
@@ -43040,9 +43077,9 @@
 	          )
 	        );
 	      } else {
-	        _jquery2.default.get('/api/factories', function (factories) {
-	          _this2.props.updateAppState({ factories: factories });
-	        });
+	        // $.get('/api/factories', factories => {
+	        //   this.props.updateAppState({ factories });
+	        // })
 	        return _react2.default.createElement(
 	          'div',
 	          null,
@@ -43092,326 +43129,8 @@
 	exports.default = Factories;
 
 /***/ },
-/* 276 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(172);
-
-	var _Frame = __webpack_require__(239);
-
-	var _Frame2 = _interopRequireDefault(_Frame);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Zhongshan = function (_React$Component) {
-	  _inherits(Zhongshan, _React$Component);
-
-	  function Zhongshan(props) {
-	    _classCallCheck(this, Zhongshan);
-
-	    var _this = _possibleConstructorReturn(this, (Zhongshan.__proto__ || Object.getPrototypeOf(Zhongshan)).call(this, props));
-
-	    _this.state = {
-	      pictures: [{
-	        img: "http://digitalspyuk.cdnds.net/13/02/640x320/landscape_ustv-suits-patrick-j-adams-1.jpg",
-	        des: "FABRIC INSPECTION",
-	        link: '/products/men',
-	        size: 'rectangle'
-	      }, {
-	        img: "http://www.ganzomag.com/wp-content/uploads/2013/07/perfect-persuasion-tshirts.jpg",
-	        des: "CUTTING",
-	        link: '/products/men',
-	        size: 'square'
-	      }, {
-	        img: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
-	        des: "SAMPLE ROOM",
-	        link: '/products/men',
-	        size: 'square'
-	      }, {
-	        img: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
-	        des: "PRODUCTION LINES",
-	        link: '/products/men',
-	        size: 'square'
-	      }, {
-	        img: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
-	        des: "FINISHING",
-	        link: '/products/men',
-	        size: 'square'
-	      }, {
-	        img: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
-	        des: "QC",
-	        link: '/products/men',
-	        size: 'square'
-	      }, {
-	        img: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
-	        des: "STEAMING",
-	        link: '/products/men',
-	        size: 'square'
-	      }, {
-	        img: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
-	        des: "OFFICE",
-	        link: '/products/men',
-	        size: 'square'
-	      }, {
-	        img: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
-	        des: "PRODUCTION MANAGEMENT",
-	        link: '/products/men',
-	        size: 'square'
-	      }],
-	      images: [{
-	        "FABRIC INSPECTION": ["http://www.ganzomag.com/wp-content/uploads/2013/07/perfect-persuasion-tshirts.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/24/Blue_Tshirt.jpg", "https://www.lamnia.com/images/sg-150-Shirts_and_T-Shirts.jpg", "http://market24.co/wp-content/uploads/2016/04/t473gold.jpg"],
-	        "CUTTING": ["http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg", "https://media.frenchconnection.com/ms/fcuk/54EEZ.jpg?height=768&width=526&lc=en-GB&lv=9", "http://www.charleswall.co.uk/images/XL/GurteenTrouser1400011_202.jpg", "http://www.blitzsport.com/images/large/Adult-Classic-Polycotton-Full-Contact-Trousers-Black-Red.jpg"],
-	        "SAMPLE ROOM": ["https://ae01.alicdn.com/kf/HTB1YMhGKFXXXXXEXpXXq6xXFXXXN/2015-New-font-b-Men-b-font-Casual-O-neck-Pullover-Christmas-font-b-Sweater-b.jpg", "http://www.ruedeshommes.com/media/produits/img/28556-superdry-h15-pull-hudson-fairisle-henley-m61lk033-ayn-pull-tricot-hudson-superdry-acrylique-et-laine-gris-anthracite-a-motifs-1_1128x1128.jpg", "http://i2.cdscdn.com/pdt2/7/6/4/1/700x700/mp02273764/rw/subliminal-mode-pull-over-col-rond-homme-tricot.jpg", "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=70430526"],
-	        "PRODUCTION LINES": ["http://images.shopmadeinchina.com/p/437/4538437_0/Men-s-business-suits-Western-style-clothes-top_4538437_0.bak.jpg", "http://images.menswearhouse.com/is/image/TMW/MW40_30U4_14_PERRY_ELLIS_PORTFOLIO_BLUE_POSTMAN_MAIN?01AD=3Bz6xbUUrlWQZ9-z7yjYCMM6SrHDgkwMXoUu6FYuCnLoX916UN2-5GQ&01RI=A71D5047F5D8C7D&01NA=&$40Zoom$", "http://www.mexatk.com/wp-content/uploads/2015/11/%D8%A7%D8%AD%D8%AF%D8%AB-%D9%85%D9%88%D8%B6%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%A8%D8%AF%D9%84-%D8%A7%D9%84%D8%B1%D8%AC%D8%A7%D9%84%D9%8A-6.jpg", "https://cdna.lystit.com/photos/1d37-2015/03/11/calvin-klein-navy-white-label-body-slim-fit-navy-pinstripe-suit-jacket-blue-product-2-916106911-normal.jpeg"],
-	        "FINISHING": ["http://images.shopmadeinchina.com/p/437/4538437_0/Men-s-business-suits-Western-style-clothes-top_4538437_0.bak.jpg", "http://images.menswearhouse.com/is/image/TMW/MW40_30U4_14_PERRY_ELLIS_PORTFOLIO_BLUE_POSTMAN_MAIN?01AD=3Bz6xbUUrlWQZ9-z7yjYCMM6SrHDgkwMXoUu6FYuCnLoX916UN2-5GQ&01RI=A71D5047F5D8C7D&01NA=&$40Zoom$", "http://www.mexatk.com/wp-content/uploads/2015/11/%D8%A7%D8%AD%D8%AF%D8%AB-%D9%85%D9%88%D8%B6%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%A8%D8%AF%D9%84-%D8%A7%D9%84%D8%B1%D8%AC%D8%A7%D9%84%D9%8A-6.jpg", "https://cdna.lystit.com/photos/1d37-2015/03/11/calvin-klein-navy-white-label-body-slim-fit-navy-pinstripe-suit-jacket-blue-product-2-916106911-normal.jpeg"],
-	        "QC": ["http://images.shopmadeinchina.com/p/437/4538437_0/Men-s-business-suits-Western-style-clothes-top_4538437_0.bak.jpg", "http://images.menswearhouse.com/is/image/TMW/MW40_30U4_14_PERRY_ELLIS_PORTFOLIO_BLUE_POSTMAN_MAIN?01AD=3Bz6xbUUrlWQZ9-z7yjYCMM6SrHDgkwMXoUu6FYuCnLoX916UN2-5GQ&01RI=A71D5047F5D8C7D&01NA=&$40Zoom$", "http://www.mexatk.com/wp-content/uploads/2015/11/%D8%A7%D8%AD%D8%AF%D8%AB-%D9%85%D9%88%D8%B6%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%A8%D8%AF%D9%84-%D8%A7%D9%84%D8%B1%D8%AC%D8%A7%D9%84%D9%8A-6.jpg", "https://cdna.lystit.com/photos/1d37-2015/03/11/calvin-klein-navy-white-label-body-slim-fit-navy-pinstripe-suit-jacket-blue-product-2-916106911-normal.jpeg"],
-	        "STEAMING": ["http://images.shopmadeinchina.com/p/437/4538437_0/Men-s-business-suits-Western-style-clothes-top_4538437_0.bak.jpg", "http://images.menswearhouse.com/is/image/TMW/MW40_30U4_14_PERRY_ELLIS_PORTFOLIO_BLUE_POSTMAN_MAIN?01AD=3Bz6xbUUrlWQZ9-z7yjYCMM6SrHDgkwMXoUu6FYuCnLoX916UN2-5GQ&01RI=A71D5047F5D8C7D&01NA=&$40Zoom$", "http://www.mexatk.com/wp-content/uploads/2015/11/%D8%A7%D8%AD%D8%AF%D8%AB-%D9%85%D9%88%D8%B6%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%A8%D8%AF%D9%84-%D8%A7%D9%84%D8%B1%D8%AC%D8%A7%D9%84%D9%8A-6.jpg", "https://cdna.lystit.com/photos/1d37-2015/03/11/calvin-klein-navy-white-label-body-slim-fit-navy-pinstripe-suit-jacket-blue-product-2-916106911-normal.jpeg"],
-	        "OFFICE": ["http://images.shopmadeinchina.com/p/437/4538437_0/Men-s-business-suits-Western-style-clothes-top_4538437_0.bak.jpg", "http://images.menswearhouse.com/is/image/TMW/MW40_30U4_14_PERRY_ELLIS_PORTFOLIO_BLUE_POSTMAN_MAIN?01AD=3Bz6xbUUrlWQZ9-z7yjYCMM6SrHDgkwMXoUu6FYuCnLoX916UN2-5GQ&01RI=A71D5047F5D8C7D&01NA=&$40Zoom$", "http://www.mexatk.com/wp-content/uploads/2015/11/%D8%A7%D8%AD%D8%AF%D8%AB-%D9%85%D9%88%D8%B6%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%A8%D8%AF%D9%84-%D8%A7%D9%84%D8%B1%D8%AC%D8%A7%D9%84%D9%8A-6.jpg", "https://cdna.lystit.com/photos/1d37-2015/03/11/calvin-klein-navy-white-label-body-slim-fit-navy-pinstripe-suit-jacket-blue-product-2-916106911-normal.jpeg"],
-	        "PRODUCTION MANAGEMENT": ["http://images.shopmadeinchina.com/p/437/4538437_0/Men-s-business-suits-Western-style-clothes-top_4538437_0.bak.jpg", "http://images.menswearhouse.com/is/image/TMW/MW40_30U4_14_PERRY_ELLIS_PORTFOLIO_BLUE_POSTMAN_MAIN?01AD=3Bz6xbUUrlWQZ9-z7yjYCMM6SrHDgkwMXoUu6FYuCnLoX916UN2-5GQ&01RI=A71D5047F5D8C7D&01NA=&$40Zoom$", "http://www.mexatk.com/wp-content/uploads/2015/11/%D8%A7%D8%AD%D8%AF%D8%AB-%D9%85%D9%88%D8%B6%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%A8%D8%AF%D9%84-%D8%A7%D9%84%D8%B1%D8%AC%D8%A7%D9%84%D9%8A-6.jpg", "https://cdna.lystit.com/photos/1d37-2015/03/11/calvin-klein-navy-white-label-body-slim-fit-navy-pinstripe-suit-jacket-blue-product-2-916106911-normal.jpeg"]
-	      }]
-	    };
-	    return _this;
-	  }
-
-	  _createClass(Zhongshan, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-12' },
-	            _react2.default.createElement(
-	              'ol',
-	              { className: 'breadcrumb' },
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: "/" } },
-	                  'Home'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: "/people" } },
-	                  'People'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: "/people/factories" } },
-	                  'Our Factories'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                { className: 'active' },
-	                'Zhongshan'
-	              )
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(_Frame2.default, { pictures: this.state.pictures, images: this.state.images })
-	      );
-	    }
-	  }]);
-
-	  return Zhongshan;
-	}(_react2.default.Component);
-
-	exports.default = Zhongshan;
-
-/***/ },
-/* 277 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(172);
-
-	var _Frame = __webpack_require__(239);
-
-	var _Frame2 = _interopRequireDefault(_Frame);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Cebu = function (_React$Component) {
-	  _inherits(Cebu, _React$Component);
-
-	  function Cebu(props) {
-	    _classCallCheck(this, Cebu);
-
-	    var _this = _possibleConstructorReturn(this, (Cebu.__proto__ || Object.getPrototypeOf(Cebu)).call(this, props));
-
-	    _this.state = {
-	      pictures: [{
-	        img: "http://digitalspyuk.cdnds.net/13/02/640x320/landscape_ustv-suits-patrick-j-adams-1.jpg",
-	        des: "FABRIC INSPECTION",
-	        link: '/products/men',
-	        size: 'rectangle'
-	      }, {
-	        img: "http://www.ganzomag.com/wp-content/uploads/2013/07/perfect-persuasion-tshirts.jpg",
-	        des: "CUTTING",
-	        link: '/products/men',
-	        size: 'square'
-	      }, {
-	        img: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
-	        des: "SAMPLE ROOM",
-	        link: '/products/men',
-	        size: 'square'
-	      }, {
-	        img: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
-	        des: "PRODUCTION LINES",
-	        link: '/products/men',
-	        size: 'square'
-	      }, {
-	        img: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
-	        des: "FINISHING",
-	        link: '/products/men',
-	        size: 'square'
-	      }, {
-	        img: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
-	        des: "QC",
-	        link: '/products/men',
-	        size: 'square'
-	      }, {
-	        img: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
-	        des: "STEAMING",
-	        link: '/products/men',
-	        size: 'square'
-	      }, {
-	        img: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
-	        des: "OFFICE",
-	        link: '/products/men',
-	        size: 'square'
-	      }, {
-	        img: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
-	        des: "PRODUCTION MANAGEMENT",
-	        link: '/products/men',
-	        size: 'square'
-	      }],
-	      images: [{
-	        "FABRIC INSPECTION": ["http://www.ganzomag.com/wp-content/uploads/2013/07/perfect-persuasion-tshirts.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/24/Blue_Tshirt.jpg", "https://www.lamnia.com/images/sg-150-Shirts_and_T-Shirts.jpg", "http://market24.co/wp-content/uploads/2016/04/t473gold.jpg"],
-	        "CUTTING": ["http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg", "https://media.frenchconnection.com/ms/fcuk/54EEZ.jpg?height=768&width=526&lc=en-GB&lv=9", "http://www.charleswall.co.uk/images/XL/GurteenTrouser1400011_202.jpg", "http://www.blitzsport.com/images/large/Adult-Classic-Polycotton-Full-Contact-Trousers-Black-Red.jpg"],
-	        "SAMPLE ROOM": ["https://ae01.alicdn.com/kf/HTB1YMhGKFXXXXXEXpXXq6xXFXXXN/2015-New-font-b-Men-b-font-Casual-O-neck-Pullover-Christmas-font-b-Sweater-b.jpg", "http://www.ruedeshommes.com/media/produits/img/28556-superdry-h15-pull-hudson-fairisle-henley-m61lk033-ayn-pull-tricot-hudson-superdry-acrylique-et-laine-gris-anthracite-a-motifs-1_1128x1128.jpg", "http://i2.cdscdn.com/pdt2/7/6/4/1/700x700/mp02273764/rw/subliminal-mode-pull-over-col-rond-homme-tricot.jpg", "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=70430526"],
-	        "PRODUCTION LINES": ["http://images.shopmadeinchina.com/p/437/4538437_0/Men-s-business-suits-Western-style-clothes-top_4538437_0.bak.jpg", "http://images.menswearhouse.com/is/image/TMW/MW40_30U4_14_PERRY_ELLIS_PORTFOLIO_BLUE_POSTMAN_MAIN?01AD=3Bz6xbUUrlWQZ9-z7yjYCMM6SrHDgkwMXoUu6FYuCnLoX916UN2-5GQ&01RI=A71D5047F5D8C7D&01NA=&$40Zoom$", "http://www.mexatk.com/wp-content/uploads/2015/11/%D8%A7%D8%AD%D8%AF%D8%AB-%D9%85%D9%88%D8%B6%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%A8%D8%AF%D9%84-%D8%A7%D9%84%D8%B1%D8%AC%D8%A7%D9%84%D9%8A-6.jpg", "https://cdna.lystit.com/photos/1d37-2015/03/11/calvin-klein-navy-white-label-body-slim-fit-navy-pinstripe-suit-jacket-blue-product-2-916106911-normal.jpeg"],
-	        "FINISHING": ["http://images.shopmadeinchina.com/p/437/4538437_0/Men-s-business-suits-Western-style-clothes-top_4538437_0.bak.jpg", "http://images.menswearhouse.com/is/image/TMW/MW40_30U4_14_PERRY_ELLIS_PORTFOLIO_BLUE_POSTMAN_MAIN?01AD=3Bz6xbUUrlWQZ9-z7yjYCMM6SrHDgkwMXoUu6FYuCnLoX916UN2-5GQ&01RI=A71D5047F5D8C7D&01NA=&$40Zoom$", "http://www.mexatk.com/wp-content/uploads/2015/11/%D8%A7%D8%AD%D8%AF%D8%AB-%D9%85%D9%88%D8%B6%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%A8%D8%AF%D9%84-%D8%A7%D9%84%D8%B1%D8%AC%D8%A7%D9%84%D9%8A-6.jpg", "https://cdna.lystit.com/photos/1d37-2015/03/11/calvin-klein-navy-white-label-body-slim-fit-navy-pinstripe-suit-jacket-blue-product-2-916106911-normal.jpeg"],
-	        "QC": ["http://images.shopmadeinchina.com/p/437/4538437_0/Men-s-business-suits-Western-style-clothes-top_4538437_0.bak.jpg", "http://images.menswearhouse.com/is/image/TMW/MW40_30U4_14_PERRY_ELLIS_PORTFOLIO_BLUE_POSTMAN_MAIN?01AD=3Bz6xbUUrlWQZ9-z7yjYCMM6SrHDgkwMXoUu6FYuCnLoX916UN2-5GQ&01RI=A71D5047F5D8C7D&01NA=&$40Zoom$", "http://www.mexatk.com/wp-content/uploads/2015/11/%D8%A7%D8%AD%D8%AF%D8%AB-%D9%85%D9%88%D8%B6%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%A8%D8%AF%D9%84-%D8%A7%D9%84%D8%B1%D8%AC%D8%A7%D9%84%D9%8A-6.jpg", "https://cdna.lystit.com/photos/1d37-2015/03/11/calvin-klein-navy-white-label-body-slim-fit-navy-pinstripe-suit-jacket-blue-product-2-916106911-normal.jpeg"],
-	        "STEAMING": ["http://images.shopmadeinchina.com/p/437/4538437_0/Men-s-business-suits-Western-style-clothes-top_4538437_0.bak.jpg", "http://images.menswearhouse.com/is/image/TMW/MW40_30U4_14_PERRY_ELLIS_PORTFOLIO_BLUE_POSTMAN_MAIN?01AD=3Bz6xbUUrlWQZ9-z7yjYCMM6SrHDgkwMXoUu6FYuCnLoX916UN2-5GQ&01RI=A71D5047F5D8C7D&01NA=&$40Zoom$", "http://www.mexatk.com/wp-content/uploads/2015/11/%D8%A7%D8%AD%D8%AF%D8%AB-%D9%85%D9%88%D8%B6%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%A8%D8%AF%D9%84-%D8%A7%D9%84%D8%B1%D8%AC%D8%A7%D9%84%D9%8A-6.jpg", "https://cdna.lystit.com/photos/1d37-2015/03/11/calvin-klein-navy-white-label-body-slim-fit-navy-pinstripe-suit-jacket-blue-product-2-916106911-normal.jpeg"],
-	        "OFFICE": ["http://images.shopmadeinchina.com/p/437/4538437_0/Men-s-business-suits-Western-style-clothes-top_4538437_0.bak.jpg", "http://images.menswearhouse.com/is/image/TMW/MW40_30U4_14_PERRY_ELLIS_PORTFOLIO_BLUE_POSTMAN_MAIN?01AD=3Bz6xbUUrlWQZ9-z7yjYCMM6SrHDgkwMXoUu6FYuCnLoX916UN2-5GQ&01RI=A71D5047F5D8C7D&01NA=&$40Zoom$", "http://www.mexatk.com/wp-content/uploads/2015/11/%D8%A7%D8%AD%D8%AF%D8%AB-%D9%85%D9%88%D8%B6%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%A8%D8%AF%D9%84-%D8%A7%D9%84%D8%B1%D8%AC%D8%A7%D9%84%D9%8A-6.jpg", "https://cdna.lystit.com/photos/1d37-2015/03/11/calvin-klein-navy-white-label-body-slim-fit-navy-pinstripe-suit-jacket-blue-product-2-916106911-normal.jpeg"],
-	        "PRODUCTION MANAGEMENT": ["http://images.shopmadeinchina.com/p/437/4538437_0/Men-s-business-suits-Western-style-clothes-top_4538437_0.bak.jpg", "http://images.menswearhouse.com/is/image/TMW/MW40_30U4_14_PERRY_ELLIS_PORTFOLIO_BLUE_POSTMAN_MAIN?01AD=3Bz6xbUUrlWQZ9-z7yjYCMM6SrHDgkwMXoUu6FYuCnLoX916UN2-5GQ&01RI=A71D5047F5D8C7D&01NA=&$40Zoom$", "http://www.mexatk.com/wp-content/uploads/2015/11/%D8%A7%D8%AD%D8%AF%D8%AB-%D9%85%D9%88%D8%B6%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%A8%D8%AF%D9%84-%D8%A7%D9%84%D8%B1%D8%AC%D8%A7%D9%84%D9%8A-6.jpg", "https://cdna.lystit.com/photos/1d37-2015/03/11/calvin-klein-navy-white-label-body-slim-fit-navy-pinstripe-suit-jacket-blue-product-2-916106911-normal.jpeg"]
-	      }]
-	    };
-	    return _this;
-	  }
-
-	  _createClass(Cebu, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-12' },
-	            _react2.default.createElement(
-	              'ol',
-	              { className: 'breadcrumb' },
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: "/" } },
-	                  'Home'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: "/people" } },
-	                  'People'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: "/people/factories" } },
-	                  'Our Factories'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                { className: 'active' },
-	                'Cebu'
-	              )
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(_Frame2.default, { pictures: this.state.pictures, images: this.state.images })
-	      );
-	    }
-	  }]);
-
-	  return Cebu;
-	}(_react2.default.Component);
-
-	exports.default = Cebu;
-
-/***/ },
+/* 276 */,
+/* 277 */,
 /* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -43457,8 +43176,6 @@
 	  _createClass(Materials, [{
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
-
 	      var language = this.props.params.language;
 	      var fabricContent = this.props.state.fabricContent;
 	      var fabricType = this.props.state.fabricType;
@@ -43512,14 +43229,14 @@
 	          _react2.default.createElement(_Bulletin2.default, { items: fabricType, language: lang, banner: false, title: labels.type_of_fabric[lang] })
 	        );
 	      } else {
-	        _jquery2.default.get('/api/fabrics', function (fabrics) {
-	          fabricContent = [];
-	          fabricType = [];
-	          fabrics.map(function (fabric) {
-	            fabric.fabric_ === 'content' ? fabricContent.push(fabric) : fabricType.push(fabric);
-	          });
-	          _this2.props.updateAppState({ fabricContent: fabricContent, fabricType: fabricType });
-	        });
+	        // $.get('/api/fabrics', fabrics => {
+	        //   fabricContent = [];
+	        //   fabricType = [];
+	        //   fabrics.map(fabric => {
+	        //     fabric.fabric_ === 'content' ? fabricContent.push(fabric) : fabricType.push(fabric);
+	        //   })
+	        //   this.props.updateAppState({ fabricContent, fabricType });
+	        // })
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
@@ -43610,8 +43327,6 @@
 	  _createClass(Techniques, [{
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
-
 	      var language = this.props.params.language;
 	      var techniqueDyeing = this.props.state.techniqueDyeing;
 	      var techniquePrinting = this.props.state.techniquePrinting;
@@ -43665,17 +43380,17 @@
 	          _react2.default.createElement(_Bulletin2.default, { items: techniqueWashing, language: lang, banner: false, title: labels.washing[lang] })
 	        );
 	      } else {
-	        _jquery2.default.get('/api/techniques', function (technique) {
-	          var techniqueDyeing = [];
-	          var techniqueWashing = [];
-	          var techniquePrinting = [];
-	          techniques.map(function (technique) {
-	            if (technique.type = 'Dyeing') techniqueDyeing.push(technique);
-	            if (technique.type = 'Washing') techniqueWashing.push(technique);
-	            if (technique.type = 'Printing') techniquePrinting.push(technique);
-	          });
-	          _this2.props.updateAppState({ techniqueDyeing: techniqueDyeing, techniqueWashing: techniqueWashing, techniquePrinting: techniquePrinting });
-	        });
+	        // $.get('/api/techniques', technique => {
+	        //   const techniqueDyeing = [];
+	        //   const techniqueWashing = [];
+	        //   const techniquePrinting = [];
+	        //   techniques.map(technique => {
+	        //     if(technique.type = 'Dyeing') techniqueDyeing.push(technique);
+	        //     if(technique.type = 'Washing') techniqueWashing.push(technique);
+	        //     if(technique.type = 'Printing') techniquePrinting.push(technique);
+	        //   })
+	        //   this.props.updateAppState({ techniqueDyeing, techniqueWashing, techniquePrinting });
+	        // })
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
@@ -44508,8 +44223,6 @@
 	  _createClass(Executives, [{
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
-
 	      var executives = this.props.state.executives;
 	      var language = this.props.params.language;
 	      var labels = this.props.state.labels;
@@ -44604,9 +44317,9 @@
 	          )
 	        );
 	      } else {
-	        _jquery2.default.get('/api/executives', function (executives) {
-	          _this2.props.updateAppState({ executives: executives });
-	        });
+	        // $.get('/api/executives', executives => {
+	        //   this.props.updateAppState({ executives });
+	        // })
 	        return _react2.default.createElement(
 	          'div',
 	          null,

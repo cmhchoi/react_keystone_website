@@ -32,17 +32,17 @@ export default class Techniques extends React.Component {
         </div>
       )
     } else {
-      $.get('/api/techniques', technique => {
-        const techniqueDyeing = [];
-        const techniqueWashing = [];
-        const techniquePrinting = [];
-        techniques.map(technique => {
-          if(technique.type = 'Dyeing') techniqueDyeing.push(technique);
-          if(technique.type = 'Washing') techniqueWashing.push(technique);
-          if(technique.type = 'Printing') techniquePrinting.push(technique);
-        })
-        this.props.updateAppState({ techniqueDyeing, techniqueWashing, techniquePrinting });
-      })
+      // $.get('/api/techniques', technique => {
+      //   const techniqueDyeing = [];
+      //   const techniqueWashing = [];
+      //   const techniquePrinting = [];
+      //   techniques.map(technique => {
+      //     if(technique.type = 'Dyeing') techniqueDyeing.push(technique);
+      //     if(technique.type = 'Washing') techniqueWashing.push(technique);
+      //     if(technique.type = 'Printing') techniquePrinting.push(technique);
+      //   })
+      //   this.props.updateAppState({ techniqueDyeing, techniqueWashing, techniquePrinting });
+      // })
       return(
         <div className="row">
           <div className="col-xs-12">

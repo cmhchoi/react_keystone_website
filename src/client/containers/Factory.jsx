@@ -109,9 +109,9 @@ export default class Factories extends React.Component {
         </div>
       )
     } else {
-      $.get('/api/factories', factories => {
-        this.props.updateAppState({ factories });
-      })
+      // $.get('/api/factories', factories => {
+      //   this.props.updateAppState({ factories });
+      // })
       return(
         <div>
           <div className="row">

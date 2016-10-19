@@ -28,9 +28,9 @@ export default class Culture extends React.Component {
         </div>
       )
     } else {
-      $.get('/api/cultures', cultures => {
-        this.props.updateAppState({ cultures });
-      })
+      // $.get('/api/cultures', cultures => {
+      //   this.props.updateAppState({ cultures });
+      // })
       return(
         <div className="row">
           <div className="col-xs-12">

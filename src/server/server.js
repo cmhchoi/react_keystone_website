@@ -1,6 +1,6 @@
 const keystone = require('keystone');
 const apiRoutes = require('./routes/apiRoutes');
-// const { mongoURI, CLOUDINARY_URL } = require('./secret');
+const { mongoURI, CLOUDINARY_URL } = require('./secret');
 
 keystone.init({
   'name': 'First Glory',
@@ -9,8 +9,8 @@ keystone.init({
   'wysiwyg images': true,
   // 'favicon': 'public/favicon.ico',
   'views': '../client',
-  // 'auto update': true,
-  'auto update': false,
+  'auto update': true,
+  // 'auto update': false,
   // 'mongo': 'mongodb://localhost/firstglory',
   'mongo': process.env.mongoURI || mongoURI,
   // 'cloudinary config': CLOUDINARY_URL,

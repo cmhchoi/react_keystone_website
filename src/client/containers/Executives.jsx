@@ -48,9 +48,9 @@ export default class Executives extends React.Component {
         </div>
       )
     } else {
-      $.get('/api/executives', executives => {
-        this.props.updateAppState({ executives });
-      })
+      // $.get('/api/executives', executives => {
+      //   this.props.updateAppState({ executives });
+      // })
       return(
         <div>
           <div className="row">

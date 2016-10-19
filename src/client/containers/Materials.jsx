@@ -32,14 +32,14 @@ export default class Materials extends React.Component {
         </div>
       )
     } else {
-      $.get('/api/fabrics', fabrics => {
-        fabricContent = [];
-        fabricType = [];
-        fabrics.map(fabric => {
-          fabric.fabric_ === 'content' ? fabricContent.push(fabric) : fabricType.push(fabric);
-        })
-        this.props.updateAppState({ fabricContent, fabricType });
-      })
+      // $.get('/api/fabrics', fabrics => {
+      //   fabricContent = [];
+      //   fabricType = [];
+      //   fabrics.map(fabric => {
+      //     fabric.fabric_ === 'content' ? fabricContent.push(fabric) : fabricType.push(fabric);
+      //   })
+      //   this.props.updateAppState({ fabricContent, fabricType });
+      // })
       return(
         <div className="row">
           <div className="col-xs-12">

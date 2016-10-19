@@ -28,9 +28,9 @@ export default class Partners extends React.Component {
         </div>
       )
     } else {
-      $.get('/api/partners', partners => {
-        this.props.updateAppState({ partners });
-      })
+      // $.get('/api/partners', partners => {
+      //   this.props.updateAppState({ partners });
+      // })
       return(
         <div className="row">
           <div className="col-xs-12">

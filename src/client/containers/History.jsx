@@ -28,9 +28,9 @@ export default class History extends React.Component {
         </div>
       )
     } else {
-      $.get('/api/cultures', cultures => {
-        this.props.updateAppState({ histories });
-      })
+      // $.get('/api/cultures', cultures => {
+      //   this.props.updateAppState({ histories });
+      // })
       return(
         <div className="row">
           <div className="col-xs-12">
