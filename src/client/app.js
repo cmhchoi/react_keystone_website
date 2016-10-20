@@ -7,7 +7,9 @@ import Home from './containers/Home.jsx';
 import About from './containers/About.jsx';
 import Products from './containers/Products.jsx';
 import People from './containers/People.jsx';
+import Story from './containers/Story.jsx';
 import CSR from './containers/CSR.jsx';
+import CSRCategory from './containers/CSRCategory.jsx';
 import News from './containers/News.jsx';
 import History from './containers/History.jsx';
 import Culture from './containers/Culture.jsx';
@@ -17,8 +19,6 @@ import Children from './containers/Children.jsx';
 import Partners from './containers/Partners.jsx';
 import Category from './containers/Category.jsx';
 import Factory from './containers/Factory.jsx';
-// import Zhongshan from './containers/Zhongshan.jsx';
-// import Cebu from './containers/Cebu.jsx';
 import Materials from './containers/Materials.jsx';
 import Techniques from './containers/Techniques.jsx';
 import Terms from './containers/Terms.jsx';
@@ -37,6 +37,7 @@ require('./styles/executives.scss');
 require('./styles/factory.scss');
 require('./styles/news.scss');
 require('./styles/article.scss');
+require('./styles/story.scss');
 
 const innerRoutes = (
   <Route>
@@ -56,14 +57,10 @@ const innerRoutes = (
     <Route path="people" component={People} />
     <Route path="people/factories" component={Factory} />
     <Route path="people/factories/:location" component={Location} />
-    <Route path="people/story" component={People} />
+    <Route path="people/story" component={Story} />
     <Route path="people/jobs" component={People} />
     <Route path="csr" component={CSR} />
-    <Route path="csr/sustainability" component={CSR} />
-    <Route path="csr/charitable-programmes" component={CSR} />
-    <Route path="csr/practices" component={CSR} />
-    <Route path="csr/responsibility" component={CSR} />
-    <Route path="csr/collaboration" component={CSR} />
+    <Route path="csr/:category" component={CSRCategory} />
     <Route path="whats-new" component={News} />
     <Route path="whats-new/:article" component={Article} />
     <Route path="terms-of-use" component={Terms} />

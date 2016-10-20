@@ -86,6 +86,27 @@ export default class App extends React.Component {
       this.setState({ histories });
       console.log('histories')
     })
+    $.get('/api/employees', employees => {
+      this.setState({ employees });
+      console.log('employees')
+    })
+    $.get('/api/CSRs', CSRs => {
+      const CSR_responsibility = [];
+      const CSR_charity = [];
+      const CSR_practices = [];
+      const CSR_sustainability = [];
+      const CSR_collaboration = [];
+      console.log('-----------CSRs', CSRs)
+      CSRs.map(CSR => {
+        if(CSR.category === 'Sustainability') CSR_sustainability.push(CSR);
+        if(CSR.category === 'Charitable Programme') CSR_charity.push(CSR);
+        if(CSR.category === 'Responsibility') CSR_responsibility.push(CSR);
+        if(CSR.category === 'Practices') CSR_practices.push(CSR);
+        if(CSR.category === 'Collaboration') CSR_collaboration.push(CSR);
+      })
+      this.setState({ CSR_responsibility, CSR_charity, CSR_practices, CSR_sustainability, CSR_collaboration })
+      console.log('CSRs')
+    })
     this.setState({ labels })
   }
 

@@ -9,6 +9,8 @@ const postController = require('../controllers/postController');
 const catelogController = require('../controllers/catelogController');
 const techniqueController = require('../controllers/techniqueController');
 const historyController = require('../controllers/historyController');
+const employeeController = require('../controllers/employeeController');
+const CSRController = require('../controllers/CSRController');
 
 router.get('/users', userController.get);
 router.get('/factories', factoryController.get);
@@ -21,5 +23,7 @@ router.get('/posts/:article', postController.getOne);
 router.get('/catelogs', catelogController.get);
 router.get('/techniques', techniqueController.get);
 router.get('/histories', historyController.get);
+router.get('/employees', employeeController.get);
+router.get('/CSRs', CSRController.get);
 
 module.exports = router;

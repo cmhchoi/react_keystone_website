@@ -1,0 +1,23 @@
+.employee {
+  h4 {
+    font-family: "Raleway", "sans-serif";
+    margin-top: 10px; 
+    text-align: center;
+  }
+  h5 {
+    font-family: "Raleway", "sans-serif";
+    text-align: center;
+    font-size: 18px;
+    margin-top: 0; 
+  }
+  .text {
+    @media (min-width: 991px) and (max-width: 1200px) {
+      height: 317px;
+      width: 317px;
+    }
+    @media (min-width: 768px) and (max-width: 991px) {
+      height: 370px;
+      width: 370px;
+    }
+  }
+}

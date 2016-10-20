@@ -28,6 +28,11 @@ keystone
     'users': 'users',
     'posts': 'posts',
     'factories': 'factories',
+    'people': ['executives', 'employees'],
+    'about': ['histories', 'cultures', 'partners'],
+    'products': ['fabrics', 'techniques'],
+    'display': 'catelogs',
+    'csrs': 'csrs',
   })
   .set('routes', app => {
     app
