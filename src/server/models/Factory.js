@@ -39,6 +39,7 @@ Factory.add({
     'chinese_traditional': { type: Types.Textarea, height: 200 },
     'chinese_simplified': { type: Types.Textarea, height: 200 },
   },
+  gallery: { type: String },
 });
 
 Factory.track = true;

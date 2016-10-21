@@ -13,9 +13,7 @@ import CSRCategory from './containers/CSRCategory.jsx';
 import News from './containers/News.jsx';
 import History from './containers/History.jsx';
 import Culture from './containers/Culture.jsx';
-import Men from './containers/Men.jsx';
-import Women from './containers/Women.jsx';
-import Children from './containers/Children.jsx';
+import Gender from './containers/Gender.jsx';
 import Partners from './containers/Partners.jsx';
 import Category from './containers/Category.jsx';
 import Factory from './containers/Factory.jsx';
@@ -49,9 +47,7 @@ const innerRoutes = (
     <Route path="who-we-are/our-partners" component={Partners} />
     <Route path="products" component={Products} />
     <Route path="products/category" component={Category} />
-    <Route path="products/category/men" component={Men} />
-    <Route path="products/category/women" component={Women} />
-    <Route path="products/category/children" component={Children} />
+    <Route path="products/category/:gender" component={Gender} />
     <Route path="products/materials" component={Materials} />
     <Route path="products/techniques" component={Techniques} />
     <Route path="people" component={People} />

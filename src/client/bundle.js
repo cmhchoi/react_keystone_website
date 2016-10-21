@@ -98,17 +98,9 @@
 
 	var _Culture2 = _interopRequireDefault(_Culture);
 
-	var _Men = __webpack_require__(270);
+	var _Gender = __webpack_require__(307);
 
-	var _Men2 = _interopRequireDefault(_Men);
-
-	var _Women = __webpack_require__(271);
-
-	var _Women2 = _interopRequireDefault(_Women);
-
-	var _Children = __webpack_require__(272);
-
-	var _Children2 = _interopRequireDefault(_Children);
+	var _Gender2 = _interopRequireDefault(_Gender);
 
 	var _Partners = __webpack_require__(273);
 
@@ -181,9 +173,7 @@
 	  _react2.default.createElement(_reactRouter.Route, { path: 'who-we-are/our-partners', component: _Partners2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'products', component: _Products2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'products/category', component: _Category2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: 'products/category/men', component: _Men2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: 'products/category/women', component: _Women2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: 'products/category/children', component: _Children2.default }),
+	  _react2.default.createElement(_reactRouter.Route, { path: 'products/category/:gender', component: _Gender2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'products/materials', component: _Materials2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'products/techniques', component: _Techniques2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'people', component: _People2.default }),
@@ -27373,7 +27363,6 @@
 	        var CSR_practices = [];
 	        var CSR_sustainability = [];
 	        var CSR_collaboration = [];
-	        console.log('-----------CSRs', CSRs);
 	        CSRs.map(function (CSR) {
 	          if (CSR.category === 'Sustainability') CSR_sustainability.push(CSR);
 	          if (CSR.category === 'Charitable Programme') CSR_charity.push(CSR);
@@ -27383,6 +27372,18 @@
 	        });
 	        _this2.setState({ CSR_responsibility: CSR_responsibility, CSR_charity: CSR_charity, CSR_practices: CSR_practices, CSR_sustainability: CSR_sustainability, CSR_collaboration: CSR_collaboration });
 	        console.log('CSRs');
+	      });
+	      _jquery2.default.get('/api/products', function (products) {
+	        var product_men = [];
+	        var product_women = [];
+	        var product_children = [];
+	        products.map(function (product) {
+	          if (product.gender === 'Men') product_men.push(product);
+	          if (product.gender === 'Women') product_women.push(product);
+	          if (product.gender === 'Children') product_children.push(product);
+	        });
+	        _this2.setState({ product_men: product_men, product_women: product_women, product_children: product_children });
+	        console.log('products');
 	      });
 	      this.setState({ labels: _labels2.default });
 	    }
@@ -38605,8 +38606,7 @@
 
 	    _this.state = {
 	      index: 0,
-	      isOpen: false,
-	      type: null
+	      isOpen: false
 	    };
 	    return _this;
 	  }
@@ -38617,14 +38617,15 @@
 
 	  _createClass(Frame, [{
 	    key: 'linkToModal',
-	    value: function linkToModal(picture, images, language, extraClass) {
+	    value: function linkToModal(picture, language, extraClass) {
 	      var _this2 = this;
 
 	      // when triggered, this opens the modal lightbox and determines which selection of images to choose from
 	      var openLightbox = function openLightbox(picture) {
+	        var images = picture.gallery.split(',');
 	        _this2.setState({
 	          isOpen: true,
-	          type: picture.text[_this2.props.language]
+	          images: images
 	        });
 	      };
 
@@ -38633,11 +38634,11 @@
 	      };
 
 	      var moveNext = function moveNext() {
-	        _this2.setState({ index: (_this2.state.index + 1) % images[0][_this2.state.type].length });
+	        _this2.setState({ index: (_this2.state.index + 1) % _this2.state.images.length });
 	      };
 
 	      var movePrev = function movePrev() {
-	        _this2.setState({ index: (_this2.state.index + images[0][_this2.state.type].length - 1) % images[0][_this2.state.type].length });
+	        _this2.setState({ index: (_this2.state.index + _this2.state.images.length - 1) % _this2.state.images.length });
 	      };
 
 	      var lightbox = '';
@@ -38646,9 +38647,9 @@
 	          'div',
 	          null,
 	          _react2.default.createElement(_reactImageLightbox2.default, {
-	            mainSrc: images[0][this.state.type][this.state.index],
-	            nextSrc: images[0][this.state.type][(this.state.index + 1) % images.length],
-	            prevSrc: images[0][this.state.type][(this.state.index + images.length - 1) % images.length],
+	            mainSrc: this.state.images[this.state.index],
+	            nextSrc: this.state.images[(this.state.index + 1) % this.state.images.length],
+	            prevSrc: this.state.images[(this.state.index + this.state.images.length - 1) % this.state.images.length],
 
 	            onCloseRequest: closeLightbox,
 	            onMovePrevRequest: movePrev,
@@ -38660,7 +38661,7 @@
 	      var pictureContainer = "picture-container ";
 	      extraClass ? pictureContainer += extraClass : pictureContainer;
 
-	      if (images) {
+	      if (picture.gallery) {
 	        // picture is passed down to openLightbox so that it can pick the correct selection based on picture.text[this.props.language]
 	        return _react2.default.createElement(
 	          'a',
@@ -38685,9 +38686,9 @@
 	        );
 	      } else {
 	        var pictureLink = picture.link;
-	        if (language === 'chinese_traditional') {
+	        if (this.props.language === 'chinese_traditional') {
 	          pictureLink = '/zh-t' + picture.link;
-	        } else if (language === 'chinese_simplified') {
+	        } else if (this.props.language === 'chinese_simplified') {
 	          pictureLink = '/zh-s' + picture.link;
 	        }
 	        return _react2.default.createElement(
@@ -38728,7 +38729,7 @@
 	          _react2.default.createElement(
 	            'li',
 	            { className: listClass },
-	            _this3.linkToModal(picture, _this3.props.images)
+	            _this3.linkToModal(picture)
 	          )
 	        );
 	      });
@@ -38742,7 +38743,7 @@
 	        _react2.default.createElement(
 	          'li',
 	          { className: 'col-xs-12 col-sm-12 col-lg-4 picture-link' },
-	          this.linkToModal(rectangles[0], this.props.images, this.props.language, "rectangle large-no-rectangle")
+	          this.linkToModal(rectangles[0], this.props.language, "rectangle large-no-rectangle")
 	        )
 	      );
 	    }
@@ -38755,12 +38756,12 @@
 	        _react2.default.createElement(
 	          'li',
 	          { className: 'col-xs-12 col-sm-6 col-lg-8 picture-link' },
-	          this.linkToModal(rectangles[0], this.props.images, this.props.language, "rectangle mid-no-rectangle")
+	          this.linkToModal(rectangles[0], this.props.language, "rectangle mid-no-rectangle")
 	        ),
 	        _react2.default.createElement(
 	          'li',
 	          { className: 'col-xs-12 col-sm-6 col-lg-4 picture-link' },
-	          this.linkToModal(squares[0], this.props.images, this.props.language)
+	          this.linkToModal(squares[0], this.props.language)
 	        )
 	      );
 	    }
@@ -38773,22 +38774,22 @@
 	        _react2.default.createElement(
 	          'li',
 	          { className: 'col-xs-12 col-sm-6 col-lg-8 picture-link' },
-	          this.linkToModal(rectangles[0], this.props.images, this.props.language, "rectangle mid-no-rectangle")
+	          this.linkToModal(rectangles[0], this.props.language, "rectangle mid-no-rectangle")
 	        ),
 	        _react2.default.createElement(
 	          'li',
 	          { className: 'col-xs-12 col-sm-6 col-lg-4 picture-link' },
-	          this.linkToModal(squares[0], this.props.images, this.props.language)
+	          this.linkToModal(squares[0], this.props.language)
 	        ),
 	        _react2.default.createElement(
 	          'li',
 	          { className: 'col-xs-12 col-sm-6 col-lg-4 picture-link' },
-	          this.linkToModal(squares[1], this.props.images, this.props.language)
+	          this.linkToModal(squares[1], this.props.language)
 	        ),
 	        _react2.default.createElement(
 	          'li',
 	          { className: 'col-xs-12 col-sm-6 col-lg-8 picture-link' },
-	          this.linkToModal(rectangles[1], this.props.images, this.props.language, "rectangle mid-no-rectangle")
+	          this.linkToModal(rectangles[1], this.props.language, "rectangle mid-no-rectangle")
 	        )
 	      );
 	    }
@@ -38801,22 +38802,22 @@
 	        _react2.default.createElement(
 	          'li',
 	          { className: 'col-xs-12 col-sm-12 col-lg-8 picture-link' },
-	          this.linkToModal(rectangles[0], this.props.images, this.props.language, "rectangle")
+	          this.linkToModal(rectangles[0], this.props.language, "rectangle")
 	        ),
 	        _react2.default.createElement(
 	          'li',
 	          { className: 'col-xs-12 col-sm-6 col-lg-4 picture-link' },
-	          this.linkToModal(squares[0], this.props.images, this.props.language)
+	          this.linkToModal(squares[0], this.props.language)
 	        ),
 	        _react2.default.createElement(
 	          'li',
 	          { className: 'col-xs-12 col-sm-6 col-lg-4 picture-link' },
-	          this.linkToModal(squares[1], this.props.images, this.props.language)
+	          this.linkToModal(squares[1], this.props.language)
 	        ),
 	        _react2.default.createElement(
 	          'li',
 	          { className: 'col-xs-12 col-sm-6 col-lg-8 picture-link' },
-	          this.linkToModal(rectangles[1], this.props.images, this.props.language, "rectangle")
+	          this.linkToModal(rectangles[1], this.props.language, "rectangle")
 	        )
 	      );
 	    }
@@ -38829,12 +38830,12 @@
 	        _react2.default.createElement(
 	          'li',
 	          { className: 'col-xs-12 col-sm-12 col-lg-8 picture-link' },
-	          this.linkToModal(rectangles[0], this.props.images, this.props.language, "rectangle")
+	          this.linkToModal(rectangles[0], this.props.language, "rectangle")
 	        ),
 	        _react2.default.createElement(
 	          'li',
 	          { className: 'col-xs-12 col-sm-6 col-lg-4 picture-link' },
-	          this.linkToModal(squares[0], this.props.images, this.props.language)
+	          this.linkToModal(squares[0], this.props.language)
 	        )
 	      );
 	    }
@@ -42140,419 +42141,9 @@
 	exports.default = Culture;
 
 /***/ },
-/* 270 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(172);
-
-	var _Frame = __webpack_require__(239);
-
-	var _Frame2 = _interopRequireDefault(_Frame);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Men = function (_React$Component) {
-	  _inherits(Men, _React$Component);
-
-	  function Men(props) {
-	    _classCallCheck(this, Men);
-
-	    var _this = _possibleConstructorReturn(this, (Men.__proto__ || Object.getPrototypeOf(Men)).call(this, props));
-
-	    _this.state = {
-	      pictures: [{
-	        image: "http://www.ganzomag.com/wp-content/uploads/2013/07/perfect-persuasion-tshirts.jpg",
-	        text: {
-	          english: "T-SHIRTS",
-	          'chinese_traditional': 'T恤',
-	          'chinese_simplified': 'T恤'
-	        },
-	        link: '/products/men',
-	        shape: 'square'
-	      }, {
-	        image: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
-	        text: {
-	          english: "TROUSERS",
-	          'chinese_traditional': '褲子',
-	          'chinese_simplified': '裤子'
-	        },
-	        link: '/products/men',
-	        shape: 'square'
-	      }, {
-	        image: "https://cdnc.lystit.com/1200/630/tr/photos/9b5f-2016/02/12/perry-ellis-america-white-landscape-photo-print-long-sleeve-sweatshirt-product-1-717959060-normal.jpeg",
-	        text: {
-	          english: "KNITS",
-	          'chinese_traditional': '針織',
-	          'chinese_simplified': '针织'
-	        },
-	        link: '/products/men',
-	        shape: 'rectangle'
-	      }, {
-	        image: "http://digitalspyuk.cdnds.net/13/02/640x320/landscape_ustv-suits-patrick-j-adams-1.jpg",
-	        text: {
-	          english: "SUITS",
-	          'chinese_traditional': 'SUITS',
-	          'chinese_simplified': 'SUITS'
-	        },
-	        link: '/products/men',
-	        shape: 'rectangle'
-	      }],
-	      images: [{
-	        "T-SHIRTS": ["http://www.ganzomag.com/wp-content/uploads/2013/07/perfect-persuasion-tshirts.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/24/Blue_Tshirt.jpg", "https://www.lamnia.com/images/sg-150-Shirts_and_T-Shirts.jpg", "http://market24.co/wp-content/uploads/2016/04/t473gold.jpg"],
-	        "TROUSERS": ["http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg", "https://media.frenchconnection.com/ms/fcuk/54EEZ.jpg?height=768&width=526&lc=en-GB&lv=9", "http://www.charleswall.co.uk/images/XL/GurteenTrouser1400011_202.jpg", "http://www.blitzsport.com/images/large/Adult-Classic-Polycotton-Full-Contact-Trousers-Black-Red.jpg"],
-	        "KNITS": ["https://ae01.alicdn.com/kf/HTB1YMhGKFXXXXXEXpXXq6xXFXXXN/2015-New-font-b-Men-b-font-Casual-O-neck-Pullover-Christmas-font-b-Sweater-b.jpg", "http://www.ruedeshommes.com/media/produits/img/28556-superdry-h15-pull-hudson-fairisle-henley-m61lk033-ayn-pull-tricot-hudson-superdry-acrylique-et-laine-gris-anthracite-a-motifs-1_1128x1128.jpg", "http://i2.cdscdn.com/pdt2/7/6/4/1/700x700/mp02273764/rw/subliminal-mode-pull-over-col-rond-homme-tricot.jpg", "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=70430526"],
-	        "SUITS": ["http://images.shopmadeinchina.com/p/437/4538437_0/Men-s-business-suits-Western-style-clothes-top_4538437_0.bak.jpg", "http://images.menswearhouse.com/is/image/TMW/MW40_30U4_14_PERRY_ELLIS_PORTFOLIO_BLUE_POSTMAN_MAIN?01AD=3Bz6xbUUrlWQZ9-z7yjYCMM6SrHDgkwMXoUu6FYuCnLoX916UN2-5GQ&01RI=A71D5047F5D8C7D&01NA=&$40Zoom$", "http://www.mexatk.com/wp-content/uploads/2015/11/%D8%A7%D8%AD%D8%AF%D8%AB-%D9%85%D9%88%D8%B6%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%A8%D8%AF%D9%84-%D8%A7%D9%84%D8%B1%D8%AC%D8%A7%D9%84%D9%8A-6.jpg", "https://cdna.lystit.com/photos/1d37-2015/03/11/calvin-klein-navy-white-label-body-slim-fit-navy-pinstripe-suit-jacket-blue-product-2-916106911-normal.jpeg"]
-	      }]
-	    };
-	    return _this;
-	  }
-
-	  _createClass(Men, [{
-	    key: 'render',
-	    value: function render() {
-	      var language = this.props.params.language;
-	      var labels = this.props.state.labels;
-	      var lang = void 0,
-	          langLink = '';
-	      lang = language === 'zh-t' ? 'chinese_traditional' : language === 'zh-s' ? 'chinese_simplified' : 'english';
-	      langLink = language === 'zh-t' || language === 'zh-s' ? '/' + language : '';
-
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-12' },
-	            _react2.default.createElement(
-	              'ol',
-	              { className: 'breadcrumb' },
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: langLink + '/' } },
-	                  labels.home[lang]
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: langLink + '/products' } },
-	                  labels.products[lang]
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: langLink + '/products/category' } },
-	                  labels.category[lang]
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                { className: 'active' },
-	                labels.men[lang]
-	              )
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(_Frame2.default, { pictures: this.state.pictures, images: this.state.images, language: lang })
-	      );
-	    }
-	  }]);
-
-	  return Men;
-	}(_react2.default.Component);
-
-	exports.default = Men;
-
-/***/ },
-/* 271 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(172);
-
-	var _Frame = __webpack_require__(239);
-
-	var _Frame2 = _interopRequireDefault(_Frame);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Women = function (_React$Component) {
-	  _inherits(Women, _React$Component);
-
-	  function Women(props) {
-	    _classCallCheck(this, Women);
-
-	    var _this = _possibleConstructorReturn(this, (Women.__proto__ || Object.getPrototypeOf(Women)).call(this, props));
-
-	    _this.state = {
-	      pictures: [{
-	        img: "https://cdn.shopify.com/s/files/1/1099/5666/collections/Banner-tshirt-woman.jpg?v=1462258578",
-	        des: "T-SHIRTS",
-	        link: '/products/women',
-	        size: 'rectangle'
-	      }, {
-	        img: "http://www.nelsonwade.com/wp-content/uploads/2014/06/nelsonwade_custom_tailored_women_pants_trousers_med_gray_plain_front.jpg",
-	        des: "TROUSERS",
-	        link: '/products/women',
-	        size: 'square'
-	      }, {
-	        img: "http://prima.cdnds.net/assets/16/25/480x240/landscape-1466785735-knitted-lace-top.jpg",
-	        des: "KNITS",
-	        link: '/products/women',
-	        size: 'rectangle'
-	      }, {
-	        img: "http://i01.i.aliimg.com/wsphoto/v0/2030038917_1/-font-b-military-b-font-font-b-jacket-b-font-font-b-women-b-font.jpg",
-	        des: "JACKETS",
-	        link: '/products/women',
-	        size: 'square'
-	      }],
-	      images: [{
-	        "T-SHIRTS": ["http://www.escapewear.cz/277-822-thickbox/womens-t-shirt-landscape-white.jpg", "http://g01.a.alicdn.com/kf/HTB1IYWsLFXXXXcRXVXXq6xXFXXXe/Sexy-Girl-T-shirts-Girl-Fashion-printed-round-neck-Cheap-Women-T-Shirts-Top-Quality-Slim.jpg", "http://ecx.images-amazon.com/images/I/51dz%2B59wn9L._SX342_.jpg", "http://johnlewis.scene7.com/is/image/JohnLewis/002257472?$prod_main$"],
-	        "TROUSERS": ["https://www.uniqlo.com/uniqloandlemaire/16SS-common/images/itemlineup/women/172462_65_m.jpg", "https://www.uniqlo.com/UniqloU/common/images/items/item_186049_09.jpg", "https://www.uniqlo.com/uniqloandlemaire/16SS-common/images/lookbook/169060_58_m.jpg", "http://im.uniqlo.com/images/common/pc/goods/163969/item/60_163969.jpg"],
-	        "KNITS": ["http://prima.cdnds.net/assets/16/25/480x240/landscape-1466785735-knitted-lace-top.jpg", "http://thebestfashionblog.com/wp-content/uploads/2014/10/Womens-Knit-Sweaters-2015-2.jpg", "https://cdn-img-3.wanelo.com/p/7df/893/953/b549c4e454fd49c80eb723f/x354-q80.jpg", "https://s-media-cache-ak0.pinimg.com/236x/cf/c3/bd/cfc3bd9dfee9da247ef73d56eff4ce94.jpg"],
-	        "JACKETS": ["http://i01.i.aliimg.com/wsphoto/v0/2030038917_1/-font-b-military-b-font-font-b-jacket-b-font-font-b-women-b-font.jpg", "http://atmintlstyle.com/sites/default/files/Latest-Women-Quilted-Jacket.jpg", "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=90695777", "http://atmintlstyle.com/sites/default/files/SuedeStuddedWaterfallJacket.jpg"]
-	      }]
-	    };
-	    return _this;
-	  }
-
-	  _createClass(Women, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-12' },
-	            _react2.default.createElement(
-	              'ol',
-	              { className: 'breadcrumb' },
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: "/" } },
-	                  'Home'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: "/products" } },
-	                  'Products'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: "/products/category" } },
-	                  'Category'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                { className: 'active' },
-	                'Women'
-	              )
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(_Frame2.default, { pictures: this.state.pictures, images: this.state.images })
-	      );
-	    }
-	  }]);
-
-	  return Women;
-	}(_react2.default.Component);
-
-	exports.default = Women;
-
-/***/ },
-/* 272 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(172);
-
-	var _Frame = __webpack_require__(239);
-
-	var _Frame2 = _interopRequireDefault(_Frame);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Children = function (_React$Component) {
-	  _inherits(Children, _React$Component);
-
-	  function Children(props) {
-	    _classCallCheck(this, Children);
-
-	    var _this = _possibleConstructorReturn(this, (Children.__proto__ || Object.getPrototypeOf(Children)).call(this, props));
-
-	    _this.state = {
-	      pictures: [{
-	        img: "http://www.ganzomag.com/wp-content/uploads/2013/07/perfect-persuasion-tshirts.jpg",
-	        des: "T-SHIRTS",
-	        link: '/products/children',
-	        size: 'square'
-	      }, {
-	        img: "http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg",
-	        des: "TROUSERS",
-	        link: '/products/children',
-	        size: 'square'
-	      }, {
-	        img: "https://cdnc.lystit.com/1200/630/tr/photos/9b5f-2016/02/12/perry-ellis-america-white-landscape-photo-print-long-sleeve-sweatshirt-product-1-717959060-normal.jpeg",
-	        des: "KNITS",
-	        link: '/products/children',
-	        size: 'rectangle'
-	      }, {
-	        img: "http://digitalspyuk.cdnds.net/13/02/640x320/landscape_ustv-suits-patrick-j-adams-1.jpg",
-	        des: "SUITS",
-	        link: '/products/children',
-	        size: 'rectangle'
-	      }],
-	      images: [{
-	        "T-SHIRTS": ["http://www.ganzomag.com/wp-content/uploads/2013/07/perfect-persuasion-tshirts.jpg", "https://upload.wikimedia.org/wikipedia/commons/2/24/Blue_Tshirt.jpg", "https://www.lamnia.com/images/sg-150-Shirts_and_T-Shirts.jpg", "http://market24.co/wp-content/uploads/2016/04/t473gold.jpg"],
-	        "TROUSERS": ["http://image.dhgate.com/0x0/f2/albu/g3/M01/65/E3/rBVaHFaSFc2AB4WMAACEMPKwEx8946.jpg", "https://media.frenchconnection.com/ms/fcuk/54EEZ.jpg?height=768&width=526&lc=en-GB&lv=9", "http://www.charleswall.co.uk/images/XL/GurteenTrouser1400011_202.jpg", "http://www.blitzsport.com/images/large/Adult-Classic-Polycotton-Full-Contact-Trousers-Black-Red.jpg"],
-	        "KNITS": ["https://ae01.alicdn.com/kf/HTB1YMhGKFXXXXXEXpXXq6xXFXXXN/2015-New-font-b-Men-b-font-Casual-O-neck-Pullover-Christmas-font-b-Sweater-b.jpg", "http://www.ruedeshommes.com/media/produits/img/28556-superdry-h15-pull-hudson-fairisle-henley-m61lk033-ayn-pull-tricot-hudson-superdry-acrylique-et-laine-gris-anthracite-a-motifs-1_1128x1128.jpg", "http://i2.cdscdn.com/pdt2/7/6/4/1/700x700/mp02273764/rw/subliminal-mode-pull-over-col-rond-homme-tricot.jpg", "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=70430526"],
-	        "SUITS": ["http://images.shopmadeinchina.com/p/437/4538437_0/Men-s-business-suits-Western-style-clothes-top_4538437_0.bak.jpg", "http://images.menswearhouse.com/is/image/TMW/MW40_30U4_14_PERRY_ELLIS_PORTFOLIO_BLUE_POSTMAN_MAIN?01AD=3Bz6xbUUrlWQZ9-z7yjYCMM6SrHDgkwMXoUu6FYuCnLoX916UN2-5GQ&01RI=A71D5047F5D8C7D&01NA=&$40Zoom$", "http://www.mexatk.com/wp-content/uploads/2015/11/%D8%A7%D8%AD%D8%AF%D8%AB-%D9%85%D9%88%D8%B6%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%A8%D8%AF%D9%84-%D8%A7%D9%84%D8%B1%D8%AC%D8%A7%D9%84%D9%8A-6.jpg", "https://cdna.lystit.com/photos/1d37-2015/03/11/calvin-klein-navy-white-label-body-slim-fit-navy-pinstripe-suit-jacket-blue-product-2-916106911-normal.jpeg"]
-	      }]
-	    };
-	    return _this;
-	  }
-
-	  _createClass(Children, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-12' },
-	            _react2.default.createElement(
-	              'ol',
-	              { className: 'breadcrumb' },
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  'a',
-	                  { className: 'grey underline', href: '/' },
-	                  'Home'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: "/products" } },
-	                  'Products'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: "/products/category" } },
-	                  'Category'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                { className: 'active' },
-	                'Children'
-	              )
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(_Frame2.default, { pictures: this.state.pictures, images: this.state.images })
-	      );
-	    }
-	  }]);
-
-	  return Children;
-	}(_react2.default.Component);
-
-	exports.default = Children;
-
-/***/ },
+/* 270 */,
+/* 271 */,
+/* 272 */,
 /* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -42992,15 +42583,16 @@
 	      isOpen: false
 	    };
 
-	    _this.images = ['http://borisivanov.com/wp-content/uploads/2016/02/factory-1.jpg', 'http://borisivanov.com/wp-content/uploads/2016/02/factory-1.jpg', 'http://www.torontocitylife.com/wp-content/uploads/2013/08/London-factory-large.jpg'];
 	    return _this;
 	  }
 
 	  _createClass(Factories, [{
 	    key: 'openLightbox',
-	    value: function openLightbox() {
+	    value: function openLightbox(images) {
+	      var gallery = images.split(',');
 	      this.setState({
-	        isOpen: true
+	        isOpen: true,
+	        images: gallery
 	      });
 	    }
 	  }, {
@@ -43011,12 +42603,12 @@
 	  }, {
 	    key: 'moveNext',
 	    value: function moveNext() {
-	      this.setState({ index: (this.state.index + 1) % this.images.length });
+	      this.setState({ index: (this.state.index + 1) % this.state.images.length });
 	    }
 	  }, {
 	    key: 'movePrev',
 	    value: function movePrev() {
-	      this.setState({ index: (this.state.index + this.images.length - 1) % this.images.length });
+	      this.setState({ index: (this.state.index + this.state.images.length - 1) % this.state.images.length });
 	    }
 	  }, {
 	    key: 'render',
@@ -43036,9 +42628,9 @@
 	          'div',
 	          null,
 	          _react2.default.createElement(_reactImageLightbox2.default, {
-	            mainSrc: this.images[this.state.index],
-	            nextSrc: this.images[(this.state.index + 1) % this.images.length],
-	            prevSrc: this.images[(this.state.index + this.images.length - 1) % this.images.length],
+	            mainSrc: this.state.images[this.state.index],
+	            nextSrc: this.state.images[(this.state.index + 1) % this.state.images.length],
+	            prevSrc: this.state.images[(this.state.index + this.state.images.length - 1) % this.state.images.length],
 
 	            onCloseRequest: this.closeLightbox.bind(this),
 	            onMovePrevRequest: this.movePrev.bind(this),
@@ -43114,7 +42706,7 @@
 	                  _react2.default.createElement(
 	                    'a',
 	                    { href: '#', onClick: function onClick() {
-	                        return _this2.openLightbox();
+	                        return _this2.openLightbox(factory.gallery);
 	                      } },
 	                    _react2.default.createElement(
 	                      'div',
@@ -45626,6 +45218,118 @@
 	}(_react2.default.Component);
 
 	exports.default = CSRCategory;
+
+/***/ },
+/* 307 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(172);
+
+	var _Frame = __webpack_require__(239);
+
+	var _Frame2 = _interopRequireDefault(_Frame);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Gender = function (_React$Component) {
+	  _inherits(Gender, _React$Component);
+
+	  function Gender() {
+	    _classCallCheck(this, Gender);
+
+	    return _possibleConstructorReturn(this, (Gender.__proto__ || Object.getPrototypeOf(Gender)).apply(this, arguments));
+	  }
+
+	  _createClass(Gender, [{
+	    key: 'render',
+	    value: function render() {
+	      var product_men = this.props.state.product_men;
+	      var product_women = this.props.state.product_women;
+	      var product_children = this.props.state.product_children;
+	      var displayProducts = '';
+	      if (this.props.params.gender === 'men') displayProducts = product_men;
+	      if (this.props.params.gender === 'women') displayProducts = product_women;
+	      if (this.props.params.gender === 'children') displayProducts = product_children;
+	      var language = this.props.params.language;
+	      var labels = this.props.state.labels;
+	      var lang = void 0,
+	          langLink = '';
+	      lang = language === 'zh-t' ? 'chinese_traditional' : language === 'zh-s' ? 'chinese_simplified' : 'english';
+	      langLink = language === 'zh-t' || language === 'zh-s' ? '/' + language : '';
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-xs-12' },
+	            _react2.default.createElement(
+	              'ol',
+	              { className: 'breadcrumb' },
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { className: 'grey underline', to: { pathname: langLink + '/' } },
+	                  labels.home[lang]
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { className: 'grey underline', to: { pathname: langLink + '/products' } },
+	                  labels.products[lang]
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { className: 'grey underline', to: { pathname: langLink + '/products/category' } },
+	                  labels.category[lang]
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { className: 'active' },
+	                labels.men[lang]
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(_Frame2.default, { pictures: displayProducts, language: lang })
+	      );
+	    }
+	  }]);
+
+	  return Gender;
+	}(_react2.default.Component);
+
+	exports.default = Gender;
 
 /***/ }
 /******/ ]);

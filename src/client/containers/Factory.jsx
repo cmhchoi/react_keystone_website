@@ -11,17 +11,14 @@ export default class Factories extends React.Component {
       index: 0,
       isOpen: false,
     }
-
-    this.images = [
-      'http://borisivanov.com/wp-content/uploads/2016/02/factory-1.jpg',
-      'http://borisivanov.com/wp-content/uploads/2016/02/factory-1.jpg',
-      'http://www.torontocitylife.com/wp-content/uploads/2013/08/London-factory-large.jpg'
-    ]
+    
   }
 
-  openLightbox() {
+  openLightbox(images) {
+    const gallery = images.split(',')
     this.setState({ 
       isOpen: true,
+      images: gallery,
     });
   }
 
@@ -30,11 +27,11 @@ export default class Factories extends React.Component {
   }
   
   moveNext() {
-    this.setState({ index: (this.state.index + 1) % this.images.length });
+    this.setState({ index: (this.state.index + 1) % this.state.images.length });
   }
   
   movePrev() {
-    this.setState({ index: (this.state.index + this.images.length - 1) % this.images.length });
+    this.setState({ index: (this.state.index + this.state.images.length - 1) % this.state.images.length });
   }
 
   render() {
@@ -49,9 +46,9 @@ export default class Factories extends React.Component {
       lightbox = (
         <div>
           <Lightbox
-          mainSrc={this.images[this.state.index]}
-          nextSrc={this.images[(this.state.index + 1) % this.images.length]}
-          prevSrc={this.images[(this.state.index + this.images.length - 1) % this.images.length]}
+          mainSrc={this.state.images[this.state.index]}
+          nextSrc={this.state.images[(this.state.index + 1) % this.state.images.length]}
+          prevSrc={this.state.images[(this.state.index + this.state.images.length - 1) % this.state.images.length]}
 
           onCloseRequest={this.closeLightbox.bind(this)}
           onMovePrevRequest={this.movePrev.bind(this)}
@@ -83,7 +80,7 @@ export default class Factories extends React.Component {
                 const link = '/people/factories/' + factory.description.english;
                 return( 
                   <li className="picture-link factory col-xs-12 col-sm-6">
-                    <a href="#" onClick={() => this.openLightbox()}>
+                    <a href="#" onClick={() => this.openLightbox(factory.gallery)}>
                       <div className="text">
                         <p className="picture-des">{factory.description[lang]}</p>
                       </div>

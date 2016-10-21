@@ -11,6 +11,7 @@ const techniqueController = require('../controllers/techniqueController');
 const historyController = require('../controllers/historyController');
 const employeeController = require('../controllers/employeeController');
 const CSRController = require('../controllers/CSRController');
+const productController = require('../controllers/productController');
 
 router.get('/users', userController.get);
 router.get('/factories', factoryController.get);
@@ -25,5 +26,6 @@ router.get('/techniques', techniqueController.get);
 router.get('/histories', historyController.get);
 router.get('/employees', employeeController.get);
 router.get('/CSRs', CSRController.get);
+router.get('/products', productController.get);
 
 module.exports = router;

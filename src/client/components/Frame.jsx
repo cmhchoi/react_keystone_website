@@ -9,18 +9,18 @@ export default class Frame extends React.Component {
     this.state = {
       index: 0,
       isOpen: false,
-      type: null,
     }
   }
 
   // determine whether to render Frame as link to the next page or to modal lightbox
   // images is an array in the form of: [{type1: [], type2: []}]
-  linkToModal(picture, images, language, extraClass) {
+  linkToModal(picture, language, extraClass) {
     // when triggered, this opens the modal lightbox and determines which selection of images to choose from
     const openLightbox = (picture) => {
+      const images = picture.gallery.split(',');
       this.setState({ 
         isOpen: true,
-        type: picture.text[this.props.language],
+        images,
       });
     }
 
@@ -29,11 +29,11 @@ export default class Frame extends React.Component {
     }
     
     const moveNext = () => {
-      this.setState({ index: (this.state.index + 1) % images[0][this.state.type].length });
+      this.setState({ index: (this.state.index + 1) % this.state.images.length });
     }
     
     const movePrev = () => {
-      this.setState({ index: (this.state.index + images[0][this.state.type].length - 1) % images[0][this.state.type].length });
+      this.setState({ index: (this.state.index + this.state.images.length - 1) % this.state.images.length });
     }
 
     let lightbox = '';
@@ -41,9 +41,9 @@ export default class Frame extends React.Component {
       lightbox = (
         <div>
           <Lightbox
-          mainSrc={images[0][this.state.type][this.state.index]}
-          nextSrc={images[0][this.state.type][(this.state.index + 1) % images.length]}
-          prevSrc={images[0][this.state.type][(this.state.index + images.length - 1) % images.length]}
+          mainSrc={this.state.images[this.state.index]}
+          nextSrc={this.state.images[(this.state.index + 1) % this.state.images.length]}
+          prevSrc={this.state.images[(this.state.index + this.state.images.length - 1) % this.state.images.length]}
 
           onCloseRequest={closeLightbox}
           onMovePrevRequest={movePrev}
@@ -56,7 +56,7 @@ export default class Frame extends React.Component {
     let pictureContainer = "picture-container ";
     extraClass ? pictureContainer += extraClass : pictureContainer;
 
-    if(images) {
+    if(picture.gallery) {
       // picture is passed down to openLightbox so that it can pick the correct selection based on picture.text[this.props.language]
       return(
         <a href="#" onClick={() => openLightbox(picture)}>
@@ -71,9 +71,9 @@ export default class Frame extends React.Component {
       )
     } else {
       let pictureLink = picture.link;
-      if(language === 'chinese_traditional') {
+      if(this.props.language === 'chinese_traditional') {
         pictureLink = `/zh-t${picture.link}`;
-      } else if (language === 'chinese_simplified') {
+      } else if (this.props.language === 'chinese_simplified') {
         pictureLink = `/zh-s${picture.link}`;
       }
       return(
@@ -98,7 +98,7 @@ export default class Frame extends React.Component {
       return( 
         <div>
           <li className={listClass}>
-            {this.linkToModal(picture, this.props.images)}
+            {this.linkToModal(picture)}
           </li>
         </div>
       )
@@ -109,7 +109,7 @@ export default class Frame extends React.Component {
     return (
       <div>
         <li className="col-xs-12 col-sm-12 col-lg-4 picture-link">
-          {this.linkToModal(rectangles[0], this.props.images, this.props.language, "rectangle large-no-rectangle")}
+          {this.linkToModal(rectangles[0], this.props.language, "rectangle large-no-rectangle")}
         </li>
       </div>
     )
@@ -119,10 +119,10 @@ export default class Frame extends React.Component {
     return (
       <div>
         <li className="col-xs-12 col-sm-6 col-lg-8 picture-link">
-          {this.linkToModal(rectangles[0], this.props.images, this.props.language, "rectangle mid-no-rectangle")}
+          {this.linkToModal(rectangles[0], this.props.language, "rectangle mid-no-rectangle")}
         </li>
         <li className="col-xs-12 col-sm-6 col-lg-4 picture-link">
-          {this.linkToModal(squares[0], this.props.images, this.props.language,)}
+          {this.linkToModal(squares[0], this.props.language,)}
         </li>
       </div>
     )
@@ -132,16 +132,16 @@ export default class Frame extends React.Component {
     return (
       <div>
         <li className="col-xs-12 col-sm-6 col-lg-8 picture-link">
-          {this.linkToModal(rectangles[0], this.props.images, this.props.language, "rectangle mid-no-rectangle")}
+          {this.linkToModal(rectangles[0], this.props.language, "rectangle mid-no-rectangle")}
         </li>
         <li className="col-xs-12 col-sm-6 col-lg-4 picture-link">
-          {this.linkToModal(squares[0], this.props.images, this.props.language)}
+          {this.linkToModal(squares[0], this.props.language)}
         </li>
         <li className="col-xs-12 col-sm-6 col-lg-4 picture-link">
-          {this.linkToModal(squares[1], this.props.images, this.props.language)}
+          {this.linkToModal(squares[1], this.props.language)}
         </li>
         <li className="col-xs-12 col-sm-6 col-lg-8 picture-link">
-          {this.linkToModal(rectangles[1], this.props.images, this.props.language, "rectangle mid-no-rectangle")}
+          {this.linkToModal(rectangles[1], this.props.language, "rectangle mid-no-rectangle")}
         </li>
       </div>
     )
@@ -151,16 +151,16 @@ export default class Frame extends React.Component {
     return (
       <div>
         <li className="col-xs-12 col-sm-12 col-lg-8 picture-link">
-          {this.linkToModal(rectangles[0], this.props.images, this.props.language, "rectangle")}
+          {this.linkToModal(rectangles[0], this.props.language, "rectangle")}
         </li>
         <li className="col-xs-12 col-sm-6 col-lg-4 picture-link">
-          {this.linkToModal(squares[0], this.props.images, this.props.language)}
+          {this.linkToModal(squares[0], this.props.language)}
         </li>
         <li className="col-xs-12 col-sm-6 col-lg-4 picture-link">
-          {this.linkToModal(squares[1], this.props.images, this.props.language)}
+          {this.linkToModal(squares[1], this.props.language)}
         </li>
         <li className="col-xs-12 col-sm-6 col-lg-8 picture-link">
-          {this.linkToModal(rectangles[1], this.props.images, this.props.language, "rectangle")}
+          {this.linkToModal(rectangles[1], this.props.language, "rectangle")}
         </li>
       </div>
     )
@@ -170,10 +170,10 @@ export default class Frame extends React.Component {
     return (
       <div>
         <li className="col-xs-12 col-sm-12 col-lg-8 picture-link">
-          {this.linkToModal(rectangles[0], this.props.images, this.props.language, "rectangle")}
+          {this.linkToModal(rectangles[0], this.props.language, "rectangle")}
         </li>
         <li className="col-xs-12 col-sm-6 col-lg-4 picture-link">
-          {this.linkToModal(squares[0], this.props.images, this.props.language)}
+          {this.linkToModal(squares[0], this.props.language)}
         </li>
       </div>
     )

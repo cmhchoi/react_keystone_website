@@ -96,7 +96,6 @@ export default class App extends React.Component {
       const CSR_practices = [];
       const CSR_sustainability = [];
       const CSR_collaboration = [];
-      console.log('-----------CSRs', CSRs)
       CSRs.map(CSR => {
         if(CSR.category === 'Sustainability') CSR_sustainability.push(CSR);
         if(CSR.category === 'Charitable Programme') CSR_charity.push(CSR);
@@ -106,6 +105,18 @@ export default class App extends React.Component {
       })
       this.setState({ CSR_responsibility, CSR_charity, CSR_practices, CSR_sustainability, CSR_collaboration })
       console.log('CSRs')
+    })
+    $.get('/api/products', products => {
+      const product_men = [];
+      const product_women = [];
+      const product_children = [];
+      products.map(product => {
+        if(product.gender === 'Men') product_men.push(product);
+        if(product.gender === 'Women') product_women.push(product);
+        if(product.gender === 'Children') product_children.push(product);
+      })
+      this.setState({ product_men, product_women, product_children })
+      console.log('products')
     })
     this.setState({ labels })
   }

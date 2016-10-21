@@ -20,6 +20,12 @@ Job.add({
     'chinese_traditional': { type: Types.Textarea, height: 400 },
     'chinese_simplified': { type: Types.Textarea, height: 400 },
   },
+  type: { type: Types.Select, options: 'Full Time, Part Time', default: 'Full Time' },
+  compensation: { 
+    english: { type: String },
+    'chinese_traditional': { type: String },
+    'chinese_simplified': { type: String },
+   },
   deadline: { type: Types.Date },
 });
 
