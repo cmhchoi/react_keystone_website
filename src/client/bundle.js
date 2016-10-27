@@ -43098,7 +43098,7 @@
 	  }, {
 	    key: 'openLightbox',
 	    value: function openLightbox(images) {
-	      var gallery = images.split(',');
+	      var gallery = images.split('||');
 	      this.setState({
 	        isOpen: true,
 	        images: gallery

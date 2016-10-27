@@ -29,7 +29,7 @@ export default class Factories extends React.Component {
   }
 
   openLightbox(images) {
-    const gallery = images.split(',')
+    const gallery = images.split('||')
     this.setState({ 
       isOpen: true,
       images: gallery,
