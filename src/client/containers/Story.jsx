@@ -4,6 +4,17 @@ import Frame from '../components/Frame.jsx';
 
 export default class Story extends React.Component {
 
+  resizing() {
+    $('.squareText').css("height", $("img.Noel").width());
+    $('.squareText').css("width", $("img.Noel").width());
+  }
+
+  componentDidMount() {
+    this.resizing();
+    setTimeout(() => { this.resizing() }, 100)
+    setTimeout(() => { this.resizing() }, 300)
+  }
+
   render() {
     const language = this.props.params.language;
     const labels = this.props.state.labels;
@@ -29,13 +40,14 @@ export default class Story extends React.Component {
                 if(!employee.name[lang]) { employee.name[lang] = employee.name.english };
                 if(!employee.description[lang]) { employee.description[lang] = employee.description.english };
                 if(!employee.department[lang]) { employee.department[lang] = employee.department.english };
+                let employeeImage = `picture ${employee.name.english}`
                 return( 
                   <li className="picture-link employee col-xs-12 col-sm-6 col-md-4">
-                    <div className="text">
+                    <div className="employee text squareText">
                       <p className="picture-des">{employee.description[lang]}</p>
                     </div>
                     <div className="picture-container">
-                      <img className="picture" src={employee.thumbnail}/>
+                      <img className={employeeImage} src={employee.thumbnail}/>
                     </div>
                     <h4>{employee.name[lang]}</h4>
                     <h5>{employee.department[lang]}</h5>

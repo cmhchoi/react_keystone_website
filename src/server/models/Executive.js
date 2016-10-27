@@ -13,6 +13,7 @@ Executive.add({
     'chinese_traditional': { type: String },
     'chinese_simplified': { type: String },
   },
+  ranking: { Type: String },
   image: { 
     type: String, 
   },

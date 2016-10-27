@@ -24,13 +24,10 @@ export default class Partners extends React.Component {
               </ol>
             </div>
           </div>
-          <Bulletin items={this.props.state.partners} language={lang} banner={ true }/>
+          <Bulletin items={this.props.state.partners} language={lang} banner={ true } image={ "http://res.cloudinary.com/fglorywebsite2016/image/upload/c_scale,w_2480/v1476081009/product_category.jpg" }/>
         </div>
       )
     } else {
-      // $.get('/api/partners', partners => {
-      //   this.props.updateAppState({ partners });
-      // })
       return(
         <div className="row">
           <div className="col-xs-12">

@@ -121,6 +121,70 @@ export default class App extends React.Component {
     this.setState({ labels })
   }
 
+  componentDidMount() {
+    $(window).resize(() => {
+      $('.squareText').css("height", $("img.home_whats-new").width());
+      $('.squareText').css("width", $("img.home_whats-new").width());
+      $('.squareText').css("height", $("img.products_techniques").width());
+      $('.squareText').css("width", $("img.products_techniques").width());
+      $('.squareText').css("height", $("img.product_category_children").width());
+      $('.squareText').css("width", $("img.product_category_children").width());
+      $('.squareText').css("height", $("img.csr_collaboration").width());
+      $('.squareText').css("width", $("img.csr_collaboration").width());
+      $('.squareText').css("height", $("img.people_jobs").width());
+      $('.squareText').css("width", $("img.people_jobs").width());
+      $('.squareText').css("height", $("img.who-we-are_partners").width());
+      $('.squareText').css("width", $("img.who-we-are_partners").width());
+      $('.squareText').css("height", $("img.Noel").width());
+      $('.squareText').css("width", $("img.Noel").width());
+      $('div.text').css("height", $("img.factoryImage").height());
+      $('.squareText').css("height", $("img.men_pants").width());
+      $('.squareText').css("width", $("img.men_pants").width());
+      $('.squareText').css("height", $("img.women_jackets").width());
+      $('.squareText').css("width", $("img.women_jackets").width());
+      $('.squareText').css("height", $("img.children_pants").width());
+      $('.squareText').css("width", $("img.children_pants").width());
+      if($(window).width() < 768) {
+        $('.rectangleText').css("width", $("img.home_whats-new").height());
+        $('.rectangleText').css("height", $("img.home_whats-new").height());
+        $('.rectangleText').css("height", $("img.products_techniques").height());
+        $('.rectangleText').css("width", $("img.products_techniques").height());
+        $('.rectangleText').css("width", $("img.product_category_children").height());
+        $('.rectangleText').css("height", $("img.product_category_children").height());
+        $('.rectangleText').css("width", $("img.csr_collaboration").height());
+        $('.rectangleText').css("height", $("img.csr_collaboration").height());
+        $('.rectangleText').css("width", $("img.people_jobs").height());
+        $('.rectangleText').css("height", $("img.people_jobs").height());
+        $('.rectangleText').css("width", $("img.who-we-are_partners").height());
+        $('.rectangleText').css("height", $("img.who-we-are_partners").height());
+        $('.rectangleText').css("width", $("img.men_pants").height());
+        $('.rectangleText').css("height", $("img.men_pants").height());
+        $('.rectangleText').css("width", $("img.women_jackets").width());
+        $('.rectangleText').css("height", $("img.women_jackets").width());
+        $('.rectangleText').css("height", $("img.children_pants").width());
+        $('.rectangleText').css("width", $("img.children_pants").width());
+      } else {
+        $('.rectangleText').css("height", $("img.home_who-we-are").height());
+        $('.rectangleText').css("height", $("img.products_category").height());
+        $('.rectangleText').css("height", $("img.product_category_men").height());
+        $('.rectangleText').css("height", $("img.csr_sustainability").height());
+        $('.rectangleText').css("height", $("img.people_factory").height());
+        $('.rectangleText').css("height", $("img.who-we-are_history").height());
+        $('.rectangleText').css("height", $("img.men_jackets").height());
+        $('.rectangleText').css("height", $("img.women_tops").height());
+        $('.rectangleText').css("height", $("img.children_dresses").height());
+        $('.rectangleText').css("width", $("div.picture-container.rectangle").width());
+        $('.rectangleText').css("width", $("div.picture-container.rectangle.large-no-rectangle").width());
+        $('.rectangleText').css("width", $("div.picture-container.rectangle.mid-no-rectangle").width());
+      }
+      if($(window).width() > 1200) {
+        $('div.text').css("width", $("img.factoryImage").width());
+      } else {
+        $('div.text').css("width", $("img.factoryImage").height());
+      }
+    })
+  }
+
   updateAppState(object) {
     this.setState(object);
   }

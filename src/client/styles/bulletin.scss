@@ -1,13 +1,9 @@
 .banner {
-  height: 300px;
   img {
-    width: 100%;
-    height: inherit;
-    display: block;
+    width: inherit;
   }
   margin-bottom: 20px;
-  padding-left: 25px;
-  padding-right: 5px;
+  padding-left: 30px;
 }
 
 @media (max-width: 768px) {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Bulletin from '../components/Bulletin.jsx';
-import $ from "jquery";
 
 export default class Materials extends React.Component {
 
@@ -27,19 +26,11 @@ export default class Materials extends React.Component {
               </ol>
             </div>
           </div>
-          <Bulletin items={ fabricContent } language={ lang } banner={ true } title={ labels.fabric_content[lang] }/>
-          <Bulletin items={ fabricType } language={ lang }  banner={ false } title={ labels.type_of_fabric[lang] }/>
+          <Bulletin items={ fabricContent } language={ lang } banner={ true } title={ labels.fabric_content[lang] } image={ "http://res.cloudinary.com/fglorywebsite2016/image/upload/c_scale,w_2480/v1477303101/fabrics_zi0hmv.jpg" }/>
+          <Bulletin items={ fabricType } language={ lang }  banner={ false } title={ labels.type_of_fabric[lang] } image={ "" }/>
         </div>
       )
     } else {
-      // $.get('/api/fabrics', fabrics => {
-      //   fabricContent = [];
-      //   fabricType = [];
-      //   fabrics.map(fabric => {
-      //     fabric.fabric_ === 'content' ? fabricContent.push(fabric) : fabricType.push(fabric);
-      //   })
-      //   this.props.updateAppState({ fabricContent, fabricType });
-      // })
       return(
         <div className="row">
           <div className="col-xs-12">

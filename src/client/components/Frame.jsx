@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Lightbox from 'react-image-lightbox';
+import $ from "jquery";
 
 export default class Frame extends React.Component {
   constructor(props) {
@@ -12,12 +13,75 @@ export default class Frame extends React.Component {
     }
   }
 
+  resizing() {
+    $('.squareText').css("height", $("img.home_whats-new").width());
+    $('.squareText').css("width", $("img.home_whats-new").width());
+    $('.squareText').css("height", $("img.products_techniques").width());
+    $('.squareText').css("width", $("img.products_techniques").width());
+    $('.squareText').css("height", $("img.product_category_children").width());
+    $('.squareText').css("width", $("img.product_category_children").width());
+    $('.squareText').css("height", $("img.csr_collaboration").width());
+    $('.squareText').css("width", $("img.csr_collaboration").width());
+    $('.squareText').css("height", $("img.people_jobs").width());
+    $('.squareText').css("width", $("img.people_jobs").width());
+    $('.squareText').css("height", $("img.who-we-are_partners").width());
+    $('.squareText').css("width", $("img.who-we-are_partners").width());
+    $('.squareText').css("height", $("img.Noel").width());
+    $('.squareText').css("width", $("img.Noel").width());
+    $('div.text').css("height", $("img.factoryImage").height());
+    $('.squareText').css("height", $("img.men_pants").width());
+    $('.squareText').css("width", $("img.men_pants").width());
+    $('.squareText').css("height", $("img.women_jackets").width());
+    $('.squareText').css("width", $("img.women_jackets").width());
+    $('.squareText').css("height", $("img.children_pants").width());
+    $('.squareText').css("width", $("img.children_pants").width());
+    if($(window).width() < 768) {
+      $('.rectangleText').css("width", $("img.home_whats-new").height());
+      $('.rectangleText').css("height", $("img.home_whats-new").height());
+      $('.rectangleText').css("height", $("img.products_techniques").height());
+      $('.rectangleText').css("width", $("img.products_techniques").height());
+      $('.rectangleText').css("width", $("img.product_category_children").height());
+      $('.rectangleText').css("height", $("img.product_category_children").height());
+      $('.rectangleText').css("width", $("img.csr_collaboration").height());
+      $('.rectangleText').css("height", $("img.csr_collaboration").height());
+      $('.rectangleText').css("width", $("img.people_jobs").height());
+      $('.rectangleText').css("height", $("img.people_jobs").height());
+      $('.rectangleText').css("width", $("img.who-we-are_partners").height());
+      $('.rectangleText').css("height", $("img.who-we-are_partners").height());
+      $('.rectangleText').css("width", $("img.men_pants").height());
+      $('.rectangleText').css("height", $("img.men_pants").height());
+      $('.rectangleText').css("width", $("img.women_jackets").width());
+      $('.rectangleText').css("height", $("img.women_jackets").width());
+      $('.rectangleText').css("height", $("img.children_pants").width());
+      $('.rectangleText').css("width", $("img.children_pants").width());
+    } else {
+      $('.rectangleText').css("height", $("img.home_who-we-are").height());
+      $('.rectangleText').css("height", $("img.products_category").height());
+      $('.rectangleText').css("height", $("img.product_category_men").height());
+      $('.rectangleText').css("height", $("img.csr_sustainability").height());
+      $('.rectangleText').css("height", $("img.people_factory").height());
+      $('.rectangleText').css("height", $("img.who-we-are_history").height());
+      $('.rectangleText').css("height", $("img.men_jackets").height());
+      $('.rectangleText').css("height", $("img.women_tops").height());
+      $('.rectangleText').css("height", $("img.children_dresses").height());
+      $('.rectangleText').css("width", $("div.picture-container.rectangle").width());
+      $('.rectangleText').css("width", $("div.picture-container.rectangle.large-no-rectangle").width());
+      $('.rectangleText').css("width", $("div.picture-container.rectangle.mid-no-rectangle").width());
+    }
+  }
+
+  componentDidMount() {
+    this.resizing();
+    setTimeout(() => { this.resizing() }, 100);
+    setTimeout(() => { this.resizing() }, 300);
+  }
+
   // determine whether to render Frame as link to the next page or to modal lightbox
   // images is an array in the form of: [{type1: [], type2: []}]
   linkToModal(picture, language, extraClass) {
     // when triggered, this opens the modal lightbox and determines which selection of images to choose from
     const openLightbox = (picture) => {
-      const images = picture.gallery.split(',');
+      const images = picture.gallery.split('||');
       this.setState({ 
         isOpen: true,
         images,
@@ -58,13 +122,16 @@ export default class Frame extends React.Component {
 
     if(picture.gallery) {
       // picture is passed down to openLightbox so that it can pick the correct selection based on picture.text[this.props.language]
+      let textClass = "text";
+      picture.shape === 'square' ? textClass += ' squareText' : textClass += ' rectangleText';
+      let imageClass = `picture ${picture.name}`;
       return(
         <a href="#" onClick={() => openLightbox(picture)}>
-          <div className="text">
+          <div className={textClass}>
             <p className="picture-des">{picture.text[this.props.language]}</p>
           </div>
           <div className={pictureContainer}>
-            <img className="picture" src={picture.image}/>
+            <img className={imageClass} src={picture.image}/>
           </div>
           {lightbox}
         </a>
@@ -76,13 +143,17 @@ export default class Frame extends React.Component {
       } else if (this.props.language === 'chinese_simplified') {
         pictureLink = `/zh-s${picture.link}`;
       }
+      let textClass = "text";
+      picture.shape === 'square' ? textClass += ' squareText' : textClass += ' rectangleText';
+      let imageClass = `picture ${picture.name}`;
+      picture.text[this.props.language] === "WHO WE ARE" ? imageClass += " imageShiftLeft" : imageClass;
       return(
         <Link to={{ pathname: pictureLink }}>
-          <div className="text">
+          <div className={textClass}>
             <p className="picture-des">{picture.text[this.props.language]}</p>
           </div>
           <div className={pictureContainer}>
-            <img className="picture" src={picture.image}/>
+            <img className={imageClass} src={picture.image}/>
           </div>
         </Link>
       )

@@ -7,6 +7,7 @@ export default class Culture extends React.Component {
 
   render() {
     const cultures = this.props.state.cultures;
+    cultures.sort((a, b) => a.ranking > b.ranking);
     const language = this.props.params.language;
     const labels = this.props.state.labels;
     let lang, langLink = '';
@@ -28,9 +29,6 @@ export default class Culture extends React.Component {
         </div>
       )
     } else {
-      // $.get('/api/cultures', cultures => {
-      //   this.props.updateAppState({ cultures });
-      // })
       return(
         <div className="row">
           <div className="col-xs-12">

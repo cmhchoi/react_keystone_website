@@ -56,7 +56,6 @@ const innerRoutes = (
     <Route path="people/story" component={Story} />
     <Route path="people/jobs" component={People} />
     <Route path="csr" component={CSR} />
-    <Route path="csr/:category" component={CSRCategory} />
     <Route path="whats-new" component={News} />
     <Route path="whats-new/:article" component={Article} />
     <Route path="terms-of-use" component={Terms} />
@@ -66,6 +65,7 @@ const innerRoutes = (
   </Route>
 )
 
+    // <Route path="csr/:category" component={CSRCategory} />
 render(
   <Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>
     <Route path="/" component={App}>

@@ -82,85 +82,85 @@
 
 	var _CSR2 = _interopRequireDefault(_CSR);
 
-	var _CSRCategory = __webpack_require__(306);
+	var _CSRCategory = __webpack_require__(266);
 
 	var _CSRCategory2 = _interopRequireDefault(_CSRCategory);
 
-	var _News = __webpack_require__(266);
+	var _News = __webpack_require__(268);
 
 	var _News2 = _interopRequireDefault(_News);
 
-	var _History = __webpack_require__(267);
+	var _History = __webpack_require__(269);
 
 	var _History2 = _interopRequireDefault(_History);
 
-	var _Culture = __webpack_require__(269);
+	var _Culture = __webpack_require__(270);
 
 	var _Culture2 = _interopRequireDefault(_Culture);
 
-	var _Gender = __webpack_require__(307);
+	var _Gender = __webpack_require__(271);
 
 	var _Gender2 = _interopRequireDefault(_Gender);
 
-	var _Partners = __webpack_require__(273);
+	var _Partners = __webpack_require__(272);
 
 	var _Partners2 = _interopRequireDefault(_Partners);
 
-	var _Category = __webpack_require__(275);
+	var _Category = __webpack_require__(274);
 
 	var _Category2 = _interopRequireDefault(_Category);
 
-	var _Factory = __webpack_require__(276);
+	var _Factory = __webpack_require__(275);
 
 	var _Factory2 = _interopRequireDefault(_Factory);
 
-	var _Materials = __webpack_require__(277);
+	var _Materials = __webpack_require__(276);
 
 	var _Materials2 = _interopRequireDefault(_Materials);
 
-	var _Techniques = __webpack_require__(278);
+	var _Techniques = __webpack_require__(277);
 
 	var _Techniques2 = _interopRequireDefault(_Techniques);
 
-	var _Terms = __webpack_require__(279);
+	var _Terms = __webpack_require__(278);
 
 	var _Terms2 = _interopRequireDefault(_Terms);
 
-	var _Contact = __webpack_require__(280);
+	var _Contact = __webpack_require__(279);
 
 	var _Contact2 = _interopRequireDefault(_Contact);
 
-	var _Privacy = __webpack_require__(281);
+	var _Privacy = __webpack_require__(280);
 
 	var _Privacy2 = _interopRequireDefault(_Privacy);
 
-	var _Sitemap = __webpack_require__(282);
+	var _Sitemap = __webpack_require__(281);
 
 	var _Sitemap2 = _interopRequireDefault(_Sitemap);
 
-	var _Executives = __webpack_require__(283);
+	var _Executives = __webpack_require__(282);
 
 	var _Executives2 = _interopRequireDefault(_Executives);
 
-	var _Article = __webpack_require__(284);
+	var _Article = __webpack_require__(283);
 
 	var _Article2 = _interopRequireDefault(_Article);
 
-	var _Location = __webpack_require__(285);
+	var _Location = __webpack_require__(284);
 
 	var _Location2 = _interopRequireDefault(_Location);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(286);
-	__webpack_require__(290);
-	__webpack_require__(292);
-	__webpack_require__(294);
-	__webpack_require__(296);
-	__webpack_require__(298);
-	__webpack_require__(300);
-	__webpack_require__(302);
-	__webpack_require__(304);
+	__webpack_require__(285);
+	__webpack_require__(289);
+	__webpack_require__(291);
+	__webpack_require__(293);
+	__webpack_require__(295);
+	__webpack_require__(297);
+	__webpack_require__(299);
+	__webpack_require__(301);
+	__webpack_require__(303);
 
 	var innerRoutes = _react2.default.createElement(
 	  _reactRouter.Route,
@@ -182,7 +182,6 @@
 	  _react2.default.createElement(_reactRouter.Route, { path: 'people/story', component: _Story2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'people/jobs', component: _People2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'csr', component: _CSR2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: 'csr/:category', component: _CSRCategory2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'whats-new', component: _News2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'whats-new/:article', component: _Article2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'terms-of-use', component: _Terms2.default }),
@@ -191,6 +190,7 @@
 	  _react2.default.createElement(_reactRouter.Route, { path: 'sitemap', component: _Sitemap2.default })
 	);
 
+	// <Route path="csr/:category" component={CSRCategory} />
 	(0, _reactDom.render)(_react2.default.createElement(
 	  _reactRouter.Router,
 	  { onUpdate: function onUpdate() {
@@ -27388,6 +27388,71 @@
 	      this.setState({ labels: _labels2.default });
 	    }
 	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      (0, _jquery2.default)(window).resize(function () {
+	        (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.home_whats-new").width());
+	        (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.home_whats-new").width());
+	        (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.products_techniques").width());
+	        (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.products_techniques").width());
+	        (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.product_category_children").width());
+	        (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.product_category_children").width());
+	        (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.csr_collaboration").width());
+	        (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.csr_collaboration").width());
+	        (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.people_jobs").width());
+	        (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.people_jobs").width());
+	        (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.who-we-are_partners").width());
+	        (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.who-we-are_partners").width());
+	        (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.Noel").width());
+	        (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.Noel").width());
+	        (0, _jquery2.default)('div.text').css("height", (0, _jquery2.default)("img.factoryImage").height());
+	        (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.men_pants").width());
+	        (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.men_pants").width());
+	        (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.women_jackets").width());
+	        (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.women_jackets").width());
+	        (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.children_pants").width());
+	        (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.children_pants").width());
+	        if ((0, _jquery2.default)(window).width() < 768) {
+	          (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.home_whats-new").height());
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.home_whats-new").height());
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.products_techniques").height());
+	          (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.products_techniques").height());
+	          (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.product_category_children").height());
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.product_category_children").height());
+	          (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.csr_collaboration").height());
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.csr_collaboration").height());
+	          (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.people_jobs").height());
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.people_jobs").height());
+	          (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.who-we-are_partners").height());
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.who-we-are_partners").height());
+	          (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.men_pants").height());
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.men_pants").height());
+	          (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.women_jackets").width());
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.women_jackets").width());
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.children_pants").width());
+	          (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.children_pants").width());
+	        } else {
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.home_who-we-are").height());
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.products_category").height());
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.product_category_men").height());
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.csr_sustainability").height());
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.people_factory").height());
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.who-we-are_history").height());
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.men_jackets").height());
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.women_tops").height());
+	          (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.children_dresses").height());
+	          (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("div.picture-container.rectangle").width());
+	          (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("div.picture-container.rectangle.large-no-rectangle").width());
+	          (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("div.picture-container.rectangle.mid-no-rectangle").width());
+	        }
+	        if ((0, _jquery2.default)(window).width() > 1200) {
+	          (0, _jquery2.default)('div.text').css("width", (0, _jquery2.default)("img.factoryImage").width());
+	        } else {
+	          (0, _jquery2.default)('div.text').css("width", (0, _jquery2.default)("img.factoryImage").height());
+	        }
+	      });
+	    }
+	  }, {
 	    key: 'updateAppState',
 	    value: function updateAppState(object) {
 	      this.setState(object);
@@ -38588,6 +38653,10 @@
 
 	var _reactImageLightbox2 = _interopRequireDefault(_reactImageLightbox);
 
+	var _jquery = __webpack_require__(236);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38611,34 +38680,105 @@
 	    return _this;
 	  }
 
-	  // determine whether to render Frame as link to the next page or to modal lightbox
-	  // images is an array in the form of: [{type1: [], type2: []}]
-
-
 	  _createClass(Frame, [{
+	    key: 'resizing',
+	    value: function resizing() {
+	      (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.home_whats-new").width());
+	      (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.home_whats-new").width());
+	      (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.products_techniques").width());
+	      (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.products_techniques").width());
+	      (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.product_category_children").width());
+	      (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.product_category_children").width());
+	      (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.csr_collaboration").width());
+	      (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.csr_collaboration").width());
+	      (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.people_jobs").width());
+	      (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.people_jobs").width());
+	      (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.who-we-are_partners").width());
+	      (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.who-we-are_partners").width());
+	      (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.Noel").width());
+	      (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.Noel").width());
+	      (0, _jquery2.default)('div.text').css("height", (0, _jquery2.default)("img.factoryImage").height());
+	      (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.men_pants").width());
+	      (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.men_pants").width());
+	      (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.women_jackets").width());
+	      (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.women_jackets").width());
+	      (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.children_pants").width());
+	      (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.children_pants").width());
+	      if ((0, _jquery2.default)(window).width() < 768) {
+	        (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.home_whats-new").height());
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.home_whats-new").height());
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.products_techniques").height());
+	        (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.products_techniques").height());
+	        (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.product_category_children").height());
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.product_category_children").height());
+	        (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.csr_collaboration").height());
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.csr_collaboration").height());
+	        (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.people_jobs").height());
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.people_jobs").height());
+	        (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.who-we-are_partners").height());
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.who-we-are_partners").height());
+	        (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.men_pants").height());
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.men_pants").height());
+	        (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.women_jackets").width());
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.women_jackets").width());
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.children_pants").width());
+	        (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("img.children_pants").width());
+	      } else {
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.home_who-we-are").height());
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.products_category").height());
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.product_category_men").height());
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.csr_sustainability").height());
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.people_factory").height());
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.who-we-are_history").height());
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.men_jackets").height());
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.women_tops").height());
+	        (0, _jquery2.default)('.rectangleText').css("height", (0, _jquery2.default)("img.children_dresses").height());
+	        (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("div.picture-container.rectangle").width());
+	        (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("div.picture-container.rectangle.large-no-rectangle").width());
+	        (0, _jquery2.default)('.rectangleText').css("width", (0, _jquery2.default)("div.picture-container.rectangle.mid-no-rectangle").width());
+	      }
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+
+	      this.resizing();
+	      setTimeout(function () {
+	        _this2.resizing();
+	      }, 100);
+	      setTimeout(function () {
+	        _this2.resizing();
+	      }, 300);
+	    }
+
+	    // determine whether to render Frame as link to the next page or to modal lightbox
+	    // images is an array in the form of: [{type1: [], type2: []}]
+
+	  }, {
 	    key: 'linkToModal',
 	    value: function linkToModal(picture, language, extraClass) {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      // when triggered, this opens the modal lightbox and determines which selection of images to choose from
 	      var openLightbox = function openLightbox(picture) {
-	        var images = picture.gallery.split(',');
-	        _this2.setState({
+	        var images = picture.gallery.split('||');
+	        _this3.setState({
 	          isOpen: true,
 	          images: images
 	        });
 	      };
 
 	      var closeLightbox = function closeLightbox() {
-	        _this2.setState({ isOpen: false });
+	        _this3.setState({ isOpen: false });
 	      };
 
 	      var moveNext = function moveNext() {
-	        _this2.setState({ index: (_this2.state.index + 1) % _this2.state.images.length });
+	        _this3.setState({ index: (_this3.state.index + 1) % _this3.state.images.length });
 	      };
 
 	      var movePrev = function movePrev() {
-	        _this2.setState({ index: (_this2.state.index + _this2.state.images.length - 1) % _this2.state.images.length });
+	        _this3.setState({ index: (_this3.state.index + _this3.state.images.length - 1) % _this3.state.images.length });
 	      };
 
 	      var lightbox = '';
@@ -38663,6 +38803,9 @@
 
 	      if (picture.gallery) {
 	        // picture is passed down to openLightbox so that it can pick the correct selection based on picture.text[this.props.language]
+	        var textClass = "text";
+	        picture.shape === 'square' ? textClass += ' squareText' : textClass += ' rectangleText';
+	        var imageClass = 'picture ' + picture.name;
 	        return _react2.default.createElement(
 	          'a',
 	          { href: '#', onClick: function onClick() {
@@ -38670,7 +38813,7 @@
 	            } },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'text' },
+	            { className: textClass },
 	            _react2.default.createElement(
 	              'p',
 	              { className: 'picture-des' },
@@ -38680,7 +38823,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: pictureContainer },
-	            _react2.default.createElement('img', { className: 'picture', src: picture.image })
+	            _react2.default.createElement('img', { className: imageClass, src: picture.image })
 	          ),
 	          lightbox
 	        );
@@ -38691,12 +38834,16 @@
 	        } else if (this.props.language === 'chinese_simplified') {
 	          pictureLink = '/zh-s' + picture.link;
 	        }
+	        var _textClass = "text";
+	        picture.shape === 'square' ? _textClass += ' squareText' : _textClass += ' rectangleText';
+	        var _imageClass = 'picture ' + picture.name;
+	        picture.text[this.props.language] === "WHO WE ARE" ? _imageClass += " imageShiftLeft" : _imageClass;
 	        return _react2.default.createElement(
 	          _reactRouter.Link,
 	          { to: { pathname: pictureLink } },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'text' },
+	            { className: _textClass },
 	            _react2.default.createElement(
 	              'p',
 	              { className: 'picture-des' },
@@ -38706,7 +38853,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: pictureContainer },
-	            _react2.default.createElement('img', { className: 'picture', src: picture.image })
+	            _react2.default.createElement('img', { className: _imageClass, src: picture.image })
 	          )
 	        );
 	      }
@@ -38718,7 +38865,7 @@
 	  }, {
 	    key: 'normalFrame',
 	    value: function normalFrame(pictures, special) {
-	      var _this3 = this;
+	      var _this4 = this;
 
 	      var listClass = "col-xs-12 col-sm-6 picture-link";
 	      special === "special" ? listClass += " col-lg-6" : listClass += " col-lg-4";
@@ -38729,7 +38876,7 @@
 	          _react2.default.createElement(
 	            'li',
 	            { className: listClass },
-	            _this3.linkToModal(picture)
+	            _this4.linkToModal(picture)
 	          )
 	        );
 	      });
@@ -38842,7 +38989,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this4 = this;
+	      var _this5 = this;
 
 	      var pictures = this.props.pictures;
 
@@ -38873,8 +39020,8 @@
 	                _react2.default.createElement(
 	                  'ul',
 	                  null,
-	                  _this4.largeTwoRowsMedOneRow(topRects, topSquares),
-	                  _this4.normalFrame(normals)
+	                  _this5.largeTwoRowsMedOneRow(topRects, topSquares),
+	                  _this5.normalFrame(normals)
 	                )
 	              )
 	            };
@@ -38887,8 +39034,8 @@
 	                _react2.default.createElement(
 	                  'ul',
 	                  null,
-	                  _this4.largeTwoRows(topRects, topSquares),
-	                  _this4.normalFrame(normals)
+	                  _this5.largeTwoRows(topRects, topSquares),
+	                  _this5.normalFrame(normals)
 	                )
 	              )
 	            };
@@ -38924,8 +39071,8 @@
 	                _react2.default.createElement(
 	                  'ul',
 	                  null,
-	                  _this4.largeOneRowMedOneRow(topRects, topSquares),
-	                  _this4.normalFrame(normals)
+	                  _this5.largeOneRowMedOneRow(topRects, topSquares),
+	                  _this5.normalFrame(normals)
 	                )
 	              )
 	            };
@@ -38938,8 +39085,8 @@
 	                _react2.default.createElement(
 	                  'ul',
 	                  null,
-	                  _this4.largeOneRow(topRects, topSquares),
-	                  _this4.normalFrame(normals)
+	                  _this5.largeOneRow(topRects, topSquares),
+	                  _this5.normalFrame(normals)
 	                )
 	              )
 	            };
@@ -38970,8 +39117,8 @@
 	              _react2.default.createElement(
 	                'ul',
 	                null,
-	                _this4.medOneRow(topRects),
-	                _this4.normalFrame(normals)
+	                _this5.medOneRow(topRects),
+	                _this5.normalFrame(normals)
 	              )
 	            )
 	          };
@@ -41360,6 +41507,25 @@
 	  }
 
 	  _createClass(Story, [{
+	    key: 'resizing',
+	    value: function resizing() {
+	      $('.squareText').css("height", $("img.Noel").width());
+	      $('.squareText').css("width", $("img.Noel").width());
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+
+	      this.resizing();
+	      setTimeout(function () {
+	        _this2.resizing();
+	      }, 100);
+	      setTimeout(function () {
+	        _this2.resizing();
+	      }, 300);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var language = this.props.params.language;
@@ -41415,12 +41581,13 @@
 	                if (!employee.department[lang]) {
 	                  employee.department[lang] = employee.department.english;
 	                };
+	                var employeeImage = 'picture ' + employee.name.english;
 	                return _react2.default.createElement(
 	                  'li',
 	                  { className: 'picture-link employee col-xs-12 col-sm-6 col-md-4' },
 	                  _react2.default.createElement(
 	                    'div',
-	                    { className: 'text' },
+	                    { className: 'employee text squareText' },
 	                    _react2.default.createElement(
 	                      'p',
 	                      { className: 'picture-des' },
@@ -41430,7 +41597,7 @@
 	                  _react2.default.createElement(
 	                    'div',
 	                    { className: 'picture-container' },
-	                    _react2.default.createElement('img', { className: 'picture', src: employee.thumbnail })
+	                    _react2.default.createElement('img', { className: employeeImage, src: employee.thumbnail })
 	                  ),
 	                  _react2.default.createElement(
 	                    'h4',
@@ -41618,6 +41785,240 @@
 
 	var _reactRouter = __webpack_require__(172);
 
+	var _List = __webpack_require__(267);
+
+	var _List2 = _interopRequireDefault(_List);
+
+	var _jquery = __webpack_require__(236);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var CSRCategory = function (_React$Component) {
+	  _inherits(CSRCategory, _React$Component);
+
+	  function CSRCategory() {
+	    _classCallCheck(this, CSRCategory);
+
+	    return _possibleConstructorReturn(this, (CSRCategory.__proto__ || Object.getPrototypeOf(CSRCategory)).apply(this, arguments));
+	  }
+
+	  _createClass(CSRCategory, [{
+	    key: 'render',
+	    value: function render() {
+	      var CSR_responsibility = this.props.state.CSR_responsibility;
+	      var CSR_charity = this.props.state.CSR_charity;
+	      var CSR_practices = this.props.state.CSR_practices;
+	      var CSR_sustainability = this.props.state.CSR_sustainability;
+	      var CSR_collaboration = this.props.state.CSR_collaboration;
+	      var language = this.props.params.language;
+	      var labels = this.props.state.labels;
+	      var CSR_Category = '';
+	      if (this.props.params.category === 'sustainability') CSR_Category = CSR_sustainability;
+	      if (this.props.params.category === 'charitable-programmes') CSR_Category = CSR_charity;
+	      if (this.props.params.category === 'practices') CSR_Category = CSR_responsibility;
+	      if (this.props.params.category === 'responsibility') CSR_Category = CSR_practices;
+	      if (this.props.params.category === 'collaboration') CSR_Category = CSR_collaboration;
+	      var lang = void 0,
+	          langLink = '';
+	      lang = language === 'zh-t' ? 'chinese_traditional' : language === 'zh-s' ? 'chinese_simplified' : 'english';
+	      langLink = language === 'zh-t' || language === 'zh-s' ? '/' + language : '';
+	      if (CSR_responsibility && CSR_charity && CSR_practices && CSR_sustainability && CSR_collaboration) {
+	        if (this.props.params.category === 'charitable-programmes') this.props.params.category = 'charitable_programmes';
+	        return _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-12' },
+	              _react2.default.createElement(
+	                'ol',
+	                { className: 'breadcrumb' },
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { className: 'grey underline', to: { pathname: langLink + '/' } },
+	                    labels.home[lang]
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { className: 'grey underline', to: { pathname: langLink + '/csr' } },
+	                    labels.csr[lang]
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  { className: 'active' },
+	                  labels[this.props.params.category][lang]
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(_List2.default, { items: CSR_Category, language: lang })
+	        );
+	      } else {
+	        // $.get('/api/cultures', cultures => {
+	        //   this.props.updateAppState({ cultures });
+	        // })
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-xs-12' },
+	            _react2.default.createElement(
+	              'ol',
+	              { className: 'breadcrumb' },
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { className: 'grey underline', to: { pathname: langLink + '/' } },
+	                  labels.home[lang]
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { className: 'grey underline', to: { pathname: langLink + '/who-we-are' } },
+	                  labels.who_we_are[lang]
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { className: 'active' },
+	                labels[this.props.params.category][lang]
+	              )
+	            )
+	          )
+	        );
+	      }
+	    }
+	  }]);
+
+	  return CSRCategory;
+	}(_react2.default.Component);
+
+	exports.default = CSRCategory;
+
+/***/ },
+/* 267 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(172);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var List = function (_React$Component) {
+	  _inherits(List, _React$Component);
+
+	  function List() {
+	    _classCallCheck(this, List);
+
+	    return _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).apply(this, arguments));
+	  }
+
+	  _createClass(List, [{
+	    key: 'render',
+	    value: function render() {
+	      var items = this.props.items;
+	      var lang = this.props.language;
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'frame row' },
+	        _react2.default.createElement(
+	          'ul',
+	          { className: 'mobile-padding-right-20' },
+	          items.map(function (item) {
+	            return _react2.default.createElement(
+	              'li',
+	              { className: 'list-list' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'list-image col-xs-12 col-sm-6' },
+	                _react2.default.createElement('img', { className: 'list-picture', src: item.thumbnail })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'list-text col-xs-12 col-sm-6' },
+	                _react2.default.createElement(
+	                  'h4',
+	                  { className: 'list-title' },
+	                  item.title[lang]
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'list-des' },
+	                  item.description[lang]
+	                )
+	              )
+	            );
+	          })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return List;
+	}(_react2.default.Component);
+
+	exports.default = List;
+
+/***/ },
+/* 268 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(172);
+
 	var _jquery = __webpack_require__(236);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
@@ -41776,7 +42177,7 @@
 	exports.default = News;
 
 /***/ },
-/* 267 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41793,7 +42194,7 @@
 
 	var _reactRouter = __webpack_require__(172);
 
-	var _List = __webpack_require__(268);
+	var _List = __webpack_require__(267);
 
 	var _List2 = _interopRequireDefault(_List);
 
@@ -41918,7 +42319,7 @@
 	exports.default = History;
 
 /***/ },
-/* 268 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41935,88 +42336,7 @@
 
 	var _reactRouter = __webpack_require__(172);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var List = function (_React$Component) {
-	  _inherits(List, _React$Component);
-
-	  function List() {
-	    _classCallCheck(this, List);
-
-	    return _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).apply(this, arguments));
-	  }
-
-	  _createClass(List, [{
-	    key: 'render',
-	    value: function render() {
-	      var items = this.props.items;
-	      var lang = this.props.language;
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'frame row' },
-	        _react2.default.createElement(
-	          'ul',
-	          { className: 'mobile-padding-right-20' },
-	          items.map(function (item) {
-	            return _react2.default.createElement(
-	              'li',
-	              { className: 'list-list' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'list-image col-xs-12 col-sm-6' },
-	                _react2.default.createElement('img', { className: 'list-picture', src: item.thumbnail })
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'list-text col-xs-12 col-sm-6' },
-	                _react2.default.createElement(
-	                  'h4',
-	                  { className: 'list-title' },
-	                  item.title[lang]
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  { className: 'list-des' },
-	                  item.description[lang]
-	                )
-	              )
-	            );
-	          })
-	        )
-	      );
-	    }
-	  }]);
-
-	  return List;
-	}(_react2.default.Component);
-
-	exports.default = List;
-
-/***/ },
-/* 269 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(172);
-
-	var _List = __webpack_require__(268);
+	var _List = __webpack_require__(267);
 
 	var _List2 = _interopRequireDefault(_List);
 
@@ -42045,6 +42365,9 @@
 	    key: 'render',
 	    value: function render() {
 	      var cultures = this.props.state.cultures;
+	      cultures.sort(function (a, b) {
+	        return a.ranking > b.ranking;
+	      });
 	      var language = this.props.params.language;
 	      var labels = this.props.state.labels;
 	      var lang = void 0,
@@ -42093,9 +42416,6 @@
 	          _react2.default.createElement(_List2.default, { items: cultures, language: lang })
 	        );
 	      } else {
-	        // $.get('/api/cultures', cultures => {
-	        //   this.props.updateAppState({ cultures });
-	        // })
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
@@ -42141,10 +42461,7 @@
 	exports.default = Culture;
 
 /***/ },
-/* 270 */,
-/* 271 */,
-/* 272 */,
-/* 273 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42161,7 +42478,170 @@
 
 	var _reactRouter = __webpack_require__(172);
 
-	var _Bulletin = __webpack_require__(274);
+	var _Frame = __webpack_require__(239);
+
+	var _Frame2 = _interopRequireDefault(_Frame);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Gender = function (_React$Component) {
+	  _inherits(Gender, _React$Component);
+
+	  function Gender() {
+	    _classCallCheck(this, Gender);
+
+	    return _possibleConstructorReturn(this, (Gender.__proto__ || Object.getPrototypeOf(Gender)).apply(this, arguments));
+	  }
+
+	  _createClass(Gender, [{
+	    key: 'render',
+	    value: function render() {
+	      var product_men = this.props.state.product_men;
+	      var product_women = this.props.state.product_women;
+	      var product_children = this.props.state.product_children;
+	      var displayProducts = '';
+	      if (this.props.params.gender === 'men') displayProducts = product_men;
+	      if (this.props.params.gender === 'women') displayProducts = product_women;
+	      if (this.props.params.gender === 'children') displayProducts = product_children;
+	      var language = this.props.params.language;
+	      var labels = this.props.state.labels;
+	      var lang = void 0,
+	          langLink = '';
+	      lang = language === 'zh-t' ? 'chinese_traditional' : language === 'zh-s' ? 'chinese_simplified' : 'english';
+	      langLink = language === 'zh-t' || language === 'zh-s' ? '/' + language : '';
+	      if (product_men, product_women, product_children) {
+	        return _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-12' },
+	              _react2.default.createElement(
+	                'ol',
+	                { className: 'breadcrumb' },
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { className: 'grey underline', to: { pathname: langLink + '/' } },
+	                    labels.home[lang]
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { className: 'grey underline', to: { pathname: langLink + '/products' } },
+	                    labels.products[lang]
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { className: 'grey underline', to: { pathname: langLink + '/products/category' } },
+	                    labels.category[lang]
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  { className: 'active' },
+	                  labels[this.props.params.gender][lang]
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(_Frame2.default, { pictures: displayProducts, language: lang })
+	        );
+	      } else {
+	        return _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-12' },
+	              _react2.default.createElement(
+	                'ol',
+	                { className: 'breadcrumb' },
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { className: 'grey underline', to: { pathname: langLink + '/' } },
+	                    labels.home[lang]
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { className: 'grey underline', to: { pathname: langLink + '/products' } },
+	                    labels.products[lang]
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { className: 'grey underline', to: { pathname: langLink + '/products/category' } },
+	                    labels.category[lang]
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  { className: 'active' },
+	                  labels[this.props.params.gender][lang]
+	                )
+	              )
+	            )
+	          )
+	        );
+	      }
+	    }
+	  }]);
+
+	  return Gender;
+	}(_react2.default.Component);
+
+	exports.default = Gender;
+
+/***/ },
+/* 272 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(172);
+
+	var _Bulletin = __webpack_require__(273);
 
 	var _Bulletin2 = _interopRequireDefault(_Bulletin);
 
@@ -42235,12 +42715,9 @@
 	              )
 	            )
 	          ),
-	          _react2.default.createElement(_Bulletin2.default, { items: this.props.state.partners, language: lang, banner: true })
+	          _react2.default.createElement(_Bulletin2.default, { items: this.props.state.partners, language: lang, banner: true, image: "http://res.cloudinary.com/fglorywebsite2016/image/upload/c_scale,w_2480/v1476081009/product_category.jpg" })
 	        );
 	      } else {
-	        // $.get('/api/partners', partners => {
-	        //   this.props.updateAppState({ partners });
-	        // })
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
@@ -42286,7 +42763,7 @@
 	exports.default = Partners;
 
 /***/ },
-/* 274 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42322,12 +42799,13 @@
 
 	  _createClass(Bulletin, [{
 	    key: 'banner',
-	    value: function banner(boolean) {
+	    value: function banner(boolean, url) {
 	      if (boolean) {
+	        console.log('p', url);
 	        return _react2.default.createElement(
 	          'div',
-	          { className: 'banner' },
-	          _react2.default.createElement('img', null)
+	          { className: 'col-xs-12 banner' },
+	          _react2.default.createElement('img', { src: url })
 	        );
 	      }
 	    }
@@ -42352,11 +42830,12 @@
 	      var items = this.props.items;
 	      var lang = this.props.language;
 	      var bannerDecision = this.props.banner;
+	      var bannerImage = this.props.image;
 	      var titleText = this.props.title;
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'frame row' },
-	        this.banner(bannerDecision),
+	        this.banner(bannerDecision, bannerImage),
 	        this.title(titleText),
 	        _react2.default.createElement(
 	          'ul',
@@ -42402,7 +42881,7 @@
 	exports.default = Bulletin;
 
 /***/ },
-/* 275 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42537,7 +43016,7 @@
 	exports.default = Category;
 
 /***/ },
-/* 276 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42582,11 +43061,33 @@
 	      index: 0,
 	      isOpen: false
 	    };
-
 	    return _this;
 	  }
 
 	  _createClass(Factories, [{
+	    key: 'resizing',
+	    value: function resizing() {
+	      if ((0, _jquery2.default)(window).width() > 1200) {
+	        (0, _jquery2.default)('div.text').css("width", (0, _jquery2.default)("img.factoryImage").width());
+	      } else {
+	        (0, _jquery2.default)('div.text').css("width", (0, _jquery2.default)("img.factoryImage").height());
+	      }
+	      (0, _jquery2.default)('div.text').css("height", (0, _jquery2.default)("img.factoryImage").height());
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+
+	      this.resizing();
+	      setTimeout(function () {
+	        _this2.resizing();
+	      }, 100);
+	      setTimeout(function () {
+	        _this2.resizing();
+	      }, 300);
+	    }
+	  }, {
 	    key: 'openLightbox',
 	    value: function openLightbox(images) {
 	      var gallery = images.split(',');
@@ -42613,7 +43114,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      var factories = this.props.state.factories;
 	      var language = this.props.params.language;
@@ -42706,7 +43207,7 @@
 	                  _react2.default.createElement(
 	                    'a',
 	                    { href: '#', onClick: function onClick() {
-	                        return _this2.openLightbox(factory.gallery);
+	                        return _this3.openLightbox(factory.gallery);
 	                      } },
 	                    _react2.default.createElement(
 	                      'div',
@@ -42720,7 +43221,7 @@
 	                    _react2.default.createElement(
 	                      'div',
 	                      { className: 'picture-container rectangle mid-no-rectangle' },
-	                      _react2.default.createElement('img', { className: 'picture', src: factory.thumbnail })
+	                      _react2.default.createElement('img', { className: 'picture factoryImage', src: factory.thumbnail })
 	                    ),
 	                    lightbox
 	                  ),
@@ -42839,7 +43340,7 @@
 	exports.default = Factories;
 
 /***/ },
-/* 277 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42856,13 +43357,9 @@
 
 	var _reactRouter = __webpack_require__(172);
 
-	var _Bulletin = __webpack_require__(274);
+	var _Bulletin = __webpack_require__(273);
 
 	var _Bulletin2 = _interopRequireDefault(_Bulletin);
-
-	var _jquery = __webpack_require__(236);
-
-	var _jquery2 = _interopRequireDefault(_jquery);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42933,18 +43430,10 @@
 	              )
 	            )
 	          ),
-	          _react2.default.createElement(_Bulletin2.default, { items: fabricContent, language: lang, banner: true, title: labels.fabric_content[lang] }),
-	          _react2.default.createElement(_Bulletin2.default, { items: fabricType, language: lang, banner: false, title: labels.type_of_fabric[lang] })
+	          _react2.default.createElement(_Bulletin2.default, { items: fabricContent, language: lang, banner: true, title: labels.fabric_content[lang], image: "http://res.cloudinary.com/fglorywebsite2016/image/upload/c_scale,w_2480/v1477303101/fabrics_zi0hmv.jpg" }),
+	          _react2.default.createElement(_Bulletin2.default, { items: fabricType, language: lang, banner: false, title: labels.type_of_fabric[lang], image: "" })
 	        );
 	      } else {
-	        // $.get('/api/fabrics', fabrics => {
-	        //   fabricContent = [];
-	        //   fabricType = [];
-	        //   fabrics.map(fabric => {
-	        //     fabric.fabric_ === 'content' ? fabricContent.push(fabric) : fabricType.push(fabric);
-	        //   })
-	        //   this.props.updateAppState({ fabricContent, fabricType });
-	        // })
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
@@ -42990,7 +43479,7 @@
 	exports.default = Materials;
 
 /***/ },
-/* 278 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43007,7 +43496,7 @@
 
 	var _reactRouter = __webpack_require__(172);
 
-	var _Bulletin = __webpack_require__(274);
+	var _Bulletin = __webpack_require__(273);
 
 	var _Bulletin2 = _interopRequireDefault(_Bulletin);
 
@@ -43083,9 +43572,9 @@
 	              )
 	            )
 	          ),
-	          _react2.default.createElement(_Bulletin2.default, { items: techniqueDyeing, language: lang, banner: true, title: labels.dyeing[lang] }),
-	          _react2.default.createElement(_Bulletin2.default, { items: techniquePrinting, language: lang, banner: false, title: labels.printing[lang] }),
-	          _react2.default.createElement(_Bulletin2.default, { items: techniqueWashing, language: lang, banner: false, title: labels.washing[lang] })
+	          _react2.default.createElement(_Bulletin2.default, { items: techniqueDyeing, language: lang, banner: true, title: labels.dyeing[lang], image: "http://res.cloudinary.com/fglorywebsite2016/image/upload/c_scale,w_2480/v1477407745/320598202013655556_cwxjdd_x7ndei.jpg" }),
+	          _react2.default.createElement(_Bulletin2.default, { items: techniquePrinting, language: lang, banner: false, title: labels.printing[lang], image: "" }),
+	          _react2.default.createElement(_Bulletin2.default, { items: techniqueWashing, language: lang, banner: false, title: labels.washing[lang], image: "" })
 	        );
 	      } else {
 	        // $.get('/api/techniques', technique => {
@@ -43144,7 +43633,7 @@
 	exports.default = Techniques;
 
 /***/ },
-/* 279 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43264,7 +43753,7 @@
 	exports.default = Terms;
 
 /***/ },
-/* 280 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43413,7 +43902,7 @@
 	exports.default = Contact;
 
 /***/ },
-/* 281 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43513,7 +44002,7 @@
 	exports.default = Privacy;
 
 /***/ },
-/* 282 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43890,7 +44379,7 @@
 	exports.default = Sitemap;
 
 /***/ },
-/* 283 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43932,6 +44421,9 @@
 	    key: 'render',
 	    value: function render() {
 	      var executives = this.props.state.executives;
+	      executives.sort(function (a, b) {
+	        return a.ranking > b.ranking;
+	      });
 	      var language = this.props.params.language;
 	      var labels = this.props.state.labels;
 	      var lang = void 0,
@@ -44077,7 +44569,7 @@
 	exports.default = Executives;
 
 /***/ },
-/* 284 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44299,7 +44791,7 @@
 	exports.default = Article;
 
 /***/ },
-/* 285 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44399,16 +44891,16 @@
 	exports.default = Location;
 
 /***/ },
-/* 286 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(287);
+	var content = __webpack_require__(286);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(289)(content, {});
+	var update = __webpack_require__(288)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -44425,10 +44917,10 @@
 	}
 
 /***/ },
-/* 287 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(288)();
+	exports = module.exports = __webpack_require__(287)();
 	// imports
 
 
@@ -44439,7 +44931,7 @@
 
 
 /***/ },
-/* 288 */
+/* 287 */
 /***/ function(module, exports) {
 
 	/*
@@ -44495,7 +44987,7 @@
 
 
 /***/ },
-/* 289 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -44747,16 +45239,16 @@
 
 
 /***/ },
-/* 290 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(291);
+	var content = __webpack_require__(290);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(289)(content, {});
+	var update = __webpack_require__(288)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -44773,30 +45265,30 @@
 	}
 
 /***/ },
-/* 291 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(288)();
+	exports = module.exports = __webpack_require__(287)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".picture-container {\n  height: 0;\n  overflow: hidden;\n  position: relative;\n  background-color: rgba(0, 0, 0, 0.025);\n  padding-bottom: 100%; }\n\n.picture {\n  top: 0;\n  left: 0;\n  height: 100%;\n  position: absolute;\n  display: block; }\n\nul {\n  list-style: none;\n  padding-left: 20px; }\n  ul li.picture-link {\n    padding-bottom: 15px;\n    padding-right: 5px;\n    padding-left: 5px;\n    font-family: 'Permanent Marker', cursive;\n    font-family: 'Patrick Hand SC', cursive;\n    font-weight: bold; }\n    ul li.picture-link .rectangle {\n      padding-bottom: 49.193548387096776%;\n      margin-bottom: -1px; }\n\n@media (max-width: 767px) {\n  li.picture-link {\n    padding-right: 30px !important; }\n  ul li.picture-link div.rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle img.picture {\n      width: inherit;\n      left: -50%; } }\n\n@media (min-width: 767px) and (max-width: 1200px) {\n  ul li.picture-link div.rectangle.mid-no-rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle.mid-no-rectangle img.picture {\n      width: inherit;\n      left: -50%; } }\n\n@media (min-width: 1200px) {\n  ul li.picture-link div.rectangle.large-no-rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle.large-no-rectangle img.picture {\n      width: inherit;\n      left: -50%; } }\n\n.text {\n  z-index: 1;\n  width: 100%;\n  position: absolute;\n  color: white;\n  display: table; }\n\n@media (min-width: 1200px) {\n  .text {\n    height: 285.83px; } }\n\n@media (min-width: 992px) and (max-width: 1200px) {\n  .text {\n    height: 450px; } }\n\n@media (min-width: 768px) and (max-width: 992px) {\n  .text {\n    height: 307.5px; } }\n\np.picture-des {\n  font-size: -webkit-xxx-large;\n  text-align: center;\n  vertical-align: middle;\n  display: table-cell;\n  margin: auto 0;\n  text-shadow: 0px 0px 10px #333 , 0px 0px #333 , 1px 1px #333; }\n  @media (min-width: 992px) and (max-width: 1200px) {\n    p.picture-des {\n      font-size: 75px; } }\n\n.picture-link:hover .text {\n  color: darkred; }\n  .picture-link:hover .text p.picture-des {\n    text-shadow: 0px 0px 1px darkred  , -1px -1px darkred , 1px 1px darkred; }\n\n.picture-link:hover .picture {\n  opacity: 0.5; }\n\nbutton.close {\n  background-image: url(\"http://publicdomainvectors.org/photos/close-button.png\");\n  backgroun-repeat: no-repeat; }\n", ""]);
+	exports.push([module.id, ".picture-container {\n  height: 0;\n  overflow: hidden;\n  position: relative;\n  background-color: rgba(0, 0, 0, 0.025);\n  padding-bottom: 100%; }\n\n.picture {\n  top: 0;\n  left: 0;\n  height: 100%;\n  position: absolute;\n  display: block; }\n\nul {\n  list-style: none;\n  padding-left: 20px; }\n  ul li.picture-link {\n    padding-bottom: 15px;\n    padding-right: 5px;\n    padding-left: 5px;\n    font-family: 'Permanent Marker', cursive;\n    font-family: 'Patrick Hand SC', cursive;\n    font-weight: bold; }\n    ul li.picture-link .rectangle {\n      padding-bottom: 49.193548387096776%;\n      margin-bottom: -1px; }\n\n@media (max-width: 767px) {\n  li.picture-link {\n    padding-right: 30px !important; }\n  ul li.picture-link div.rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle img.picture {\n      width: inherit;\n      left: -50%; }\n  .imageShiftLeft {\n    left: -100% !important; } }\n\n@media (min-width: 767px) and (max-width: 1200px) {\n  ul li.picture-link div.rectangle.mid-no-rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle.mid-no-rectangle img.picture {\n      width: inherit;\n      left: -50%; } }\n\n@media (min-width: 1200px) {\n  ul li.picture-link div.rectangle.large-no-rectangle {\n    padding-bottom: 100%; }\n    ul li.picture-link div.rectangle.large-no-rectangle img.picture {\n      width: inherit;\n      left: -50%; } }\n\n.text {\n  z-index: 1;\n  width: 100%;\n  position: absolute;\n  color: white;\n  display: table; }\n\n@media (min-width: 1200px) {\n  .text {\n    height: 285.83px; } }\n\n@media (min-width: 992px) and (max-width: 1200px) {\n  .text {\n    height: 450px; } }\n\n@media (min-width: 768px) and (max-width: 992px) {\n  .text {\n    height: 307.5px; } }\n\np.picture-des {\n  font-size: -webkit-xxx-large;\n  text-align: center;\n  vertical-align: middle;\n  display: table-cell;\n  margin: auto 0;\n  text-shadow: 0px 0px 10px #333 , 0px 0px #333 , 1px 1px #333; }\n  @media (min-width: 992px) and (max-width: 1200px) {\n    p.picture-des {\n      font-size: 75px; } }\n\n.picture-link:hover .text {\n  color: darkred; }\n  .picture-link:hover .text p.picture-des {\n    text-shadow: 0px 0px 1px darkred  , -1px -1px darkred , 1px 1px darkred; }\n\n.picture-link:hover .picture {\n  opacity: 0.5; }\n\nbutton.close {\n  background-image: url(\"http://publicdomainvectors.org/photos/close-button.png\");\n  backgroun-repeat: no-repeat; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 292 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(293);
+	var content = __webpack_require__(292);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(289)(content, {});
+	var update = __webpack_require__(288)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -44813,10 +45305,10 @@
 	}
 
 /***/ },
-/* 293 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(288)();
+	exports = module.exports = __webpack_require__(287)();
 	// imports
 
 
@@ -44827,16 +45319,16 @@
 
 
 /***/ },
-/* 294 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(295);
+	var content = __webpack_require__(294);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(289)(content, {});
+	var update = __webpack_require__(288)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -44853,30 +45345,30 @@
 	}
 
 /***/ },
-/* 295 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(288)();
+	exports = module.exports = __webpack_require__(287)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".banner {\n  height: 300px;\n  margin-bottom: 20px;\n  padding-left: 25px;\n  padding-right: 5px; }\n  .banner img {\n    width: 100%;\n    height: inherit;\n    display: block; }\n\n@media (max-width: 768px) {\n  .banner {\n    padding-right: 30px;\n    font-family: 'Raleway', sans-serif;\n    font-weight: bold;\n    font-size: larger; } }\n\n.bulletin-title {\n  padding-left: 25px; }\n\n.bulletin-list {\n  text-align: center;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  display: inline-block; }\n  @media (min-width: 768px) {\n    .bulletin-list {\n      height: 75px; } }\n  .bulletin-list p {\n    color: grey;\n    font-family: 'Raleway', sans-serif;\n    background-color: oldlace;\n    padding: 10px 20px;\n    margin: 0 0; }\n    .bulletin-list p a {\n      color: grey; }\n", ""]);
+	exports.push([module.id, ".banner {\n  margin-bottom: 20px;\n  padding-left: 30px; }\n  .banner img {\n    width: inherit; }\n\n@media (max-width: 768px) {\n  .banner {\n    padding-right: 30px;\n    font-family: 'Raleway', sans-serif;\n    font-weight: bold;\n    font-size: larger; } }\n\n.bulletin-title {\n  padding-left: 25px; }\n\n.bulletin-list {\n  text-align: center;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  display: inline-block; }\n  @media (min-width: 768px) {\n    .bulletin-list {\n      height: 75px; } }\n  .bulletin-list p {\n    color: grey;\n    font-family: 'Raleway', sans-serif;\n    background-color: oldlace;\n    padding: 10px 20px;\n    margin: 0 0; }\n    .bulletin-list p a {\n      color: grey; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 296 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(297);
+	var content = __webpack_require__(296);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(289)(content, {});
+	var update = __webpack_require__(288)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -44893,10 +45385,10 @@
 	}
 
 /***/ },
-/* 297 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(288)();
+	exports = module.exports = __webpack_require__(287)();
 	// imports
 
 
@@ -44907,16 +45399,16 @@
 
 
 /***/ },
-/* 298 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(299);
+	var content = __webpack_require__(298);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(289)(content, {});
+	var update = __webpack_require__(288)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -44933,10 +45425,10 @@
 	}
 
 /***/ },
-/* 299 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(288)();
+	exports = module.exports = __webpack_require__(287)();
 	// imports
 
 
@@ -44947,16 +45439,16 @@
 
 
 /***/ },
-/* 300 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(301);
+	var content = __webpack_require__(300);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(289)(content, {});
+	var update = __webpack_require__(288)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -44973,10 +45465,10 @@
 	}
 
 /***/ },
-/* 301 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(288)();
+	exports = module.exports = __webpack_require__(287)();
 	// imports
 
 
@@ -44987,16 +45479,16 @@
 
 
 /***/ },
-/* 302 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(303);
+	var content = __webpack_require__(302);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(289)(content, {});
+	var update = __webpack_require__(288)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -45013,10 +45505,10 @@
 	}
 
 /***/ },
-/* 303 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(288)();
+	exports = module.exports = __webpack_require__(287)();
 	// imports
 
 
@@ -45027,16 +45519,16 @@
 
 
 /***/ },
-/* 304 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(305);
+	var content = __webpack_require__(304);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(289)(content, {});
+	var update = __webpack_require__(288)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -45053,283 +45545,18 @@
 	}
 
 /***/ },
-/* 305 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(288)();
+	exports = module.exports = __webpack_require__(287)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".employee h4 {\n  font-family: \"Raleway\", \"sans-serif\";\n  margin-top: 10px;\n  text-align: center; }\n\n.employee h5 {\n  font-family: \"Raleway\", \"sans-serif\";\n  text-align: center;\n  font-size: 18px;\n  margin-top: 0; }\n\n@media (min-width: 991px) and (max-width: 1200px) {\n  .employee .text {\n    height: 317px;\n    width: 317px; } }\n\n@media (min-width: 768px) and (max-width: 991px) {\n  .employee .text {\n    height: 370px;\n    width: 370px; } }\n", ""]);
+	exports.push([module.id, ".employee h4 {\n  font-family: \"Raleway\", \"sans-serif\";\n  margin-top: 10px;\n  text-align: center; }\n\n.employee h5 {\n  font-family: \"Raleway\", \"sans-serif\";\n  text-align: center;\n  font-size: 18px;\n  margin-top: 0; }\n\n@media (min-width: 991px) and (max-width: 1200px) {\n  .employee .text {\n    height: 317px;\n    width: 317px; }\n    .employee .text p.picture-des {\n      font-size: -webkit-xxx-large; } }\n\n@media (min-width: 768px) and (max-width: 991px) {\n  .employee .text {\n    height: 370px;\n    width: 370px; } }\n", ""]);
 
 	// exports
 
-
-/***/ },
-/* 306 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(172);
-
-	var _List = __webpack_require__(268);
-
-	var _List2 = _interopRequireDefault(_List);
-
-	var _jquery = __webpack_require__(236);
-
-	var _jquery2 = _interopRequireDefault(_jquery);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var CSRCategory = function (_React$Component) {
-	  _inherits(CSRCategory, _React$Component);
-
-	  function CSRCategory() {
-	    _classCallCheck(this, CSRCategory);
-
-	    return _possibleConstructorReturn(this, (CSRCategory.__proto__ || Object.getPrototypeOf(CSRCategory)).apply(this, arguments));
-	  }
-
-	  _createClass(CSRCategory, [{
-	    key: 'render',
-	    value: function render() {
-	      var CSR_responsibility = this.props.state.CSR_responsibility;
-	      var CSR_charity = this.props.state.CSR_charity;
-	      var CSR_practices = this.props.state.CSR_practices;
-	      var CSR_sustainability = this.props.state.CSR_sustainability;
-	      var CSR_collaboration = this.props.state.CSR_collaboration;
-	      var language = this.props.params.language;
-	      var labels = this.props.state.labels;
-	      var CSR_Category = '';
-	      if (this.props.params.category === 'sustainability') CSR_Category = CSR_sustainability;
-	      if (this.props.params.category === 'charitable-programmes') CSR_Category = CSR_charity;
-	      if (this.props.params.category === 'practices') CSR_Category = CSR_responsibility;
-	      if (this.props.params.category === 'responsibility') CSR_Category = CSR_practices;
-	      if (this.props.params.category === 'collaboration') CSR_Category = CSR_collaboration;
-	      var lang = void 0,
-	          langLink = '';
-	      lang = language === 'zh-t' ? 'chinese_traditional' : language === 'zh-s' ? 'chinese_simplified' : 'english';
-	      langLink = language === 'zh-t' || language === 'zh-s' ? '/' + language : '';
-	      if (CSR_responsibility && CSR_charity && CSR_practices && CSR_sustainability && CSR_collaboration) {
-	        if (this.props.params.category === 'charitable-programmes') this.props.params.category = 'charitable_programmes';
-	        return _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-xs-12' },
-	              _react2.default.createElement(
-	                'ol',
-	                { className: 'breadcrumb' },
-	                _react2.default.createElement(
-	                  'li',
-	                  null,
-	                  _react2.default.createElement(
-	                    _reactRouter.Link,
-	                    { className: 'grey underline', to: { pathname: langLink + '/' } },
-	                    labels.home[lang]
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'li',
-	                  null,
-	                  _react2.default.createElement(
-	                    _reactRouter.Link,
-	                    { className: 'grey underline', to: { pathname: langLink + '/csr' } },
-	                    labels.csr[lang]
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'li',
-	                  { className: 'active' },
-	                  labels[this.props.params.category][lang]
-	                )
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(_List2.default, { items: CSR_Category, language: lang })
-	        );
-	      } else {
-	        // $.get('/api/cultures', cultures => {
-	        //   this.props.updateAppState({ cultures });
-	        // })
-	        return _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-12' },
-	            _react2.default.createElement(
-	              'ol',
-	              { className: 'breadcrumb' },
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: langLink + '/' } },
-	                  labels.home[lang]
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: langLink + '/who-we-are' } },
-	                  labels.who_we_are[lang]
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                { className: 'active' },
-	                labels[this.props.params.category][lang]
-	              )
-	            )
-	          )
-	        );
-	      }
-	    }
-	  }]);
-
-	  return CSRCategory;
-	}(_react2.default.Component);
-
-	exports.default = CSRCategory;
-
-/***/ },
-/* 307 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(172);
-
-	var _Frame = __webpack_require__(239);
-
-	var _Frame2 = _interopRequireDefault(_Frame);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Gender = function (_React$Component) {
-	  _inherits(Gender, _React$Component);
-
-	  function Gender() {
-	    _classCallCheck(this, Gender);
-
-	    return _possibleConstructorReturn(this, (Gender.__proto__ || Object.getPrototypeOf(Gender)).apply(this, arguments));
-	  }
-
-	  _createClass(Gender, [{
-	    key: 'render',
-	    value: function render() {
-	      var product_men = this.props.state.product_men;
-	      var product_women = this.props.state.product_women;
-	      var product_children = this.props.state.product_children;
-	      var displayProducts = '';
-	      if (this.props.params.gender === 'men') displayProducts = product_men;
-	      if (this.props.params.gender === 'women') displayProducts = product_women;
-	      if (this.props.params.gender === 'children') displayProducts = product_children;
-	      var language = this.props.params.language;
-	      var labels = this.props.state.labels;
-	      var lang = void 0,
-	          langLink = '';
-	      lang = language === 'zh-t' ? 'chinese_traditional' : language === 'zh-s' ? 'chinese_simplified' : 'english';
-	      langLink = language === 'zh-t' || language === 'zh-s' ? '/' + language : '';
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-xs-12' },
-	            _react2.default.createElement(
-	              'ol',
-	              { className: 'breadcrumb' },
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: langLink + '/' } },
-	                  labels.home[lang]
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: langLink + '/products' } },
-	                  labels.products[lang]
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { className: 'grey underline', to: { pathname: langLink + '/products/category' } },
-	                  labels.category[lang]
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                { className: 'active' },
-	                labels.men[lang]
-	              )
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(_Frame2.default, { pictures: displayProducts, language: lang })
-	      );
-	    }
-	  }]);
-
-	  return Gender;
-	}(_react2.default.Component);
-
-	exports.default = Gender;
 
 /***/ }
 /******/ ]);

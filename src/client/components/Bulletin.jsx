@@ -3,11 +3,12 @@ import { Link } from 'react-router';
 
 export default class Bulletin extends React.Component {
 
-  banner(boolean) {
+  banner(boolean, url) {
     if(boolean) {
+    console.log('p', url)
       return(
-        <div className="banner">
-          <img/>
+        <div className="col-xs-12 banner">
+          <img src={url}/>
         </div>
       )
     }
@@ -27,10 +28,11 @@ export default class Bulletin extends React.Component {
   	const items = this.props.items;
     const lang = this.props.language;
     const bannerDecision = this.props.banner;
+    const bannerImage = this.props.image;
     const titleText = this.props.title;
     return(
       <div className="frame row">
-        {this.banner(bannerDecision)}
+        {this.banner(bannerDecision, bannerImage)}
         {this.title(titleText)}
         <ul>
           {items.map(item => {

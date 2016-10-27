@@ -11,7 +11,21 @@ export default class Factories extends React.Component {
       index: 0,
       isOpen: false,
     }
-    
+  }
+
+  resizing() {
+    if($(window).width() > 1200) {
+      $('div.text').css("width", $("img.factoryImage").width());
+    } else {
+      $('div.text').css("width", $("img.factoryImage").height());
+    }
+      $('div.text').css("height", $("img.factoryImage").height());
+  }
+
+  componentDidMount() {
+    this.resizing();
+    setTimeout(() => { this.resizing() }, 100);
+    setTimeout(() => { this.resizing() }, 300);
   }
 
   openLightbox(images) {
@@ -85,7 +99,7 @@ export default class Factories extends React.Component {
                         <p className="picture-des">{factory.description[lang]}</p>
                       </div>
                       <div className="picture-container rectangle mid-no-rectangle">
-                        <img className="picture" src={factory.thumbnail}/>
+                        <img className="picture factoryImage" src={factory.thumbnail}/>
                       </div>
                       {lightbox}
                     </a>

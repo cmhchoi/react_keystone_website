@@ -17,21 +17,38 @@ export default class Gender extends React.Component {
     let lang, langLink = '';
     lang = language === 'zh-t' ? 'chinese_traditional' : language === 'zh-s' ? 'chinese_simplified' : 'english';
     langLink = (language === 'zh-t' || language === 'zh-s') ? `/${language}` : '';
-    return(
-      <div>
-        <div className="row">
-          <div className="col-xs-12">
-            <ol className="breadcrumb">
-              <li><Link className="grey underline" to={{pathname: `${langLink}/`}}>{labels.home[lang]}</Link></li>
-              <li><Link className="grey underline" to={{pathname: `${langLink}/products`}}>{labels.products[lang]}</Link></li>
-              <li><Link className="grey underline" to={{pathname: `${langLink}/products/category`}}>{labels.category[lang]}</Link></li>
-              <li className="active">{labels.men[lang]}</li>
-            </ol>
+    if(product_men, product_women, product_children) {
+      return(
+        <div>
+          <div className="row">
+            <div className="col-xs-12">
+              <ol className="breadcrumb">
+                <li><Link className="grey underline" to={{pathname: `${langLink}/`}}>{labels.home[lang]}</Link></li>
+                <li><Link className="grey underline" to={{pathname: `${langLink}/products`}}>{labels.products[lang]}</Link></li>
+                <li><Link className="grey underline" to={{pathname: `${langLink}/products/category`}}>{labels.category[lang]}</Link></li>
+                <li className="active">{labels[this.props.params.gender][lang]}</li>
+              </ol>
+            </div>
+          </div>
+          <Frame pictures={ displayProducts } language={ lang }/>
+        </div>
+      )
+    } else {
+      return(
+        <div>
+          <div className="row">
+            <div className="col-xs-12">
+              <ol className="breadcrumb">
+                <li><Link className="grey underline" to={{pathname: `${langLink}/`}}>{labels.home[lang]}</Link></li>
+                <li><Link className="grey underline" to={{pathname: `${langLink}/products`}}>{labels.products[lang]}</Link></li>
+                <li><Link className="grey underline" to={{pathname: `${langLink}/products/category`}}>{labels.category[lang]}</Link></li>
+                <li className="active">{labels[this.props.params.gender][lang]}</li>
+              </ol>
+            </div>
           </div>
         </div>
-        <Frame pictures={ displayProducts } language={ lang }/>
-      </div>
-    )
+      )
+    }
   }
   
 }

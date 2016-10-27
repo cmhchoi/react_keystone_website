@@ -9,6 +9,7 @@ const Culture = new keystone.List('Culture', {
  
 Culture.add({
   name: { type: String },
+  ranking: { type: String },
   title: { 
     english: { type: String, index: true },
     'chinese_traditional': { type: String },

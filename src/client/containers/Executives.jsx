@@ -6,6 +6,7 @@ export default class Executives extends React.Component {
 
   render() {
     const executives = this.props.state.executives;
+    executives.sort((a, b) => a.ranking > b.ranking);
     const language = this.props.params.language;
     const labels = this.props.state.labels;
     let lang, langLink = '';

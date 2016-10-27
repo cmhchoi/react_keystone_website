@@ -26,9 +26,9 @@ export default class Techniques extends React.Component {
               </ol>
             </div>
           </div>
-          <Bulletin items={ techniqueDyeing } language={ lang } banner={ true } title={ labels.dyeing[lang] }/>
-          <Bulletin items={ techniquePrinting } language={ lang }  banner={ false } title={ labels.printing[lang] }/>
-          <Bulletin items={ techniqueWashing } language={ lang }  banner={ false } title={ labels.washing[lang] }/>
+          <Bulletin items={ techniqueDyeing } language={ lang } banner={ true } title={ labels.dyeing[lang] } image={ "http://res.cloudinary.com/fglorywebsite2016/image/upload/c_scale,w_2480/v1477407745/320598202013655556_cwxjdd_x7ndei.jpg" }/>
+          <Bulletin items={ techniquePrinting } language={ lang }  banner={ false } title={ labels.printing[lang] } image={ "" }/>
+          <Bulletin items={ techniqueWashing } language={ lang }  banner={ false } title={ labels.washing[lang] } image={ "" }/>
         </div>
       )
     } else {
