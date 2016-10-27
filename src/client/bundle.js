@@ -184,12 +184,12 @@
 	  _react2.default.createElement(_reactRouter.Route, { path: 'csr', component: _CSR2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'whats-new', component: _News2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'whats-new/:article', component: _Article2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: 'terms-of-use', component: _Terms2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'contact-us', component: _Contact2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: 'privacy', component: _Privacy2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'sitemap', component: _Sitemap2.default })
 	);
 
+	// <Route path="privacy" component={Privacy} />
+	// <Route path="terms-of-use" component={Terms} />
 	// <Route path="csr/:category" component={CSRCategory} />
 	(0, _reactDom.render)(_react2.default.createElement(
 	  _reactRouter.Router,
@@ -27390,6 +27390,14 @@
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
+	      // $(document).ready(() => {
+	      //   $('.dropdown-menu').click(() => {
+	      //     console.log($('.dropdown-menu'))
+	      //     $('.dropdown-menu').hide(() => {
+	      //       //$('.dropdown-menu').show();
+	      //     });
+	      //   })
+	      // })
 	      (0, _jquery2.default)(window).resize(function () {
 	        (0, _jquery2.default)('.squareText').css("height", (0, _jquery2.default)("img.home_whats-new").width());
 	        (0, _jquery2.default)('.squareText').css("width", (0, _jquery2.default)("img.home_whats-new").width());
@@ -27495,7 +27503,7 @@
 	          { className: 'dropdown hidden-sm hidden-md hidden-lg large-nav-dropdown', id: 'navdropdown' },
 	          _react2.default.createElement(
 	            'button',
-	            { className: 'btn btn-default dropdown-toggle', type: 'button', id: 'dropdownMenu1', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'true' },
+	            { className: 'btn btn-default dropdown-toggle', type: 'button', id: 'dropdownMenu1', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
 	            currentPage,
 	            _react2.default.createElement('span', { className: 'caret' })
 	          ),

@@ -122,6 +122,14 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
+    // $(document).ready(() => {
+    //   $('.dropdown-menu').click(() => {
+    //     console.log($('.dropdown-menu'))
+    //     $('.dropdown-menu').hide(() => {
+    //       //$('.dropdown-menu').show();
+    //     });
+    //   })
+    // })
     $(window).resize(() => {
       $('.squareText').css("height", $("img.home_whats-new").width());
       $('.squareText').css("width", $("img.home_whats-new").width());
@@ -218,7 +226,7 @@ export default class App extends React.Component {
     return(
       <div className="navbar-header">
         <div className="dropdown hidden-sm hidden-md hidden-lg large-nav-dropdown" id='navdropdown'>
-          <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {currentPage}
             <span className="caret"></span>
           </button>

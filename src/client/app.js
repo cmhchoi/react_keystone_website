@@ -58,13 +58,13 @@ const innerRoutes = (
     <Route path="csr" component={CSR} />
     <Route path="whats-new" component={News} />
     <Route path="whats-new/:article" component={Article} />
-    <Route path="terms-of-use" component={Terms} />
     <Route path="contact-us" component={Contact} />
-    <Route path="privacy" component={Privacy} />
     <Route path="sitemap" component={Sitemap} />
   </Route>
 )
 
+    // <Route path="privacy" component={Privacy} />
+    // <Route path="terms-of-use" component={Terms} />
     // <Route path="csr/:category" component={CSRCategory} />
 render(
   <Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>
