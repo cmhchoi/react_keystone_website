@@ -122,14 +122,20 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    // $(document).ready(() => {
-    //   $('.dropdown-menu').click(() => {
-    //     console.log($('.dropdown-menu'))
-    //     $('.dropdown-menu').hide(() => {
-    //       //$('.dropdown-menu').show();
-    //     });
-    //   })
-    // })
+    $(document).ready(() => {
+      $('.dropdown-menu').click(() => {
+        console.log($('.dropdown-menu'))
+        $('.dropdown-menu').hide(() => {
+          //$('.dropdown-menu').show();
+        });
+      })
+      $('button.btn.btn-default.dropdown-toggle').click(() => {
+        console.log($('.dropdown-menu'))
+        $('.dropdown-menu').show(() => {
+          //$('.dropdown-menu').show();
+        });
+      })
+    })
     $(window).resize(() => {
       $('.squareText').css("height", $("img.home_whats-new").width());
       $('.squareText').css("width", $("img.home_whats-new").width());

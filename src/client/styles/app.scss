@@ -2,6 +2,7 @@
   padding: 0 0;
 }
 
+
 .fixed {
   position: fixed;
   @media (min-width: 1200px) {
@@ -41,18 +42,18 @@
 }
 
 .navbar-brand {
-	color: #777;
+  color: #777;
   padding: 0px;
   float: left;
   height: 50px;
   font-size: 18px;
   line-height: 20px;
-	img {
+  img {
     padding: 0 0;
     height: 100%;
     width: auto;
     display: block;
-	}
+  }
 }
 
 .bumper {
@@ -64,7 +65,7 @@
 }
 
 .top-nav {
-	background-color: white;
+  background-color: white;
   z-index: 200;
   border-bottom-width: 0 !important;
 }
@@ -203,4 +204,12 @@ h4, h3 {
     clear: both;
     height: 5px;
   }
+}
+
+.dropdown-menu-right {
+  font-size: large;
+}
+
+.content {
+  overflow-x: hidden !important;
 }
