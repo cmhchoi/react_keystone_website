@@ -45367,7 +45367,7 @@
 
 
 	// module
-	exports.push([module.id, ".banner {\n  margin-bottom: 20px;\n  padding-left: 30px; }\n  .banner img {\n    width: inherit; }\n\n@media (max-width: 768px) {\n  .banner {\n    padding-right: 30px;\n    font-family: 'Raleway', sans-serif;\n    font-weight: bold;\n    font-size: larger; } }\n\n.bulletin-title {\n  padding-left: 25px; }\n\n.bulletin-list {\n  text-align: center;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  display: inline-block; }\n  @media (min-width: 768px) {\n    .bulletin-list {\n      height: 75px;\n      padding-right: 30px; } }\n  .bulletin-list p {\n    color: grey;\n    font-family: 'Raleway', sans-serif;\n    background-color: oldlace;\n    padding: 10px 20px;\n    margin: 0 0; }\n    .bulletin-list p a {\n      color: grey; }\n", ""]);
+	exports.push([module.id, ".banner {\n  margin-bottom: 20px;\n  padding-left: 30px; }\n  .banner img {\n    width: inherit; }\n\n@media (max-width: 768px) {\n  .banner {\n    padding-right: 30px;\n    font-family: 'Raleway', sans-serif;\n    font-weight: bold;\n    font-size: larger; }\n  .bulletin-list {\n    padding-right: 30px; } }\n\n.bulletin-title {\n  padding-left: 25px; }\n\n.bulletin-list {\n  text-align: center;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  display: inline-block; }\n  @media (min-width: 768px) {\n    .bulletin-list {\n      height: 75px; } }\n  .bulletin-list p {\n    color: grey;\n    font-family: 'Raleway', sans-serif;\n    background-color: oldlace;\n    padding: 10px 20px;\n    margin: 0 0; }\n    .bulletin-list p a {\n      color: grey; }\n", ""]);
 
 	// exports
 
