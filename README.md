@@ -1,1 +1,3 @@
-# react_keystone_website
+# React | React Router | Keystone | Webpack
+##### Supports English, Traditional Chinese and Simplified Chinese
+www.firstglory.com
